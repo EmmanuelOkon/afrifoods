@@ -15,15 +15,12 @@ const navigation = [
   { name: "FAQ", href: "/faq" },
 ];
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
 
 export default function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white drop-shadow-md sticky z-0 lg:z-[1000] top-0 w-full">
+    <header className="bg-white drop-shadow-md sticky z-[1000] top-0 w-full">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between py-3 px-4 p6 lg:px-8"
         aria-label="Global"
