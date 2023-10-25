@@ -33,7 +33,7 @@ const HeroProducts = () => {
           </div>
         </div>
       </div>
-      <div className="py10 max-w-7xl mx-auto">
+      <div className=" max-w-7xl mx-auto">
         <div className="  py-6 lg:py16">
           <div className="px-4 lg:px[45px] xl:px-[100px]  bg-white  mx-auto ">
             <div className="flex flex-col-reverse items-center md:gap[4rem] lg:flex-row lg:justify-between w-full lg:px-20">
