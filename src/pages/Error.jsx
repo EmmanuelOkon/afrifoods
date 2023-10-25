@@ -1,9 +1,10 @@
-import Head from "../components/head";
+// import Head from "../components/head";
+import Layout from "../components/layout";
 
 const Error = () => {
   return (
-    <>
-      <Head />
+    <Layout>
+      {/* <Head /> */}
       <div className="pt[20rem] flex items-center h-screen justify-center w-full bg-fadeOrange ">
         <div className="flex-col justify-center text-center">
           <h1 className="text-9xl font-bold font-roboto">404</h1>
@@ -15,7 +16,7 @@ const Error = () => {
           </button>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { BsTelephone, BsChevronDown } from "react-icons/bs";
+import { BsTelephone } from "react-icons/bs";
 import { LuMail } from "react-icons/lu";
 import { Fragment, useState } from "react";
 import { Menu, Transition, Popover } from "@headlessui/react";

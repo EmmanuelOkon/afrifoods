@@ -15,9 +15,9 @@ const navigation = [
   { name: "FAQ", href: "/faq" },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,7 +69,7 @@ export default function TopNav() {
             target="_blank"
             rel="noreferrer"
             href="/"
-            className="font-raleway py-2 px-5 lg:px-6 text-base md:px-3 md:text-xs lg:text-lg font-medium rounded text-white bg-orange outline-none hover:bg-fadeOrange hover:text-orange lg:font-medium border-2 border-orange"
+            className="font-raleway py-2 px-5 lg:px-6 text-base md:px-3 md:text-xs lg:text-lg font-medium rounded text-white bg-green outline-none hover:bg-lemonGreen lg:font-medium "
           >
             Get Started
           </a>
