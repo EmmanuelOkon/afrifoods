@@ -47,7 +47,6 @@ const Header = () => {
             >
               <LuMail
                 className="text-white w-6 h-6 text-opacity-70 p-[2px] sm:h-auto"
-                src="/icons/mail.svg"
               />
               <span>contact@afrifoodsltd.com</span>
             </NavLink>

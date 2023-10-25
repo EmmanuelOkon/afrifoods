@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Header from "./Header";
 import TopNav from "./TopNav";
-// import Footer from "./footer";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       <div className="items-center justify-between  2xl:w-[100%] 2xl:mx-auto sm:mx-auto ">
         <main>{children}</main>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

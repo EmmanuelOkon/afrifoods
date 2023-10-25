@@ -20,12 +20,15 @@ const HeroProducts = () => {
           </div>
           <div className="absolute inset-0 flex items-center justify-center z-50">
             <div className="z-[100] w-fit">
-              <span className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  ">
-                <NavLink to="/" className="gap-4 items-center">
+              <NavLink
+                to="/"
+                className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
+              >
+                <span className="gap-4 items-center">
                   how afrifood works?
                   <FaPlay className="inline-flex ml-2 text-white w-4 h-4" />
-                </NavLink>
-              </span>
+                </span>
+              </NavLink>
             </div>
           </div>
         </div>
