@@ -1,10 +1,12 @@
+import Hero from "../components/contact/hero";
 import Layout from "../components/layout";
 
 const Contact = () => {
   return (
-    <Layout>Contact page</Layout>
-  )
-}
+    <Layout>
+      <Hero /> page
+    </Layout>
+  );
+};
 
-export default Contact
-
+export default Contact;

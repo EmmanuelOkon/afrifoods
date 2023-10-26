@@ -106,9 +106,9 @@ const Footer = () => {
                       <NavLink
                         key={item.name}
                         href={item.href}
-                        className="text-white hover:textgray-500 bg-green500 hover:bg-lemonGreen p-3 rounded-full"
+                        className="text-white hover:textgray-500 bg-green500 hover:bg-lemonGreen p-2 rounded-full"
                       >
-                        <item.icon className="h-4 w-4 " aria-hidden="true" />
+                        <item.icon className="h-6 w-6 " aria-hidden="true" />
                       </NavLink>
                     ))}
                   </div>
@@ -146,8 +146,8 @@ const Footer = () => {
               or promotions.
             </p>
             <form className="mt-4 ">
-              <div className="flex items-center border border-gray-300 rounded-md px-3 py-1 lg:py-2 mb-4">
-                <LuMail className="text-gray-500 w-6 h-6 text-opacity-70 p[2px] sm:h-auto" />
+              <div className="flex items-center border border-gray-300 rounded-md px-3 py-1 mb-4">
+                <LuMail className="text-gray-400 w-6 h-6 text-opacity-70 sm:h-auto" />
                 <input
                   type="email"
                   name="email-address"

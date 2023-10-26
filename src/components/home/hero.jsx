@@ -81,13 +81,13 @@ const Hero = () => {
               <div className="mt-10 flex flex-col lg:flex-row gap-y-4 items-center justify-center gap-x-6 z- ">
                 <NavLink
                   to="/products"
-                  className="rounded-md bg-green w-[200px] px-[22px] py-[14px] text-sm border border-green font-semibold text-white shadow-sm hover:bg-indigo-500  cursor-pointer"
+                  className="rounded-md bg-green w-[200px] px-[22px] py-[14px] text-sm border border-green font-semibold text-white shadow-sm hover:bg-opacity-60 "
                 >
                   Browse products
                 </NavLink>
                 <NavLink
                   to="/"
-                  className="rounded-md text-sm w-[200px] px-[22px] py-[14px] font-semibold border text-white border-white hover:bg-green hover:bg-opacity-40"
+                  className="rounded-md text-sm w-[200px] px-[22px] py-[14px] font-semibold border text-white border-white hover:bg-white hover:bg-opacity-60"
                 >
                   Read more
                 </NavLink>
