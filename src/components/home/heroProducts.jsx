@@ -46,7 +46,7 @@ const HeroProducts = () => {
               </div>
               <div className="mauto py-5 lg:w-1/2 ">
                 <div className="sm:px1">
-                  <h1 className=" text-3xl leading-[1.1] lg:tracking-tight font-semibold text-blue lg:text-[40px] mb-2">
+                  <h1 className=" text-3xl leading-[1.1] text-[#333333] lg:tracking-tight font-semibold text-blue lg:text-[40px] mb-2">
                     Premium Fresh Produce From Rwanda
                   </h1>
                   <div className="flex justify-start w-[120px] text-left ">
