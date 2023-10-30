@@ -62,9 +62,11 @@ export default function ProductsCategories() {
       </div>
       <Carousel
         value={products}
-        numScroll={1}
         numVisible={3}
+        numScroll={3}
         responsiveOptions={responsiveOptions}
+        autoplayInterval={3000}
+        circular
         className="z-0"
         itemTemplate={(product) => (
           <div className="border-1 surface-border border-round m-2 md:mx-6 lg:mx-10 text-center py5 bg-lightGrey overflow-hidden rounded-md lg:rounded-2xl mx-auto w-[220px] md:w-[300px] ">

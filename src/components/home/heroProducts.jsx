@@ -1,5 +1,5 @@
-import productVideo from "../../assets/images/productVideo.png";
-import fruitVariety from "../../assets/images/fruitvariety.png";
+import productVideo from "../../assets/images/playVideo.png";
+import fruitVariety from "../../assets/images/fruitBasket.png";
 
 import { FaPlay } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -36,10 +36,10 @@ const HeroProducts = () => {
       <div className=" max-w-7xl mx-auto">
         <div className="  py-6 lg:py16">
           <div className="px-4 lg:px[45px] xl:px-[100px]  bg-white  mx-auto ">
-            <div className="flex flex-col-reverse items-center md:gap[4rem] lg:flex-row lg:justify-between w-full lg:px-20">
+            <div className="flex flex-col-reverse items-center rounded-lg md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px-20">
               <div className="hidde lg:w-1/2 h-auto justify-center">
                 <img
-                  className="w[80%] h-auto md:w[60%] lg:w-full "
+                  className="w[80%] h-auto md:w[60%] lg:w-full rounded-lg "
                   src={fruitVariety}
                   alt="fruit variety"
                 />

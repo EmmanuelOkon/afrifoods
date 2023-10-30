@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "@fontsource/karla";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CustomPreloader from "./components/preloader/preloader.jsx";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+function Preloader() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); 
+  }, []);
+
+  return loading ? <CustomPreloader /> : <App />;
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Preloader />
   </React.StrictMode>
 );
 

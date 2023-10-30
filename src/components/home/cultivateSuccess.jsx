@@ -1,4 +1,4 @@
-import fruitVarietyTwo from "../../assets/images/fruitvarietyTwo.png";
+import cultivateSuccessImage from "../../assets/images/cultivateSuccess.png";
 
 const successData = [
   {
@@ -37,7 +37,7 @@ function CultivateSuccess() {
               <div className="hidde lg:w-1/2 h-auto justify-center">
                 <img
                   className="w[80%] h-auto md:w[60%] lg:w-full "
-                  src={fruitVarietyTwo}
+                  src={cultivateSuccessImage}
                   alt="fruit variety"
                 />
               </div>
@@ -61,12 +61,15 @@ function CultivateSuccess() {
                         <h1 className="text-4xl font-bold text-green">
                           {data.count}
                         </h1>
-                        <p className="text-base py-2 text-greyBlack font-bold">{data.title}</p>
-                        <p className="text-sm text-[#475367] py-4">{data.description}</p>
+                        <p className="text-base py-2 text-greyBlack font-bold">
+                          {data.title}
+                        </p>
+                        <p className="text-sm text-[#475367] py-4">
+                          {data.description}
+                        </p>
                       </div>
                     ))}
                   </div>
-                 
                 </div>
               </div>
             </div>

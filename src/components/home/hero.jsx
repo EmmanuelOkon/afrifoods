@@ -46,7 +46,7 @@ const Hero = () => {
       setActiveElement((prevActiveElement) =>
         prevActiveElement + 1 >= 5 ? 1 : prevActiveElement + 1
       );
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -65,11 +65,11 @@ const Hero = () => {
           <img
             src={item.image}
             alt=""
-            className="h-[70%] md:h-full absolute left-0 top-0 object-cover "
+            className="h-screen md:h-full absolute inset-0 left-0 top-0 object-cover   "
           />
 
-          <div className="w-full flex flex-col justify-between relative z-30">
-            <div className="text-white absolut font-bold text-2xl leading-[0.57px] font-karla text-center mx-auto max-w-2xl py-24 md:py-32 px-4 ">
+          <div className="w-full flex flex-col justify-between relative bg-green h-full inset-0 bg-opacity-40 z-30">
+            <div className="text-white absolut font-bold text-2xl leading-[0.57px] font-karla text-center mx-auto max-w-2xl py-16 md:py-32 px-4 ">
               <h1 className=" text-4xl font-extrabold tracking-tight sm:text-6xl">
                 Premium, Fresh Produce from the Heart of Africa
               </h1>
@@ -81,13 +81,13 @@ const Hero = () => {
               <div className="mt-10 flex flex-col lg:flex-row gap-y-4 items-center justify-center gap-x-6 z- ">
                 <NavLink
                   to="/products"
-                  className="rounded-md bg-green w-[200px] px-[22px] py-[14px] text-sm border border-green font-semibold text-white shadow-sm hover:bg-opacity-60 "
+                  className="rounded-md bg-green w-[200px] px-[22px] py-[14px] text-sm border border-green font-semibold text-white shadow-sm hover:bg-deepGreen hover:bg-opacity-50 "
                 >
                   Browse products
                 </NavLink>
                 <NavLink
-                  to="/"
-                  className="rounded-md text-sm w-[200px] px-[22px] py-[14px] font-semibold border text-white border-white hover:bg-white hover:bg-opacity-60"
+                  to="/about"
+                  className="rounded-md text-sm w-[200px] px-[22px] py-[14px] font-semibold border text-white border-white hover:bg-white hover:bg-opacity-50"
                 >
                   Read more
                 </NavLink>

@@ -1,0 +1,40 @@
+.loader {
+  display: block;
+  --height-of-loader: 2px;
+  --loader-color: #226A35;
+  width: 200px;
+  height: var(--height-of-loader);
+  border-radius: 50px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 50px;
+  animation: moving 2.6s linear infinite;
+  ;
+}
+
+@keyframes moving {
+  0%, 100% {
+    width: 0;
+    left: 0;
+    right: 0
+  }
+  25%, 75% {
+    width: 100%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 100%;
+  }
+} 

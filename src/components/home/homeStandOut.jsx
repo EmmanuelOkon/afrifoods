@@ -1,14 +1,14 @@
 import widevegetation from "../../assets/images/wideVegetation.png";
 import widevegetationMobile from "../../assets/images/wideVegetationMobile.png";
 import { FaHandHoldingHeart } from "react-icons/fa";
-import { GrDiamond } from "react-icons/gr";
 import { BsGlobe2 } from "react-icons/bs";
 import { PiFlowerTulipBold } from "react-icons/pi";
+import { SlDiamond } from "react-icons/sl";
 
 const standouts = [
   {
     name: "Premium Quality Assurance",
-    icon: GrDiamond,
+    icon: SlDiamond,
     description:
       "Our produce is sourced from the finest farms in Africa, ensuring that every item you receive meets rigorous quality standards.",
   },

@@ -1,6 +1,8 @@
 import empowerWomanOne from "../../assets/images/empowerWomanOne.png";
 import empowerWomanTwo from "../../assets/images/empowerWomanTwo.png";
 import empowerWomanThree from "../../assets/images/empowerWomanThree.png";
+import empowerWomenFarmers from "../../assets/images/womenFarmers.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Empower = () => {
   return (
@@ -59,21 +61,21 @@ const Empower = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row w-full justify-between items-center gap-4 my-4 lg:mt-10">
-          <div className="w-[350px] h-[300px] overflow-hidden rounded-lg">
+          <div className="w-full h-auto md:w-[350px] md:h-[300px] overflow-hidden rounded-lg">
             <img
               src={empowerWomanOne}
               className="w-full h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
               alt="empowerWomanOne"
             />
           </div>
-          <div className="w-[350px] h-[300px] lg:h-[480px] overflow-hidden rounded-lg">
+          <div className="w-full h-auto md:w-[350px] md:h-[300px] lg:h-[480px] overflow-hidden rounded-lg">
             <img
               src={empowerWomanTwo}
               className="w-full object-coer object-center lg:h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
               alt="empowerWomanTwo"
             />
           </div>
-          <div className="w-[350px] h-[300px] overflow-hidden rounded-lg">
+          <div className="w-full h-auto md:w-[350px] md:h-[300px] overflow-hidden rounded-lg">
             <img
               src={empowerWomanThree}
               className="w-full h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
@@ -82,7 +84,7 @@ const Empower = () => {
           </div>
         </div>
 
-        <div className="pb-[4rem] text-center max-w-2xl mx-auto md:pt-10 ">
+        <div className="pb-[3rem] text-center max-w-2xl mx-auto md:pt-10 ">
           <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:trcking-wider lg:leading-none">
             Empowering Women Farmers And Youth
           </h1>
@@ -119,6 +121,9 @@ const Empower = () => {
               African Leadership University. 80% of which were for women.
             </p>
           </div>
+        </div>
+        <div className="pt-4">
+          <LazyLoadImage src={empowerWomenFarmers} effect="blur" />
         </div>
       </div>
     </div>
