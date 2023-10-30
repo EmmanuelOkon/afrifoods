@@ -41,7 +41,7 @@ const OurStory = () => {
             </p>
           </div>
           <div className="py-10">
-            <img src={aboutUsStory} className="w-full" alt="aboutUsStory" />
+            <img src={aboutUsStory} className="w-full rounded-md md:rounded-2xl" alt="aboutUsStory" />
           </div>
         </div>
         <div className="">
@@ -104,29 +104,7 @@ const OurStory = () => {
             </p>
           </div>
         </div>
-        {/* <div className="flex flex-col md:flex-row w-full justify-between items-center gap-4 my-4 lg:mt-10">
-          <div className="w-[350px] h-[300px] overflow-hidden rounded-lg">
-            <img
-              src={empowerWomanOne}
-              className="w-full h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
-              alt="empowerWomanOne"
-            />
-          </div>
-          <div className="w-[350px] h-[300px] lg:h-[480px] overflow-hidden rounded-lg">
-            <img
-              src={empowerWomanTwo}
-              className="w-full object-coer object-center lg:h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
-              alt="empowerWomanTwo"
-            />
-          </div>
-          <div className="w-[350px] h-[300px] overflow-hidden rounded-lg">
-            <img
-              src={empowerWomanThree}
-              className="w-full h-full hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-500"
-              alt="empowerWomanThree"
-            />
-          </div>
-        </div> */}
+        
       </div>
     </>
   );

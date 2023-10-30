@@ -1,4 +1,4 @@
-import fruitVarietyTwo from "../../assets/images/fruitvarietyTwo.png";
+import cultivateSuccessImage from "../../assets/images/cultivateSuccess.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 // import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -39,7 +39,7 @@ function CultivateSuccess() {
               <div className="hidde lg:w-1/2 h-auto justify-center">
                 <LazyLoadImage
                   className="w[80%] h-auto md:w[60%] lg:w-full "
-                  src={fruitVarietyTwo}
+                  src={cultivateSuccessImage}
                   alt="fruit variety"
                   effect="blur"
                 />

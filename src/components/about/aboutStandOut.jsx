@@ -47,7 +47,7 @@ const AboutStandOut = () => {
               effect="blur"
             />
           </div>
-          <div className="absolute inset-0 flex md:hidden justify-center items-center mix-blend-overlay">
+          <div className="absolute inset-0 flex md:hidden h-full justify-center items-center mix-blend-overlay">
             <LazyLoadImage
               className="w-full h-full object-center hscreen object-cover"
               sizes="100vw"
@@ -59,7 +59,7 @@ const AboutStandOut = () => {
           <div className="absolut inset0 flex items-center justify-center z-50">
             <div className="z-[100] w-fit">
               <div className="py10">
-                <div className="flex w-[120px] text-center mx-auto py-3 ">
+                <div className="flex w-[120px] justify-center mx-auto py-3 ">
                   <span className="text-lemonGreen text-sm uppercase">
                     our values
                   </span>
