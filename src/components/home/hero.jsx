@@ -8,32 +8,23 @@ import { NavLink } from "react-router-dom";
 
 const items = [
   {
-    title: "Trusted logistics service provider.",
-    description:
-      "We offer doorstep delivery not only to all states within Nigeria but also to over 250 countries worldwide.",
+    title: "heroOne",   
     image: heroOne,
   },
   {
-    title: "International Shipping",
-    description: "Get a US & UK address",
+    title: "heroTwo",
     image: heroTwo,
   },
   {
-    title: "Air & ocean freight.",
-    description:
-      "Get real time air and ocean freight rates for over 200 countries. Make a booking in few minutes.",
+    title: "heroThree",
     image: heroThree,
   },
   {
-    title: "Supply chain Management",
-    description:
-      "We will take care of your entire supply chain from freight forwarding/clearing and warehousing to transport logistics.",
+    title: "heroFour", 
     image: heroFour,
   },
   {
-    title: "Courier",
-    description:
-      "Ship doorstep to over 200 countries and 36 states in Nigeria.",
+    title: "heroFive",
     image: heroFive,
   },
 ];
@@ -64,8 +55,8 @@ const Hero = () => {
         >
           <img
             src={item.image}
-            alt=""
-            className="h-screen md:h-full absolute inset-0 left-0 top-0 object-cover   "
+            alt={item.title}
+            className="h-screen md:h-full absolute inset-0 left-0 top-0 object-cover"
           />
 
           <div className="w-full flex flex-col justify-between relative bg-green h-full inset-0 bg-opacity-40 z-30">

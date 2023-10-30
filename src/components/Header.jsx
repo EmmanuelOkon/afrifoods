@@ -13,10 +13,10 @@ const language = [
   { text: "ES", href: "#" },
 ];
 
-const countries = [
-  { text: "Nigeria", href: "#" },
-  { text: "Togo", href: "#" },
-];
+// const countries = [
+//   { text: "Nigeria", href: "#" },
+//   { text: "Togo", href: "#" },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -144,7 +144,7 @@ const Header = () => {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="absolute right-0 z-[2000] mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <div className="py-1">
+                          {/* <div className="py-1">
                             {countries.map((item, index) => (
                               <Menu.Item key={index}>
                                 {({ active }) => (
@@ -162,7 +162,7 @@ const Header = () => {
                                 )}
                               </Menu.Item>
                             ))}
-                          </div>
+                          </div> */}
                         </Menu.Items>
                       </Transition>
                     </>

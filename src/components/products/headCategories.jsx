@@ -1,4 +1,3 @@
-import { useState } from "react";
 import categoryAll from "../../assets/images/products/productCategoryAll.png";
 import categoryVegetable from "../../assets/images/products/productCategoryVegetable.png";
 import categoryFruits from "../../assets/images/products/productCategoryFruits.png";
@@ -27,8 +26,8 @@ const features = [
   },
 ];
 
-const HeadCategories = () => {
-  const [activeFeature, setActiveFeature] = useState("All Products");
+const HeadCategories = ({ categories, setCategories }) => {
+
 
   return (
     <div className="pt- md:mt- ">
@@ -58,8 +57,9 @@ const HeadCategories = () => {
           {features.map((feature) => (
             <div key={feature.name} className=" pb-2 lg:pb-8 text-center">
               <div
+                onClick={() => setCategories(feature.name)}
                 className={`bg-white drop-shadowmd rounded-full h-[150px] w-[150px]  md:h-[282px] md:w-[282px] overflow-hidden cursor-pointer ${
-                  feature.name === activeFeature
+                  feature.name === categories
                     ? "border-4 md:border-8 border-green shadowlg md:drop-shadow2xl"
                     : ""
                 }`}

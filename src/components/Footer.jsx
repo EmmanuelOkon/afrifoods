@@ -37,12 +37,12 @@ const navigation = {
   social: [
     {
       name: "Twitter",
-      href: "/",
+      href: "https://twitter.com/afrifoodsrw",
       icon: FaXTwitter,
     },
     {
       name: "Instagram",
-      href: "/",
+      href: "https://www.instagram.com/afrifoodsrw/",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -55,7 +55,7 @@ const navigation = {
     },
     {
       name: "Facebook",
-      href: "/",
+      href: "https://web.facebook.com/people/AFri-Foods-Rwanda/100063930674684/",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -69,7 +69,7 @@ const navigation = {
 
     {
       name: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/company/afri-foods-rwanda/",
       icon: FaLinkedinIn,
     },
   ],
@@ -93,7 +93,7 @@ const Footer = () => {
                 <div className="my-4 text-white">
                   <p className="block flex-shrink-0 font-normal">KK 621 St, Kigali, Rwanda, Gikondo</p>
                   <NavLink href="tel:+250786416032" className="block flex-shrink-0">
-                    P. +250 786 416 032
+                    +250 786 416 032
                   </NavLink>
                   <NavLink to="mailto:contact@afrifoodsltd.com" className="block flex-shrink-0">
                     contact@afrifoodsltd.com
@@ -105,7 +105,7 @@ const Footer = () => {
                     {navigation.social.map((item) => (
                       <NavLink
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className="text-white hover:textgray-500 bg-green500 hover:bg-lemonGreen p-2 rounded-full"
                       >
                         <item.icon className="h-6 w-6 " aria-hidden="true" />

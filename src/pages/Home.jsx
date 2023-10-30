@@ -23,7 +23,6 @@ function Home() {
       <ReadyExperience />
       <HomeFaq />
       <FootGallery />
-      
     </Layout>
   );
 }
