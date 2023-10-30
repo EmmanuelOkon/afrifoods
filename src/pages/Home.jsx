@@ -4,6 +4,7 @@ import HeroProducts from "../components/home/heroProducts";
 import HomeStandOut from "../components/home/homeStandOut";
 import ProductsCategories from "../components/home/productsCategories";
 import CultivateSuccess from "../components/home/cultivateSuccess";
+import FeaturedProducts from "../components/home/featuredProducts";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <HeroProducts />
       <HomeStandOut />
       <CultivateSuccess />
+      <FeaturedProducts />
       
     </Layout>
   );

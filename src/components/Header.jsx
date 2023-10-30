@@ -6,6 +6,7 @@ import { Fragment, useState } from "react";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Rwanda from "../assets/icons/rwanda.svg"
+import HeadCountries from "./SelectCountry";
 
 const language = [
   { text: "FR", href: "#" },
@@ -52,6 +53,7 @@ const Header = () => {
             </NavLink>
           </div>
           <div className="flex items-center gap-4">
+            <HeadCountries />
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Popover as="div" className="relative">

@@ -4,58 +4,66 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { BsGlobe2 } from "react-icons/bs";
 import { PiFlowerTulipBold } from "react-icons/pi";
 import { SlDiamond } from "react-icons/sl";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const standouts = [
   {
-    name: "Premium Quality Assurance",
+    name: "Integrity",
     icon: SlDiamond,
     description:
-      "Our produce is sourced from the finest farms in Africa, ensuring that every item you receive meets rigorous quality standards.",
+      "Integrity is the cornerstone of our commitment. We uphold the promise to deliver products of the highest quality, ensuring that every product you receive reflects our unwavering dedication to honesty and trustworthiness",
   },
   {
-    name: "Global Reach, Local Values",
+    name: "Communication",
     icon: BsGlobe2,
     description:
-      "We work directly with African farmers, supporting their livelihoods while sharing the bounty of our continent with the world.",
+      "Communication is not just a practice; it's a commitment. We prioritize real-time, proactive communications, so you are always informed and connected as we nurture a seamless and transparent experience.",
   },
   {
-    name: "Sustainability Champion",
+    name: "Relationships",
     icon: PiFlowerTulipBold,
     description:
-      "We adopt eco-friendly farming practices and supply chain solutions that promote environmental conservation and social responsibility.",
+      "We believe in the power of enduring relationships. Our aspiration is to build long-term partnerships with our clients and business associates, grounded in mutual respect, shared goals, and trust.",
   },
   {
-    name: "Community Empowerment",
+    name: "Impact",
     icon: FaHandHoldingHeart,
     description:
-      "By engaging with us, you contribute to the prosperity of African farming communities and help us create a positive impact on the lives of many.",
+      "Our purpose extends beyond our products. We are driven to create a real impact in the lives of our farmers. By ensuring fair wages and sustainable practices, we work to improve their livelihoods and empower the communities we serve.",
   },
 ];
 
-const HomeStandOut = () => {
+const AboutStandOut = () => {
   return (
     <>
       <div className="py-10 px4 sm:px8 max-w7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center w-full h-full lg:h-[620px] py-20 bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen ">
+        <div className="relative overflow-hidden z-10 justify-center items-center w-full h-full lg:h-[750px] py-20 bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen ">
           <div className="hidden absolute inset-0 md:flex justify-center items-center mix-blend-overlay">
-            <img
-              className="w-full h-ull object-center h-full md:object-cover overflowhidden"
+            <LazyLoadImage
+              className="w-full object-center h-full md:object-cover"
               sizes="100vw"
               alt="widevegetation"
               src={widevegetation}
+              effect="blur"
             />
           </div>
           <div className="absolute inset-0 flex md:hidden justify-center items-center mix-blend-overlay">
-            <img
-              className="w-full h-full object-center hscreen object-cover overflowhidden"
+            <LazyLoadImage
+              className="w-full h-full object-center hscreen object-cover"
               sizes="100vw"
               alt="widevegetationMobile"
               src={widevegetationMobile}
+              effect="blur"
             />
           </div>
           <div className="absolut inset0 flex items-center justify-center z-50">
             <div className="z-[100] w-fit">
               <div className="py10">
+                <div className="flex w-[120px] text-center mx-auto py-3 ">
+                  <span className="text-lemonGreen text-sm uppercase">
+                    our values
+                  </span>
+                </div>
                 <h2 className="text-3xl lg:text-4xl font-bold text-white text-center ">
                   Why Afrifood Stands Out
                 </h2>
@@ -102,4 +110,4 @@ const HomeStandOut = () => {
   );
 };
 
-export default HomeStandOut;
+export default AboutStandOut;

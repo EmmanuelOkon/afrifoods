@@ -64,13 +64,13 @@ export default function TopNav() {
           {navigation.map((item) => (
             <NavLink
               to={item.href}
-              target=""
+              key={item.name}
               className={({ isActive }) => {
                 return (
                   "px-2 py-2 text-sm font-medium font-raleway " +
                   (isActive
                     ? " text-green font-semibold text-lg"
-                    : "text-blue text-opacity-80 border-blue border-opacity-0 hover:border-orange hover:text-orange hover-text-orange")
+                    : "text-blue hover:text-lemonGreen text-opacity-80")
                 );
               }}
             >
@@ -79,14 +79,13 @@ export default function TopNav() {
           ))}
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            target="_blank"
+          <NavLink
             rel="noreferrer"
-            href="/"
+            to="/products"
             className="font-raleway py-2 px-5 lg:px-6 text-base md:px-3 md:text-xs lg:text-lg font-medium rounded text-white bg-green outline-none hover:bg-lemonGreen lg:font-medium "
           >
             Get Started
-          </a>
+          </NavLink>
         </div>
       </nav>
       <Dialog

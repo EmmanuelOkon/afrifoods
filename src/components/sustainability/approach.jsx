@@ -27,10 +27,10 @@ const features = [
 
 const Approach = () => {
   return (
-    <div className="pt-4 mt-10 ">
+    <div className="pt-4 md:mt-10 ">
       <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg-[#F7F9FC] mx-auto ">
         <div className="py-[4rem] text-center max-w-2xl mx-auto ">
-          <div className="flex w-[120px] text-center mx-auto py-3 ">
+          <div className="flex w-[120px] justify-center mx-auto py-3 ">
             <span className="text-lemonGreen text-sm uppercase">
               our approach
             </span>
@@ -141,7 +141,7 @@ const Approach = () => {
           </p>
           <NavLink
             className="bg-green  hover:bg-lemonGreen rounded-md px-4 py-3 text-white mt-3"
-            to="/"
+            to="/products"
           >
             Get Started
           </NavLink>

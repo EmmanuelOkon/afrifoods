@@ -8,22 +8,25 @@ import Products from "./pages/Products";
 import Sustainability from "./pages/Sustainability";
 import Error from "./pages/Error";
 import { PrimeReactProvider } from "primereact/api";
+import ScrollTop from "./components/ScrollTop";
 
 function App() {
   return (
     <PrimeReactProvider>
       <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/sustainability" element={<Sustainability />} />
+        <ScrollTop>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/sustainability" element={<Sustainability />} />
 
-          <Route path="*" element={<Error />} />
-        </Routes>
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </ScrollTop>
       </Router>
     </PrimeReactProvider>
   );
