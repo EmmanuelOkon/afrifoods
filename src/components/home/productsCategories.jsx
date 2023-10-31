@@ -65,7 +65,7 @@ export default function ProductsCategories() {
         numVisible={3}
         numScroll={3}
         responsiveOptions={responsiveOptions}
-        autoplayInterval={3000}
+        autoplayInterval={10000}
         circular
         className="z-0"
         itemTemplate={(product) => (

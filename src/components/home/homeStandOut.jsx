@@ -4,6 +4,7 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { BsGlobe2 } from "react-icons/bs";
 import { PiFlowerTulipBold } from "react-icons/pi";
 import { SlDiamond } from "react-icons/sl";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const standouts = [
   {
@@ -38,19 +39,21 @@ const HomeStandOut = () => {
       <div className="py-10 px4 sm:px8 max-w7xl mx-auto">
         <div className="relative overflow-hidden z-10 justify-center items-center w-full h-full lg:h-[620px] py-20 bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen ">
           <div className="hidden absolute inset-0 md:flex justify-center items-center mix-blend-overlay">
-            <img
+            <LazyLoadImage
               className="w-full h-ull object-center h-full md:object-cover overflowhidden"
               sizes="100vw"
               alt="widevegetation"
               src={widevegetation}
+              effect="blur"
             />
           </div>
           <div className="absolute inset-0 flex md:hidden justify-center items-center mix-blend-overlay">
-            <img
+            <LazyLoadImage
               className="w-full h-full object-center hscreen object-cover overflowhidden"
               sizes="100vw"
               alt="widevegetationMobile"
               src={widevegetationMobile}
+              effect="blur"
             />
           </div>
           <div className="absolut inset0 flex items-center justify-center z-50">

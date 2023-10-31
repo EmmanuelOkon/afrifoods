@@ -4,6 +4,7 @@ import fruitVariety from "../../assets/images/fruitBasket.png";
 import { FaPlay } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const HeroProducts = () => {
   return (
@@ -11,11 +12,12 @@ const HeroProducts = () => {
       <div className="py-10 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen rounded-md lg:rounded-lg ">
           <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
-            <img
+            <LazyLoadImage
               className="w-full  h-full object-cover object-center overflow-hidden"
               sizes="100vw"
               alt="productVideo"
               src={productVideo}
+              effect="blur"
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center z-50">
@@ -38,10 +40,11 @@ const HeroProducts = () => {
           <div className="px-4 lg:px[45px] xl:px-[100px]  bg-white  mx-auto ">
             <div className="flex flex-col-reverse items-center rounded-lg md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px-20">
               <div className="hidde lg:w-1/2 h-auto justify-center">
-                <img
+                <LazyLoadImage
                   className="w[80%] h-auto md:w[60%] lg:w-full rounded-lg "
                   src={fruitVariety}
                   alt="fruit variety"
+                  effect="blur"
                 />
               </div>
               <div className="mauto py-5 lg:w-1/2 ">

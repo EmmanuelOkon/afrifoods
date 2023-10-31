@@ -15,7 +15,7 @@ const features = [
     name: "Phone",
     summary: "Contact our help line",
     href: "tel:+250786416032",
-    info: "P. +250 786 416 032",
+    info: "+250 786 416 032",
     icon: BsTelephone,
   },
   {
