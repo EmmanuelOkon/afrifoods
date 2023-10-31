@@ -63,7 +63,7 @@ export default function ProductsCategories() {
       <Carousel
         value={products}
         numVisible={3}
-        numScroll={3}
+        numScroll={1}
         responsiveOptions={responsiveOptions}
         autoplayInterval={10000}
         circular

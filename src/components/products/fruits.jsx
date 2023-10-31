@@ -230,9 +230,9 @@ const Fruits = () => {
                 {filteredProducts.map((feature) => (
                   <div
                     key={feature.name}
-                    className=" pb-2 lg:py-8 text-left bg-[#F7F9FC]  rounded-lg"
+                    className=" pb-2 lg:py-8 text-left bg-[#F7F9FC] rounded-lg bgred-800 hover:bg-lemonGreen hover:bg-opacity-40  cursor-pointer "
                   >
-                    <div className="flex justify-center">
+                    <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
                       <div className="w-[192px] flex justify-center ">
                         <LazyLoadImage
                           src={feature.image}
