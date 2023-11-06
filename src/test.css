@@ -1,0 +1,32 @@
+#container {
+    background-color: #f0f0f0;
+  }
+  
+  #logos {
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: rebeccapurple;
+    white-space: nowrap;
+    display: flex; /* Added */
+  }
+  
+  .logos-slide {
+    animation: 5s slide infinite linear;
+    white-space: nowrap; /* Added */
+  }
+  
+  .logos-slide img {
+    width: 150px;
+    height: auto;
+    margin-right: 40px; /* Adjusted */
+  }
+  
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  

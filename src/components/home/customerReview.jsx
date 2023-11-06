@@ -1,13 +1,10 @@
+import React, { useState } from "react";
 import { Carousel } from "primereact/carousel";
-import vegetables from "../../assets/images/productCategoriesOne.png";
-import fruits from "../../assets/images/productCategoriesTwo.png";
-import rootCrops from "../../assets/images/productCategoriesThree.png";
-
 import customerImage from "../../assets/images/customer.png";
 
-
-
 export default function CustomerReview() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const responsiveOptions = [
     {
       breakpoint: "1199px",
@@ -28,16 +25,25 @@ export default function CustomerReview() {
 
   const customers = [
     {
-      name: "vegetables",
-      image: vegetables,
+      name: "Ignacio Laiseca",
+      image: customerImage,
+      description:
+        "Our company has been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+      title: "CEO, Golden Tree Food Stuff LLC, Dubai, UAE",
     },
     {
-      name: "fruits",
-      image: fruits,
+      name: "Mary Laiseca",
+      image: customerImage,
+      description:
+        "We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+      title: "CTO, Silver Tree Food Stuff LLC, Dubai, UAE",
     },
     {
-      name: "root crops",
-      image: rootCrops,
+      name: "Sarah Laiseca",
+      image: customerImage,
+      description:
+        "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+      title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
     },
   ];
 
@@ -57,13 +63,11 @@ export default function CustomerReview() {
           numVisible={1}
           numScroll={1}
           responsiveOptions={responsiveOptions}
-          circular
           className="px-2 md:px-5 z-0 bg-gren w-full "
           itemTemplate={(customer) => (
             <div className="border-1 surface-border m-2 md:mx-6 lg:mx-10 text-center py-5 bg-white overflow-hidden rounded-md lg:rounded-2xl mx-auto">
               <div className="overflow-hidden w-full max-w-[560px] mx-auto">
                 <div className="flex flex-col justify-between min-h-full">
-                  
                   <div className="fle flex-col justify-center w-full">
                     <div className="flex justify-center">
                       <img
@@ -74,11 +78,9 @@ export default function CustomerReview() {
                     </div>
                     <div className="text-center ">
                       <p className="text-[#475367] text-base py-4 ">
-                        Our company has been working with AfriFoods since
-                        February 2020. Ms Sakina and her team have built a
-                        relationship based on trust and commitment.
+                        {customer.description}
                       </p>
-                      <p className="text-greyBlack">Ignacio Laiseca,</p>
+                      <p className="text-greyBlack">{customer.name}</p>
                       <span className="text-[#475367] italic text-sm">
                         CEO, Golden Tree Food Stuff LLC, Dubai, UAE
                       </span>
@@ -88,7 +90,16 @@ export default function CustomerReview() {
               </div>
             </div>
           )}
+          onPageChange={(e) => setCurrentIndex(e.index)}
         />
+        {currentIndex < customers.length - 1 && (
+          <button
+            className="p-button p-button-link p-button-rounded p-button-sm"
+            onClick={() => setCurrentIndex(currentIndex + 1)}
+          >
+            <i className="pi pi-chevron-right"></i>
+          </button>
+        )}
       </div>
     </div>
   );

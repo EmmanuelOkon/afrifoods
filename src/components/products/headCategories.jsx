@@ -27,14 +27,12 @@ const features = [
 ];
 
 const HeadCategories = ({ categories, setCategories }) => {
-
-
   return (
     <div className="pt- md:mt- ">
       <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg-white mx-auto ">
-        <div className="py-[4rem] text-center max-w-2xl mx-auto ">
+        <div className="py-[1.5rem] text-center max-w-2xl mx-auto ">
           <div className="flex w-[270px] justify-center mx-auto py-3 ">
-            <span className="text-lemonGreen text-sm uppercase">
+            <span className="text-lemonGreen text-sm uppercase tracking-wider ">
               PREMIUM RWANDAN FRESH PRODUCE
             </span>
           </div>

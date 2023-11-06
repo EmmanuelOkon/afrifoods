@@ -1,36 +1,69 @@
-import productVideo from "../../assets/images/playVideo.png";
+import ReactPlayer from "react-player";
 import fruitVariety from "../../assets/images/fruitBasket.png";
+import videoDetail from "../../assets/how afrifood works.mp4";
 
 import { FaPlay } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
+import { BsPauseFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const HeroProducts = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [buttonText, setButtonText] = useState("how afrifood works?");
+  const [playButtonVisible, setPlayButtonVisible] = useState(true);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(!isPlaying);
+
+    const buttonText = isPlaying ? "Play" : "Pause";
+    setButtonText(buttonText);
+
+    setPlayButtonVisible(true);
+
+    setTimeout(() => {
+      setPlayButtonVisible(false);
+    }, 2500);
+  };
+
   return (
     <>
       <div className="py-10 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen rounded-md lg:rounded-lg ">
+        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen to-grey500 opacity-100 rounded-md lg:rounded-lg ">
           <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
-            <LazyLoadImage
-              className="w-full  h-full object-cover object-center overflow-hidden"
-              sizes="100vw"
-              alt="productVideo"
-              src={productVideo}
-              effect="blur"
+            <ReactPlayer
+              playing={isPlaying}
+              controls={false}
+              loop={false}
+              width={"100%"}
+              height={"100%"}
+              className="w-full h-full object-cover object-center overflow-hidden"
+              url={videoDetail}
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center z-50">
             <div className="z-[100] w-fit">
-              <NavLink
-                to="/"
+              <button
+                onClick={handlePlayVideo}
                 className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
               >
-                <span className="gap-4 items-center">
-                  how afrifood works?
-                  <FaPlay className="inline-flex ml-2 text-white w-4 h-4" />
+                <span className="gap-4 items-center transition-all ease-in-out delay-300">
+                  {buttonText}
+                  {isPlaying ? (
+                    <BsPauseFill className="inline-flex ml-1 text-white w-6 h-6" />
+                  ) : (
+                    <FaPlay className="inline-flex ml-2 text-white w-4 h-4" />
+                  )}
+                  {playButtonVisible && (
+                    <div className="play-button">
+                      <button onClick={handlePlayVideo}>
+                        {isPlaying ? <BsPauseFill /> : <FaPlay />}
+                      </button>
+                    </div>
+                  )}
                 </span>
-              </NavLink>
+              </button>
             </div>
           </div>
         </div>
@@ -74,10 +107,10 @@ const HeroProducts = () => {
                       quality with full traceability back to individual farms.
                     </p>
                   </div>
-                  <button className="border-[1.5px] border-green text-green rounded-md py-3 w-[150px] text-base font-semibold bg-white hover:bg-green hover:text-white ">
+                  <NavLink to="/about" className="border-[1.5px] border-green text-green rounded-md py-3 px-4 text-base font-semibold bg-white hover:bg-green hover:text-white ">
                     Read more
                     <LiaLongArrowAltRightSolid className="inline-flex ml-1 w-6 h-6" />
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             </div>

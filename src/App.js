@@ -9,6 +9,8 @@ import Sustainability from "./pages/Sustainability";
 import Error from "./pages/Error";
 import { PrimeReactProvider } from "primereact/api";
 import ScrollTop from "./components/ScrollTop";
+import Test from "./pages/Test";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/media" element={<Media />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/product/:productName" element={<ProductDetails />} />
             <Route path="/sustainability" element={<Sustainability />} />
+            <Route path ="/test" element={<Test />} />
 
             <Route path="*" element={<Error />} />
           </Routes>

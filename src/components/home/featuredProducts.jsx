@@ -1,10 +1,19 @@
+import React, { useState } from "react";
 import fuerteAvocado from "../../assets/images/products/items/fuerteAvocado.png";
 import hassAvocado from "../../assets/images/products/items/hassAvocado.png";
 import appleBanana from "../../assets/images/products/items/appleBanana.png";
 import pineapple from "../../assets/images/products/items/pineapple.png";
-import { NavLink } from "react-router-dom";
+import yellowPassion from "../../assets/images/products/items/yellowPassionFruit.png";
+import rosePassion from "../../assets/images/products/items/rosePassionFruit.png";
+import bitterLemon from "../../assets/images/products/items/bitterLemonFruit.png";
+import redPepper from "../../assets/images/products/items/redPepper.png";
+import longRedPepper from "../../assets/images/products/items/longRedPepper.png";
+import gardenEgg from "../../assets/images/products/items/gardenEgg.png";
+import plantain from "../../assets/images/products/items/plantain.png";
+import carrot from "../../assets/images/products/items/carrot.png";
+import { Link, NavLink } from "react-router-dom";
 
-const productsFilter = [
+const categories = [
   {
     name: "All",
   },
@@ -19,34 +28,115 @@ const productsFilter = [
   },
 ];
 
-const features = [
+const fruits = [
   {
+    id: 1,
     name: "Fuerte Avocado",
-    price: "$40.29",
-    discount: "$60.29",
     image: fuerteAvocado,
+    category: "Fruits",
+    price: "$40.29",
+    discount: "$60.29",
   },
   {
+    id: 2,
     name: "Hass Avocado",
-    price: "$40.29",
-    discount: "$60.29",
     image: hassAvocado,
-  },
-  {
-    name: "Banana",
+    category: "Fruits",
     price: "$40.29",
     discount: "$60.29",
+  },
+  {
+    id: 3,
+    name: "Apple Banana",
     image: appleBanana,
-  },
-  {
-    name: "Pineapple",
+    category: "Fruits",
     price: "$40.29",
     discount: "$60.29",
+  },
+  {
+    id: 4,
+    name: "Pineapple",
     image: pineapple,
+    category: "Fruits",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 5,
+    name: "Yellow Passion Fruit",
+    image: yellowPassion,
+    category: "Fruits",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 6,
+    name: "Rose Passion Fruit",
+    image: rosePassion,
+    category: "Fruits",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 7,
+    name: "Bitter Lemon Fruit",
+    image: bitterLemon,
+    category: "Fruits",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 8,
+    name: "Red Pepper",
+    image: redPepper,
+    category: "Vegetables",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 9,
+    name: "Long Red Pepper",
+    image: longRedPepper,
+    category: "Vegetables",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 10,
+    name: "Garden Egg",
+    image: gardenEgg,
+    category: "Vegetables",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 11,
+    name: "Plantain",
+    image: plantain,
+    category: "Vegetables",
+    price: "$40.29",
+    discount: "$60.29",
+  },
+  {
+    id: 12,
+    name: "Carrot",
+    image: carrot,
+    category: "Root Crops",
+    price: "$40.29",
+    discount: "$60.29",
   },
 ];
 
 const FeaturedProducts = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const displayedFruits = fruits
+    .filter(
+      (fruit) =>
+        selectedCategory === "All" || fruit.category === selectedCategory
+    )
+    .slice(0, 4);
+
   return (
     <div className="pt- md:mt- bg-[#F7F9FC] ">
       <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg- mx-auto ">
@@ -58,57 +148,62 @@ const FeaturedProducts = () => {
             <span className="border-2 border-lemonGreen w-full"></span>
           </div>
           <div className="flex justify-center list-none max-w-2xl mx-auto py-6 ">
-            {productsFilter.map((product) => (
+            {categories.map((category) => (
               <li
-                key={product.name}
+                key={category.name}
                 className={`border-b text-sm font-semibold px-4 hover:cursor-pointer py-3 ${
-                  product.name === "Fruits"
+                  category.name === selectedCategory
                     ? "text-green border-green"
                     : "border-[#E4E7EC] text-[#344054]"
                 }`}
+                onClick={() => setSelectedCategory(category.name)}
               >
-                {product.name}
+                {category.name}
               </li>
             ))}
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-2 pb-10 ">
           <div className="flex overflow-x-scroll md:overflow-hidden lg:grid lgrid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-            {features.map((feature) => (
-              <div
-                key={feature.name}
-                className=" pb-2 lg:py-8 text-left bg-white  rounded-lg"
+            {displayedFruits.map((fruit) => (
+              <Link
+                to={`/product/${fruit.name.replace(/\s+/g, "-").toLowerCase()}`}
+                key={fruit.name}
+                className=" pb-2 lg:py-8 text-left bg-white rounded-lg hover:bg-lemonGreen hover:bg-opacity-40 cursor-pointer "
               >
                 <div className="flex justify-center">
                   <div className="w-[192px] flex justify-center ">
                     <img
-                      src={feature.image}
+                      src={fruit.image}
                       className="w-full h-full text-green "
-                      alt={feature.name}
+                      alt={fruit.name}
                     />
                   </div>
                 </div>
                 <div className="px-4">
                   <h3 className="pt-4 lg:pt-6 text-greyBlack text-[18px] md:text-[20px] font-semibold tracking-tighter">
-                    {feature.name}
+                    {fruit.name}
                   </h3>
                   <div className="flex gap-2 items-end pt-2">
                     <span className="text-[#475367] text-[20px] font-semibold">
-                      {feature.price}
+                      {fruit.price}
                     </span>
                     <span className="text-[#98A2B3] text-[14px] line-through">
-                      {feature.discount}
+                      {fruit.discount}
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
         <div className="flex justify-center">
-          <button className="bg-green hover:bg-lemonGreen text-white py-3 px-8 rounded-md">
-            <NavLink to="/products">Browse all products</NavLink>
-          </button>
+          <NavLink
+            to="/products"
+            className="bg-green hover:bg-lemonGreen text-white py-3 px-8 rounded-md"
+          >
+            Browse all products
+          </NavLink>
         </div>
       </div>
     </div>
