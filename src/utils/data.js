@@ -11,6 +11,15 @@ import gardenEgg from "../assets/images/products/items/gardenEgg.png";
 import plantain from "../assets/images/products/items/plantain.png";
 import carrot from "../assets/images/products/items/carrot.png";
 
+import mediaArticleOne from "../assets/images/mediaArticleOne.png";
+import mediaArticleTwo from "../assets/images/mediaArticleTwo.png";
+import mediaArticleThree from "../assets/images/mediaArticleThree.png";
+import mediaArticleFour from "../assets/images/mediaArticleFour.png";
+import mediaArticleFive from "../assets/images/mediaArticleFive.png";
+import mediaArticleSix from "../assets/images/mediaArticleSix.png";
+import mediaArticleSeven from "../assets/images/mediaArticleSeven.png";
+import mediaArticleEight from "../assets/images/mediaArticleEight.png";
+
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
 
@@ -145,4 +154,79 @@ export const fruits = [
   },
 ];
 
+
+export const articles = [
+  {
+    title: `SAKINA USENGIMANA – CEO of Afri-foods Rwanda “Overcoming failures in setting up her agri-business venture”`,
+    image: mediaArticleFive,
+    descriptionOne:
+      "Setting up a business venture is not often without challenges and set-backs, especially in the case of start-ups and emerging ventures.",
+    descriptionTwo:
+      "While these setbacks can be discouraging, to Sakina Usengimana, they served to equip her with lessons and experiences that eventually led to her success.",
+    more: "https://africanleadersmagazine.com/sakina-usengimana-ceo-of-afri-foods-ltd-overcoming-failures-in-setting-up-her-agri-business-venture/",
+  },
+  {
+    title:
+      "Exporting chillies from Rwanda: How this entrepreneur built her business",
+    image: mediaArticleSix,
+    descriptionOne:
+      "Afri Foods, a horticultural company in Rwanda, was started in 2019 by Sakina Usengimana. It exports crops such as chilli, avocado, eggplant and passion fruit to Germany, the Netherlands, France, the UK, Belgium and Dubai. How we made it in Africa spoke to Usengimana about how she started and grew the company.",
+    more: "https://www.howwemadeitinafrica.com/exporting-chillies-from-rwanda-how-this-entrepreneur-built-her-business/142384/",
+  },
+  {
+    title: "Sakina Usengimana: Seeing Beyond Limitations In Africa",
+    image: mediaArticleSeven,
+    descriptionOne: `When Sakina Usengimana heard a speaker say something like this—“you have land, yet you are hungry,” it became the momentum to bring about change.
+      Two years later, Sakina founded Afri Foods.`,
+    descriptionTwo: `The story wasn’t so smooth. She had the passion for agriculture but lacked certain skillsets. The Rwandan entrepreneur started with bell peppers and tomatoes. And then failed beautifully.`,
+    more: "https://anewtouchofafrica.com/sakina-usengimana-seeing-beyond-limitations-in-africa/",
+  },
+  {
+    title:
+      "Empowering Communities and Transforming Agriculture: The Success Story of Afri Foods in Rwanda",
+    image: mediaArticleEight,
+    descriptionOne: `Afri Foods sources from more than 500 farmers and 5 cooperatives in Rwanda, 70% of whom are women and youth. The company is committed to improving the lives of their farmers by maintaining a stable flow of income and paying a real living wage for their produce. It also promote capacity building and has trained over 400 farmers on good agricultural practices.`,
+    more: "https://agrinnovators.org/business-profile/afri-foods/",
+    backgroundColor: "#FFF",
+  },
+  {
+    title:
+      "A 28 Ans, Sakina Usengimana Dirige Une Entreprise Prospère D’exportation De Fruits Et Légumes Au Rwanda",
+    image: mediaArticleOne,
+    descriptionOne:
+      "(Agence Ecofin) – Les produits horticoles du Rwanda sont très sollicités sur le marché international. Sakina Usengimana, une jeune entrepreneure, a décidé de s’aventurer dans cette industrie en fondant Afri-Foods. Avec moins de 3 ans d’existence, elle réussit à exporter ses produits en Occident et au Moyen-Orient.",
+    descriptionTwo: "",
+    more: "https://www.agenceecofin.com/entreprendre/2209-91744-a-28-ans-sakina-usengimana-dirige-une-entreprise-prospere-d-exportation-de-fruits-et-legumes-au-rwanda",
+  },
+  {
+    title:
+      "How Agri-Business Entrepreneur Overcame Failures In Setting Up Venture, 2021",
+    image: mediaArticleTwo,
+    descriptionOne:
+      "Setting up a business venture is not often without challenges and setbacks, especially in the case of start-ups and emerging ventures. While these setbacks can be discouraging, to Sakina Usengimana, they served to equip her with lessons and experiences that eventually led to her success.",
+    descriptionTwo:
+      "The 28-year-old is an entrepreneur with a company known as Afri-foods Ltd, based in Gatsibo and Nyanza Districts – involved in exporting fresh vegetables and fruits.",
+
+    more: "https://www.newtimes.co.rw/article/189534/News/how-agri-business-entrepreneur-overcame-failures-in-setting-up-venture",
+  },
+  {
+    title: "New Finance Boost For Women-Owned Start-Ups, 2021",
+    image: mediaArticleThree,
+    descriptionOne:
+      "Global Women Fresh (GWF), the international network for women in produce, has got together with the ITC’s SheTrades initiative to launch a microfinance pilot programme for women-led SMEs in Rwanda’s Ag Fresh industry.",
+    descriptionTwo:
+      "Complex sets of circumstances often disqualify women in Africa from receiving investment capital and/or make it impossible to afford. GWF has been working in partnership with the ITC’s SheTrades Initiative for two years, supporting women entrepreneurs in the Ag Fresh industry. Most recently, it has launched a microfinance pilot programme for women-led SMEs in Rwanda.",
+    more: "https://www.fruitnet.com/eurofruit/new-finance-boost-for-women-owned-start-ups/186278.article",
+  },
+  {
+    title:
+      "Rwanda: Horticulture Exporters Decry Hike In Airfreight Charges, 2020",
+    image: mediaArticleFour,
+    descriptionOne:
+      "Statistics by NAEB show that the value of horticulture exports increased from over $27 million in the fiscal year 2018-2019, to more than $28 million in the year 2019-2020.",
+    descriptionTwo:
+      "Local exporters of horticulture produce have expressed concerns on the increase in airfreight fare brought about by the Covid-19 pandemic, calling for a review in these charges to ensure smooth operation.",
+    more: "https://allafrica.com/stories/202008210927.html",
+  },
+];
 
