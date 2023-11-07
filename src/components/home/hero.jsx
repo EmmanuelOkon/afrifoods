@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import heroOne from "../../assets/images/hero_1.png";
-import heroTwo from "../../assets/images/hero_2.png";
-import heroThree from "../../assets/images/hero_3.png";
-import heroFour from "../../assets/images/hero_4.png";
-import heroFive from "../../assets/images/hero_5.png";
+import heroOne from "../../assets/images/home/home_1.png";
+import heroTwo from "../../assets/images/home/home_2.png";
+import heroThree from "../../assets/images/home/home_3.png";
+import heroFour from "../../assets/images/home/home_4.png";
+import heroFive from "../../assets/images/home/home_5.png";
 import { NavLink } from "react-router-dom";
 
 const items = [
   {
-    title: "heroOne",   
+    title: "heroOne",
     image: heroOne,
   },
   {
@@ -20,7 +20,7 @@ const items = [
     image: heroThree,
   },
   {
-    title: "heroFour", 
+    title: "heroFour",
     image: heroFour,
   },
   {
@@ -43,7 +43,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden z-0 flex h-[calc(100vh-70px)] w-full flex-col justify-center items-center">
+    <div className="relative overflow-hidden z-0 flex  h-[calc(100vh-70px)] w-full flex-col justify-center items-center">
       {items.map((item, index) => (
         <div
           key={index}
@@ -51,16 +51,16 @@ const Hero = () => {
             activeElement === index
               ? "lg:flex lg:flex-col justify-end"
               : "hidden"
-          } w-full overflow-hidden h-full text-white absolute lg:min-h-screen max-h-screen -z-[50]`}
+          } w-full overflow-hidden h-full text-white absolute lg:min-hscreen max-hscreen -z-[50]`}
         >
           <img
             src={item.image}
             alt={item.title}
-            className="h-screen md:h-full absolute inset-0 left-0 top-0 object-cover"
+            className="hscreen md: h-full absolute inset-0 left-0 top-0 object-cover w-full"
           />
 
-          <div className="w-full flex flex-col justify-between relative bg-green h-full inset-0 bg-opacity-40 z-30">
-            <div className="text-white absolut font-bold text-2xl leading-[0.57px] font-karla text-center mx-auto max-w-2xl py-16 md:py-32 px-4 ">
+          <div className="w-full fle flexcol justify-between relative bg-green h-full inset-0 bg-opacity-40 z-30">
+            <div className="text-white absolut font-bold text-2xl leading-[0.57px] font-karla text-center mx-auto myauto max-w-2xl py-16 md:py-32 px-4 ">
               <h1 className=" text-4xl font-extrabold tracking-tight sm:text-6xl">
                 Premium, Fresh Produce from the Heart of Africa
               </h1>
@@ -84,8 +84,6 @@ const Hero = () => {
                 </NavLink>
               </div>
             </div>
-
-            
           </div>
         </div>
       ))}
@@ -94,4 +92,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

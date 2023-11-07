@@ -1,48 +1,74 @@
-import productVideo from "../../assets/images/playVideo.png";
-import fruitVariety from "../../assets/images/fruitBasket.png";
+import ReactPlayer from "react-player";
+import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
+import videoDetail from "../../assets/how afrifood works.mp4";
 
 import { FaPlay } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
+import { BsPauseFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const HeroProducts = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  // const [buttonText, setButtonText] = useState("how afrifood works?");
+  // const [playButtonVisible, setPlayButtonVisible] = useState(true);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(!isPlaying);
+
+    // const buttonText = isPlaying ? "" : "";
+    // setButtonText(buttonText);
+
+    // setPlayButtonVisible(true);
+
+    // setTimeout(() => {
+    //   setPlayButtonVisible(false);
+    // }, 2500);
+  };
+
   return (
     <>
       <div className="py-10 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen rounded-md lg:rounded-lg ">
+        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen to-grey500 opacity-100 rounded-md lg:rounded-lg ">
           <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
-            <LazyLoadImage
-              className="w-full  h-full object-cover object-center overflow-hidden"
-              sizes="100vw"
-              alt="productVideo"
-              src={productVideo}
-              effect="blur"
+            <ReactPlayer
+              playing={isPlaying}
+              controls={false}
+              loop={false}
+              width={"100%"}
+              height={"100%"}
+              className="w-full h-full object-cover object-center overflow-hidden"
+              url={videoDetail}
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center z-50">
             <div className="z-[100] w-fit">
-              <NavLink
-                to="/"
+              <button
+                onClick={handlePlayVideo}
                 className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
               >
-                <span className="gap-4 items-center">
-                  how afrifood works?
-                  <FaPlay className="inline-flex ml-2 text-white w-4 h-4" />
+                <span className="gap-4 items-center transition-all ease-in-out delay-300">
+                  {/* {buttonText} */}
+                  {isPlaying ? (
+                    <BsPauseFill className="inline-flex ml1 text-white w-6 h-6" />
+                  ) : (
+                    <FaPlay className="inline-flex ml2 text-white w-4 h-4" />
+                  )}
                 </span>
-              </NavLink>
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div className=" max-w-7xl mx-auto">
         <div className="  py-6 lg:py16">
-          <div className="px-4 lg:px[45px] xl:px-[100px]  bg-white  mx-auto ">
+          <div className="px-4 lg:px[45px] xl:px[100px]  bg-white  mx-auto ">
             <div className="flex flex-col-reverse items-center rounded-lg md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px-20">
-              <div className="hidde lg:w-1/2 h-auto justify-center">
+              <div className="hidde lg:w-1/2 h-auto h[600px] justify-center">
                 <LazyLoadImage
                   className="w[80%] h-auto md:w[60%] lg:w-full rounded-lg "
-                  src={fruitVariety}
+                  src={fruitBasketTwo}
                   alt="fruit variety"
                   effect="blur"
                 />
@@ -57,27 +83,37 @@ const HeroProducts = () => {
                   </div>
                   <div className="py-4 pt-8">
                     <p className="text-base py-4">
-                      Afri Foods is a dynamic and innovative, woman-led, gourmet
-                      horticulture company. We grow and supply premium fresh
-                      produce from Rwanda.
+                      At Afri Foods, we're a forward-thinking horticulture
+                      company with a touch of innovation. Led by women, we're
+                      proud to bring you the finest fresh produce from Rwanda.
                     </p>
                     <p className="text-base py-4">
-                      Our range of fresh fruit and vegetables includes avocado,
-                      chilli, passionfruit, bitter lemon, pineapple, eggplant,
-                      plantain, and apple banana.
+                      Our array of fresh fruits and vegetables is a testament to
+                      the richness of Rwandan soil. You'll find treasures like
+                      avocados, chili peppers, passionfruit, bitter lemons,
+                      pineapples, eggplants, plantains, and apple bananas in our
+                      range.
                     </p>
                     <p className="text-base py-4">
-                      Afri Foods farmers are trained in best agricultural
-                      practices and food handling, in collaboration with the
-                      National Agriculture Development Board (NAEB). We want to
-                      ensure that our fruit and vegetables are of the highest
-                      quality with full traceability back to individual farms.
+                      We take quality seriously. Our dedicated farmers undergo
+                      rigorous training in the best agricultural practices and
+                      safe food handling. We partner with the National
+                      Agriculture Development Board (NAEB) to ensure that our
+                      produce is of the highest quality and can be traced back
+                      to the very farms it came from.
+                      <br />
+                      At Afri Foods, it's about a commitment to excellence and a
+                      passion for freshness. Join us in savoring the flavors of
+                      Rwanda!
                     </p>
                   </div>
-                  <button className="border-[1.5px] border-green text-green rounded-md py-3 w-[150px] text-base font-semibold bg-white hover:bg-green hover:text-white ">
+                  <NavLink
+                    to="/about"
+                    className="border-[1.5px] border-green text-green rounded-md py-3 px-4 text-base font-semibold bg-white hover:bg-green hover:text-white "
+                  >
                     Read more
                     <LiaLongArrowAltRightSolid className="inline-flex ml-1 w-6 h-6" />
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             </div>

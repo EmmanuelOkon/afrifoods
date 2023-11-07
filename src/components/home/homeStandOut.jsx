@@ -37,19 +37,19 @@ const HomeStandOut = () => {
   return (
     <>
       <div className="py-10 px4 sm:px8 max-w7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center w-full h-full lg:h-[620px] py-20 bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen ">
+        <div className="relative overflow-hidden z-10 justify-center items-center w-full hfull lg:h-[620px] py-20 bg-gradient-to-b from-deepGreen via-midGrey to-deepGreen ">
           <div className="hidden absolute inset-0 md:flex justify-center items-center mix-blend-overlay">
             <LazyLoadImage
-              className="w-full h-ull object-center h-full md:object-cover overflowhidden"
+              className="w-full  object-center h-full md:object-cover"
               sizes="100vw"
               alt="widevegetation"
               src={widevegetation}
               effect="blur"
             />
           </div>
-          <div className="absolute inset-0 flex md:hidden justify-center items-center mix-blend-overlay">
+          <div className="absolute inset-0 md:hidden justify-center items-center mix-blend-overlay">
             <LazyLoadImage
-              className="w-full h-full object-center hscreen object-cover overflowhidden"
+              className="w-full h-full object-center object-contain "
               sizes="100vw"
               alt="widevegetationMobile"
               src={widevegetationMobile}
@@ -57,7 +57,7 @@ const HomeStandOut = () => {
             />
           </div>
           <div className="absolut inset0 flex items-center justify-center z-50">
-            <div className="z-[100] w-fit">
+            <div className="z-[89] w-fit">
               <div className="py10">
                 <h2 className="text-3xl lg:text-4xl font-bold text-white text-center ">
                   Why Afrifood Stands Out
@@ -65,7 +65,7 @@ const HomeStandOut = () => {
                 <div className="flex justify-center mx-auto w-[120px] text-center py-2 ">
                   <span className="border-2 border-lemonGreen w-full"></span>
                 </div>
-                <p className="text-white text-center max-w-[400px] mx-auto py-2 px-2 ">
+                <p className="text-white text-center max-w-[400px] mx-auto py-2 px-2 font-normal ">
                   Discover the Reasons to Partner with Us for Fresh, Quality,
                   and Sustainable Agricultural Products
                 </p>

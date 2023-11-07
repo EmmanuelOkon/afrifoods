@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative w-full h-[60vh] bg-heroEight">
+      <div className="relative w-full h-[60vh] bg-heroAbout">
         <div className="bg-black bg-opacity-60 relative inset-0 h-full ">
           <div className="flex h-full justify-center items-center">
             <div className="text-center">

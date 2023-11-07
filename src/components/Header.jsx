@@ -43,13 +43,13 @@ const Header = () => {
             </NavLink>
             <div className="border-l border-white border-opacity-70 mx-4"></div>
             <NavLink
-              to="mailto:contact@afrifoodsltd.com"
+              to="mailto:afrifoodsrwanda@gmail.com"
               className="flex items-center gap-2"
             >
               <LuMail
                 className="text-white w-6 h-6 text-opacity-70 p-[2px] sm:h-auto"
               />
-              <span>contact@afrifoodsltd.com</span>
+              <span>afrifoodsrwanda@gmail.com</span>
             </NavLink>
           </div>
           <div className="flex items-center gap-4">

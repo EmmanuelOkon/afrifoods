@@ -27,14 +27,12 @@ const features = [
 ];
 
 const HeadCategories = ({ categories, setCategories }) => {
-
-
   return (
     <div className="pt- md:mt- ">
       <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg-white mx-auto ">
-        <div className="py-[4rem] text-center max-w-2xl mx-auto ">
+        <div className="py-[1.5rem] text-center max-w-2xl mx-auto ">
           <div className="flex w-[270px] justify-center mx-auto py-3 ">
-            <span className="text-lemonGreen text-sm uppercase">
+            <span className="text-lemonGreen text-sm uppercase tracking-wider ">
               PREMIUM RWANDAN FRESH PRODUCE
             </span>
           </div>
@@ -44,12 +42,7 @@ const HeadCategories = ({ categories, setCategories }) => {
           <div className="flex w-[120px] text-center mx-auto py-3 ">
             <span className="border-2 border-lemonGreen w-full"></span>
           </div>
-          <div className="mx-auto max-w-[500px]">
-            <p className="text-[#475367] py-3 text-base font-medium  ">
-              Our Holistic Approach to Uplifting Women Farmers and Youth Through
-              Education, Fair Opportunities, and Sustainable Farming
-            </p>
-          </div>
+          
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-2 ">
