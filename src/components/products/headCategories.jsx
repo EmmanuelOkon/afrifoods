@@ -42,12 +42,7 @@ const HeadCategories = ({ categories, setCategories }) => {
           <div className="flex w-[120px] text-center mx-auto py-3 ">
             <span className="border-2 border-lemonGreen w-full"></span>
           </div>
-          <div className="mx-auto max-w-[500px]">
-            <p className="text-[#475367] py-3 text-base font-medium  ">
-              Our Holistic Approach to Uplifting Women Farmers and Youth Through
-              Education, Fair Opportunities, and Sustainable Farming
-            </p>
-          </div>
+          
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-2 ">
