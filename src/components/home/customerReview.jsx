@@ -25,12 +25,6 @@ export default function CustomerReview() {
           320: {
             slidesPerView: 1,
           },
-          // 480: {
-          //   slidesPerView: 2,
-          // },
-          // 800: {
-          //   slidesPerView: 3,
-          // },
         }}
         navigation={true}
         modules={[Navigation]}
