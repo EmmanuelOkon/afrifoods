@@ -1,51 +1,13 @@
-import customerImage from "../../assets/images/customer.png";
-import Carousel from "react-elastic-carousel";
-import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { customers } from "../../utils/data";
 
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },
-];
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
+import { Navigation } from "swiper/modules";
 
 export default function CustomerReview() {
-  const myArrow = ({ type, onClick }) => {
-    const pointer =
-      type === "PREV" ? <BsArrowLeftShort /> : <BsArrowRightShort />;
-
-    return (
-      <div
-        className=" flex items-center text-2xl bg-lightGrey border-midGrey rounded-full justify-center text-green cursor-pointer hover:bg-lemonGreen hover:bg-opacity-40 my-auto h-8 w-8 "
-        onClick={onClick}
-      >
-        <button className="">{pointer}</button>
-      </div>
-    );
-  };
-
-  const customers = [
-    {
-      name: "Ignacio Laiseca",
-      image: customerImage,
-      description:
-        "Our company has been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
-      title: "CEO, Golden Tree Food Stuff LLC, Dubai, UAE",
-    },
-    {
-      name: "Mary Laiseca",
-      image: customerImage,
-      description:
-        "We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
-      title: "CTO, Silver Tree Food Stuff LLC, Dubai, UAE",
-    },
-    {
-      name: "Sarah Laiseca",
-      image: customerImage,
-      description:
-        "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
-      title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
-    },
-  ];
-
   return (
     <div className="max-w-[30rem] md:max-w-6xl mx-auto my-2">
       <div className="py-6">
@@ -57,28 +19,31 @@ export default function CustomerReview() {
         </div>
       </div>
 
-      <Carousel
-         breakPoints={breakPoints}
-         renderArrow={myArrow}
-         enableSwipe={true}
-         swipeable={true}
-         itemsToScroll={1}
-         itemsToShow={1}
-         enableMouseSwipe={true}
-         transitionMs={1000}
-         pagination={false}
-         disableArrowsOnEnd
-         className="px-2"
+      <Swiper
+        slidesPerView={1}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          // 480: {
+          //   slidesPerView: 2,
+          // },
+          // 800: {
+          //   slidesPerView: 3,
+          // },
+        }}
+        navigation={true}
+        modules={[Navigation]}
       >
-        
-          {customers.map((customer) => (
+        {customers.map((customer) => (
+          <SwiperSlide>
             <div className="m-2 md:mx-6 lg:mx-10 text-center py-5 bg-white overflow-hidden rounded-md lg:rounded-2xl mx-auto w-[220px] md:w-[560px] lg:w-full ">
               <div className="overflowhidden h-full w-full max- md:w-[560px] mx-auto">
                 <div className="flex flex-col justify-center max-w[10rem] w[860px] py-4 bg-red700 ">
                   <div className="flex justify-center">
                     <img
                       className="w-[56px] h-[56px] rounded-full bg-[#FFE7CC]"
-                      src={customerImage}
+                      src={customer.image}
                       alt={customer.name}
                     />
                   </div>
@@ -94,10 +59,9 @@ export default function CustomerReview() {
                 </div>
               </div>
             </div>
-          ))}
-        
-      </Carousel>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
-

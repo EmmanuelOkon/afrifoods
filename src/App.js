@@ -7,14 +7,14 @@ import Media from "./pages/Media";
 import Products from "./pages/Products";
 import Sustainability from "./pages/Sustainability";
 import Error from "./pages/Error";
-import { PrimeReactProvider } from "primereact/api";
+// import { PrimeReactProvider } from "primereact/api";
 import ScrollTop from "./components/ScrollTop";
-import Test from "./pages/Test";
+// import Test from "./pages/Test";
 import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
-    <PrimeReactProvider>
+    // <PrimeReactProvider>
       <Router>
         <ScrollTop>
           <Routes>
@@ -26,13 +26,13 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/product/:productName" element={<ProductDetails />} />
             <Route path="/sustainability" element={<Sustainability />} />
-            <Route path ="/test" element={<Test />} />
+            {/* <Route path ="/test" element={<Test />} /> */}
 
             <Route path="*" element={<Error />} />
           </Routes>
         </ScrollTop>
       </Router>
-    </PrimeReactProvider>
+    //  </PrimeReactProvider>
   );
 }
 

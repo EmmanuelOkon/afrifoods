@@ -1,32 +1,131 @@
 #container {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+#logos {
+  overflow: hidden;
+  padding: 20px 0;
+  background-color: rebeccapurple;
+  white-space: nowrap;
+  display: flex; /* Added */
+}
+
+.logos-slide {
+  animation: 5s slide infinite linear;
+  white-space: nowrap; /* Added */
+}
+
+.logos-slide img {
+  width: 150px;
+  height: auto;
+  margin-right: 40px; /* Adjusted */
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
   }
-  
-  #logos {
-    overflow: hidden;
-    padding: 20px 0;
-    background-color: rebeccapurple;
-    white-space: nowrap;
-    display: flex; /* Added */
+  to {
+    transform: translateX(-100%);
   }
-  
-  .logos-slide {
-    animation: 5s slide infinite linear;
-    white-space: nowrap; /* Added */
-  }
-  
-  .logos-slide img {
-    width: 150px;
-    height: auto;
-    margin-right: 40px; /* Adjusted */
-  }
-  
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
+}
+
+.product-carousel {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.carousel-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.carousel-line {
+  width: 120px;
+  height: 2px;
+  background-color: #33cc66;
+  margin: 0 auto;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.carousel-button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+  background-color: #33cc66;
+  color: #fff;
+}
+
+.carousel-content {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-slide {
+  width: 220px;
+  padding: 1rem;
+  text-align: left;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.shop-link {
+  text-decoration: none;
+  color: #33cc66;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #33cc66;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  max-width: 220px;
+  max-height: 200px;
+}
+
+.carousel-button.prev {
+  order: 1;
+}
+
+.carousel-button.next {
+  order: 3;
+}
+

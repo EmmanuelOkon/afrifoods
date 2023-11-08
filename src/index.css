@@ -16,7 +16,6 @@ html {
   scroll-padding-top: 7rem;
 }
 
-
 body {
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
@@ -31,9 +30,47 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #F0F2F5;
+  background-color: #f0f2f5;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #226A35;
+  background-color: #226a35;
 }
+
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-image: url("./assets/icons/arrowRight.svg");
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border: none;
+  background: #f0f2f5;
+  opacity: 0.6;
+
+  &:hover {
+    background-color: #8bc043;
+    opacity: 0.6;
+  }
+}
+
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  color: #226a35;
+  border: none;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #226a35;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border: none;
+}
+
