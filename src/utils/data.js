@@ -20,6 +20,12 @@ import mediaArticleSix from "../assets/images/mediaArticleSix.png";
 import mediaArticleSeven from "../assets/images/mediaArticleSeven.png";
 import mediaArticleEight from "../assets/images/mediaArticleEight.png";
 
+import productCategoriesOne from "../assets/images/productCategoriesOne.png";
+import productCategoriesTwo from "../assets/images/productCategoriesTwo.png";
+import productCategoriesThree from "../assets/images/productCategoriesThree.png";
+
+import customerImage from "../assets/images/customer.png";
+
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
 
@@ -227,6 +233,57 @@ export const articles = [
     descriptionTwo:
       "Local exporters of horticulture produce have expressed concerns on the increase in airfreight fare brought about by the Covid-19 pandemic, calling for a review in these charges to ensure smooth operation.",
     more: "https://allafrica.com/stories/202008210927.html",
+  },
+];
+
+export const products = [
+  {
+    name: "vegetables",
+    image: productCategoriesOne,
+  },
+  {
+    name: "fruits",
+    image: productCategoriesTwo,
+  },
+  {
+    name: "root crops",
+    image: productCategoriesThree,
+  },
+  {
+    name: "cereals",
+    image: productCategoriesOne,
+  },
+  {
+    name: "legumes",
+    image: productCategoriesTwo,
+  },
+  {
+    name: "spices",
+    image: productCategoriesThree,
+  },
+];
+
+export const customers = [
+  {
+    name: "Ignacio Laiseca",
+    image: customerImage,
+    description:
+      "Our company has been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+    title: "CEO, Golden Tree Food Stuff LLC, Dubai, UAE",
+  },
+  {
+    name: "Mary Laiseca",
+    image: customerImage,
+    description:
+      "We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+    title: "CTO, Silver Tree Food Stuff LLC, Dubai, UAE",
+  },
+  {
+    name: "Sarah Laiseca",
+    image: customerImage,
+    description:
+      "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+    title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
   },
 ];
 

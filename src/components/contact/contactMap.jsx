@@ -7,8 +7,8 @@ const features = [
   {
     name: "Email",
     summary: "Our friendly team is here to help",
-    href: "mailto:contact@afrifoodsltd.com",
-    info: "contact@afrifoodsltd.com",
+    href: "mailto:afrifoodsrwanda@gmail.com",
+    info: "afrifoodsrwanda@gmail.com",
     icon: FiMail,
   },
   {

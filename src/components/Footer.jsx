@@ -91,12 +91,20 @@ const Footer = () => {
                   className="w-[30%] lg:w-[60%] h-auto"
                 />
                 <div className="my-4 text-white">
-                  <p className="block flex-shrink-0 font-normal">KK 621 St, Kigali, Rwanda, Gikondo</p>
-                  <NavLink href="tel:+250786416032" className="block flex-shrink-0">
+                  <p className="block flex-shrink-0 font-normal">
+                    KK 621 St, Kigali, Rwanda, Gikondo
+                  </p>
+                  <NavLink
+                    href="tel:+250786416032"
+                    className="block flex-shrink-0"
+                  >
                     +250 786 416 032
                   </NavLink>
-                  <NavLink to="mailto:contact@afrifoodsltd.com" className="block flex-shrink-0">
-                    contact@afrifoodsltd.com
+                  <NavLink
+                    to="mailto:afrifoodsrwanda@gmail.com"
+                    className="block flex-shrink-0"
+                  >
+                    afrifoodsrwanda@gmail.com
                   </NavLink>
                 </div>
                 <div className="  ">
