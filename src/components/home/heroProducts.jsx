@@ -1,31 +1,37 @@
+import { useState } from "react";
 import ReactPlayer from "react-player";
 import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
-import videoDetail from "../../assets/how afrifood works.mp4";
 
 import { FaPlay } from "react-icons/fa";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { BsPauseFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const HeroProducts = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [buttonText, setButtonText] = useState("how afrifood works?");
-  // const [playButtonVisible, setPlayButtonVisible] = useState(true);
+  const [buttonText, setButtonText] = useState("how afrifood works?");
+  const [playButtonVisible, setPlayButtonVisible] = useState(true);
+
+  const videoDetail =
+    "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
 
   const handlePlayVideo = () => {
     setIsPlaying(!isPlaying);
 
-    // const buttonText = isPlaying ? "" : "";
-    // setButtonText(buttonText);
+    const buttonText = isPlaying ? "" : "";
+    setButtonText(buttonText);
 
-    // setPlayButtonVisible(true);
+    setPlayButtonVisible(true);
 
-    // setTimeout(() => {
-    //   setPlayButtonVisible(false);
-    // }, 2500);
+    setTimeout(() => {
+      setPlayButtonVisible(false);
+    }, 2500);
   };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   return (
     <>
@@ -49,11 +55,21 @@ const HeroProducts = () => {
                 className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
               >
                 <span className="gap-4 items-center transition-all ease-in-out delay-300">
-                  {/* {buttonText} */}
+                  {buttonText}
                   {isPlaying ? (
-                    <BsPauseFill className="inline-flex ml1 text-white w-6 h-6" />
+                    <BsPauseFill
+                      className={classNames(
+                        isPlaying ? " ml-0" : "ml-1",
+                        "inline-flex text-white w-6 h-6"
+                      )}
+                    />
                   ) : (
-                    <FaPlay className="inline-flex ml2 text-white w-4 h-4" />
+                    <FaPlay
+                      className={classNames(
+                        isPlaying ? " " : " mx-1 ",
+                        " inline-flex text-white w-4 h-4 "
+                      )}
+                    />
                   )}
                 </span>
               </button>
