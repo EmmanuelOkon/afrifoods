@@ -52,22 +52,22 @@ const HeroProducts = () => {
             <div className="z-[100] w-fit">
               <button
                 onClick={handlePlayVideo}
-                className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
+                className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-1 md:py-3 px-2 md:px-4 text-[16px] gap-3  "
               >
                 <span className="gap-4 items-center transition-all ease-in-out delay-300">
                   {buttonText}
                   {isPlaying ? (
                     <BsPauseFill
                       className={classNames(
-                        isPlaying ? " ml-0" : "ml-1",
-                        "inline-flex text-white w-6 h-6"
+                        isPlaying ? " ml-0" : "ml-0 md:ml-1",
+                        "inline-flex text-white w-3 h-3 md:w-6 md:h-6"
                       )}
                     />
                   ) : (
                     <FaPlay
                       className={classNames(
-                        isPlaying ? " " : " mx-1 ",
-                        " inline-flex text-white w-4 h-4 "
+                        isPlaying ? " " : "mx-0 md:mx-1 ",
+                        " inline-flex text-white w-2 h-2 md:w-4 md:h-4 "
                       )}
                     />
                   )}
