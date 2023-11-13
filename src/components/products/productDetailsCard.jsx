@@ -58,7 +58,7 @@ const ProductDetailsCard = () => {
           <div className="px-4 xl:px-[100px] bg-white divide-y-2 divide-[#F0F2F5]  ">
             <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full pb-4 lg:pb-10 ">
               <div className="lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden  ">
-                <div className="rounded-lg justify-center overflow-hidden bg-[#E7F6EC]">
+                <div className="rounded-lg flex justify-center overflow-hidden bg-[#E7F6EC]">
                   <LazyLoadImage
                     className="w[80%] h-auto md:w[60%] lg:w-full bg[#E7F6EC] p-10 mx-auto "
                     src={product.image}

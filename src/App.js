@@ -15,23 +15,23 @@ import ProductDetails from "./pages/ProductDetails";
 function App() {
   return (
     // <PrimeReactProvider>
-      <Router>
-        <ScrollTop>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/media" element={<Media />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:productName" element={<ProductDetails />} />
-            <Route path="/sustainability" element={<Sustainability />} />
-            {/* <Route path ="/test" element={<Test />} /> */}
+    <Router>
+      <ScrollTop>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:productName" element={<ProductDetails />} />
+          <Route path="/sustainability" element={<Sustainability />} />
+          {/* <Route path ="/test" element={<Test />} /> */}
 
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </ScrollTop>
-      </Router>
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </ScrollTop>
+    </Router>
     //  </PrimeReactProvider>
   );
 }

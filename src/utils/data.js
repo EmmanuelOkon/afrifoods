@@ -160,7 +160,6 @@ export const fruits = [
   },
 ];
 
-
 export const articles = [
   {
     title: `SAKINA USENGIMANA – CEO of Afri-foods Rwanda “Overcoming failures in setting up her agri-business venture”`,
@@ -285,5 +284,11 @@ export const customers = [
       "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
     title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
   },
+  {
+    name: "Abraham Laiseca",
+    image: customerImage,
+    description:
+      "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+    title: "Agricultural Minister, India",
+  },
 ];
-

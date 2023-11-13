@@ -74,3 +74,11 @@ body::-webkit-scrollbar-thumb {
   border: none;
 }
 
+.swiper-slide {
+  display: flex;
+  justify-items: center;
+  width: 300px;
+  margin: 0 auto;
+  /* background-color: rebeccapurple; */
+}
+

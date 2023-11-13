@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
 
@@ -16,6 +17,16 @@ const HeroProducts = () => {
   const videoDetail =
     "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
 
+  useEffect(() => {
+    if (isPlaying) {
+      setTimeout(() => {
+        setPlayButtonVisible(false);
+      }, 2500);
+    } else {
+      setPlayButtonVisible(true);
+    }
+  }, [isPlaying]);
+
   const handlePlayVideo = () => {
     setIsPlaying(!isPlaying);
 
@@ -29,30 +40,43 @@ const HeroProducts = () => {
     }, 2500);
   };
 
+  const handleMouseEnter = () => {
+    setPlayButtonVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isPlaying) {
+      setPlayButtonVisible(false);
+    }
+  };
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
   return (
     <>
-      <div className="py-10 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen to-grey500 opacity-100 rounded-md lg:rounded-lg ">
-          <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
+      <div className="w-full lg:w-[800px] py-10 px-4 sm:px-8 mx-auto">
+        <div className="relative overflow-hidden z-10 justify-center items-center min-wfit h-[200px] lg:h-[500px] mx-auto   ">
+          <div className="absolute inset-0 flex mx-auto justify-center items-center bg-gradient-to-b from-zinc-950 to-grey500 opacity-100  h-auto  h[200px] lg:h[500px] rounded-md lg:rounded-lg">
             <ReactPlayer
               playing={isPlaying}
               controls={false}
               loop={false}
               width={"100%"}
               height={"100%"}
-              className="w-full h-full object-cover object-center overflow-hidden"
+              className=" rounded-md lg:rounded-lg object-cove objectcenter overflow-hidden mix-blend-overlay"
               url={videoDetail}
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center z-50">
+          <div className="absolute hidde inset-0 items-center justify-center flex  z-50">
             <div className="z-[100] w-fit">
               <button
                 onClick={handlePlayVideo}
-                className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-1 md:py-3 px-2 md:px-4 text-[16px] gap-3  "
+                className={classNames(
+                  isPlaying ? "bg-opacity-0 hover:bg-opacity-100 text-opacity-10 " : " ",
+                  "text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-1 md:py-3 px-2 md:px-4 text-[16px] gap-3 "
+                )}
               >
                 <span className="gap-4 items-center transition-all ease-in-out delay-300">
                   {buttonText}

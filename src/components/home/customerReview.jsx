@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 export default function CustomerReview() {
   return (
@@ -27,11 +27,13 @@ export default function CustomerReview() {
           },
         }}
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
+        pagination={true}
+        loop
       >
         {customers.map((customer) => (
           <SwiperSlide>
-            <div className="m-2 md:mx-6 lg:mx-10 text-center py-5 bg-white overflow-hidden rounded-md lg:rounded-2xl mx-auto w-[220px] md:w-[560px] lg:w-full ">
+            <div className="m2 md:mx6 lg:mx10 text-center py-5 bg-white overflow-hidden rounded-md lg:rounded-2xl mx-auto w-[220px] md:w-[560px] lg:w-full ">
               <div className="overflowhidden h-full w-full max- md:w-[560px] mx-auto">
                 <div className="flex flex-col justify-center max-w[10rem] w[860px] py-4 bg-red700 ">
                   <div className="flex justify-center">

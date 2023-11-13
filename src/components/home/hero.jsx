@@ -43,7 +43,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden z-0 flex  h-[calc(100vh-70px)] w-full flex-col justify-center items-center">
+    <div className="relative overflow-hidden z-0 flex  h-[calc(100vh-70px)] w-full flex-col justify-center items-center ">
       {items.map((item, index) => (
         <div
           key={index}
@@ -56,7 +56,7 @@ const Hero = () => {
           <img
             src={item.image}
             alt={item.title}
-            className="hscreen md: h-full absolute inset-0 left-0 top-0 object-cover w-full"
+            className="hscreen  h-full absolute inset-0 left-0 top-0 object-cover w-full"
           />
 
           <div className="w-full fle flexcol justify-between relative bg-green h-full inset-0 bg-opacity-40 z-30">

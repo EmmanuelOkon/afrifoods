@@ -1,4 +1,5 @@
 import cultivateSuccessImage from "../../assets/images/cultivateSuccessTwo.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const successData = [
   {
@@ -35,10 +36,11 @@ function CultivateSuccess() {
           <div className="px-4 lg:px[45px] xl:px-[100px] bg-white mx-auto ">
             <div className="flex gap-6 flex-col-reverse items-center md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px10">
               <div className="hidde lg:w-1/2 h-auto justify-center">
-                <img
+                <LazyLoadImage
                   className="w[80%] h-auto md:w[60%] lg:w-full "
+                  alt="cultivateSuccessImage"
                   src={cultivateSuccessImage}
-                  alt="cultivate success"
+                  effect="blur"
                 />
               </div>
               <div className=" py-5 lg:w-1/2 ">
