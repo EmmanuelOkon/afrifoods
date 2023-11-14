@@ -9,6 +9,7 @@ import CustomerReview from "../components/home/customerReview";
 import ReadyExperience from "../components/home/readyExperience";
 import HomeFaq from "../components/home/homeFaq";
 import FootGallery from "../components/home/footGallery";
+import Newsletter from "../components/home/newsletter";
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
       <CustomerReview />
       <ReadyExperience />
       <HomeFaq />
+      <Newsletter />
       <FootGallery />
     </Layout>
   );

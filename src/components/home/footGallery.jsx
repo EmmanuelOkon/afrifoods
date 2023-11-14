@@ -82,7 +82,7 @@ const FootGallery = () => {
           {items.map((item) => (
             <SwiperSlide className=" w-[200px] h-[200px] gap-10 ">
               <div
-                className="m-2 md: mx-6 lg:mx10 text-center bg-lightGrey mxauto w[220px] h[200px] md:w[300px]"
+                className="m-2 md: mx-6 text-center"
               >
                 <LazyLoadImage
                   className="w-full h-full "

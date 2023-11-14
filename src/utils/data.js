@@ -1,3 +1,9 @@
+import heroOne from "../assets/images/home/home_1.png";
+import heroTwo from "../assets/images/home/home_2.png";
+import heroThree from "../assets/images/home/home_3.png";
+import heroFour from "../assets/images/home/home_4.png";
+import heroFive from "../assets/images/home/home_5.png";
+
 import fuerteAvocado from "../assets/images/products/items/fuerteAvocado.png";
 import hassAvocado from "../assets/images/products/items/hassAvocado.png";
 import appleBanana from "../assets/images/products/items/appleBanana.png";
@@ -28,6 +34,34 @@ import customerImage from "../assets/images/customer.png";
 
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
+
+export const heroImages = [
+  {
+    id: 1,
+    title: "heroOne",
+    image: heroOne,
+  },
+  {
+    id: 2,
+    title: "heroTwo",
+    image: heroTwo,
+  },
+  {
+    id: 3,
+    title: "heroThree",
+    image: heroThree,
+  },
+  {
+    id: 4,
+    title: "heroFour",
+    image: heroFour,
+  },
+  {
+    id: 5,
+    title: "heroFive",
+    image: heroFive,
+  },
+];
 
 export const fruits = [
   {

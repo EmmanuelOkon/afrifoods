@@ -88,7 +88,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 // import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -135,7 +135,11 @@ export default function ProductsCategories() {
             },
           }}
           navigation={true}
-          modules={[Navigation]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Navigation]}
           loop
         >
           {products.map((product) => (
