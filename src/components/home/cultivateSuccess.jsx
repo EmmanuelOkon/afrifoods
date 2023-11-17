@@ -59,7 +59,7 @@ function CultivateSuccess() {
                   </p>
                   <div className="grid lg:grid-cols-2 gap-4 py-4 pt-8">
                     {successData.map((data) => (
-                      <div className="px-3 lg:px-0 flex flex-col items-center justify-center lg:h-[170px] ">
+                      <div key={data.title} className="px-3 lg:px-0 flex flex-col items-center justify-center lg:h-[170px] ">
                         <h1 className="text-4xl font-bold text-green">
                           {data.count}
                         </h1>

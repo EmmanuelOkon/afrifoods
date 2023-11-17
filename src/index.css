@@ -11,6 +11,11 @@
   transition: all 0.2s linear;
 }
 
+h1::selection, h2::selection, h3::selection, h4::selection, p::selection, li::selection, a::selection, span::selection, label::selection {
+  background-color: #226a35;
+  color: #FFF;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 7rem;
@@ -52,11 +57,12 @@ body::-webkit-scrollbar-thumb {
   border: none;
   background: #f0f2f5;
   opacity: 0.6;
+}
 
-  &:hover {
-    background-color: #8bc043;
-    opacity: 0.6;
-  }
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #8bc043;
+  opacity: 0.6;
 }
 
 .swiper-button-next::before,

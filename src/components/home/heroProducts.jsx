@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import ReactPlayer from "react-player";
 import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
 

@@ -122,9 +122,9 @@ const Empower = () => {
             </p>
           </div>
         </div>
-        <div className="pt-4">
-          <LazyLoadImage src={empowerWomenFarmers} effect="blur" />
-        </div>
+      </div>
+      <div className="pt-4">
+        <LazyLoadImage src={empowerWomenFarmers} effect="blur" />
       </div>
     </div>
   );

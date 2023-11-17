@@ -9,7 +9,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "flowbite": "^2.0.0",
     "postcss": "^8.4.31",
     "postcss-nested": "^6.0.1",
     "primereact": "^10.0.9",
@@ -30,6 +29,7 @@
     "sonner": "^1.2.0",
     "styled-components": "^6.1.0",
     "swiper": "^11.0.3",
+    "tailwind-scrollbar": "^3.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

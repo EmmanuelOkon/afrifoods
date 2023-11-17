@@ -143,7 +143,7 @@ export default function ProductsCategories() {
           loop
         >
           {products.map((product) => (
-            <SwiperSlide className=" w-[220px] bgblue-500 md:w-[300px]  ">
+            <SwiperSlide key={product.name} className=" w-[220px] bgblue-500 md:w-[300px]  ">
               <div className="m-2 md:mx-6 lg:mx-10 text-center bg-lightGrey overflow-hidden rounded-md lg:rounded-2xl mx-auto w-[220px] md:w-[300px]  ">
                 <div className="overflowhidden h-[400px] max-w[250px]">
                   <div className="flex flex-col justify-between min-h-full">

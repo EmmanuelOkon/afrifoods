@@ -40,7 +40,7 @@ const Newsletter = () => {
       return;
     } else {
       success("Thank you for subscribing to our newsletter");
-      setEmail("")
+      setEmail("");
       // Proceed with submission or further processing
     }
   };
@@ -62,11 +62,12 @@ const Newsletter = () => {
             className="mt-4 gap-4 flex flex-col md:flex-row items-center justify-between"
             onSubmit={handleSubmit}
           >
-            <div className="flex w-full items-center border border-gray-300 rounded-md px-3 py1 mb4">
+            <div className="flex w-full items-center border-2 border-gray-300 rounded-md px-3 border-gray-00 focus:border-lemonGreen">
               <LuMail className="text-gray-400 w-6 h-6 text-opacity-70 sm:h-auto" />
               <input
+                type={email}
                 autoComplete="off"
-                className="appearance-none min-w0 w-full py-2 pl-2 bg-[#F7F9FC] active:bg-[#F7F9FC] focus:bg-transparent text-base text-deepGrey placeholder-gray-400 outline-0 ring-0 border-0 focus:outline-0 focus:ring-0 focus:placeholder-gray-500 "
+                className="appearance-none min-w0 w-full py-2 pl-2 bg-[#F7F9FC] active:bg-[#F7F9FC] focus:bg-transparent text-base text-deepGrey placeholder-gray-400 outline-0 ring-0 focus:outline-0 focus:ring-0 focus:placeholder-gray-500   placeholder:text-[#98A2B3] "
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

@@ -33,7 +33,7 @@ const Fruits = () => {
       <HeadCategories categories={categories} setCategories={setCategories} />
       <div className="pt- md:mt- bg-white ">
         <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg- mx-auto ">
-          <div className="py-6">
+          <div className="max-w-7xl mx-auto px-2 py-6">
             <div className="block md:flex items-center justify-between lg:px-2 py-4 border-b ">
               <div className="text-center md:text-left py-3">
                 <span>Showing 1 - 12 of 20 results</span>
@@ -165,7 +165,6 @@ const Fruits = () => {
                               Add to cart
                             </button>
                           )}
-
                           {feature.wishlist && (
                             <button className="p-2 px-4 border-2 border-green rounded-lg flex items-center hover:bg-white text-[#475467] ">
                               <feature.wishlist

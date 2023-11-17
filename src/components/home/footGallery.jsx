@@ -19,27 +19,35 @@ import { Autoplay, Navigation } from "swiper/modules";
 
 const items = [
   {
+    id: 1,
     image: footGalleryOne,
   },
   {
+    id: 2,
     image: footGalleryTwo,
   },
   {
+    id: 3,
     image: footGalleryThree,
   },
   {
+    id: 4,
     image: footGalleryFour,
   },
   {
+    id: 5,
     image: footGalleryFive,
   },
   {
+    id: 6,
     image: footGallerySix,
   },
   {
+    id: 7,
     image: footGallerySeven,
   },
   {
+    id: 8,
     image: footGalleryEight,
   },
 ];
@@ -80,7 +88,7 @@ const FootGallery = () => {
           
         >
           {items.map((item) => (
-            <SwiperSlide className=" w-[200px] h-[200px] gap-10 ">
+            <SwiperSlide key={item.id} className=" w-[200px] h-[200px] gap-10 ">
               <div
                 className="m-2 md: mx-6 text-center"
               >

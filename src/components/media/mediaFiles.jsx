@@ -20,7 +20,7 @@ function MediaFiles() {
           </div>
         </div>
         <div>
-          <div className=" mx-auto">
+          <div className="mx-auto max-w-7xl px-2">
             <div className="py-6 lg:py16">
               <div className="xl:px-100px]  bg-white ">
                 <div className="flex flex-col gap-6 items-center lg:flex-row lg:justify-between w-full">

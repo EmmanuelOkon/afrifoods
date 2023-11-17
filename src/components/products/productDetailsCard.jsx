@@ -9,10 +9,18 @@ import { HiShoppingCart } from "react-icons/hi";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import React from "react";
 import { Link } from "react-router-dom";
+import OrderProduct from "./orderProduct";
+import { toast } from "sonner";
 
 const ProductDetailsCard = () => {
   const { productName } = useParams();
   const [count, setCount] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCount, setSelectedCount] = useState(1);
+
+  const errorMessages = {
+    count: "Quantity must be between 1 and 10",
+  };
 
   const product = fruits.find(
     (product) => product.name.replace(/\s+/g, "-").toLowerCase() === productName
@@ -34,26 +42,56 @@ const ProductDetailsCard = () => {
 
   const increment = () => {
     if (count < 10) {
-      setCount(count + 1);
+      const newCount = count + 1;
+      setCount(newCount);
+      setSelectedCount(newCount);
     }
   };
 
   const decrement = () => {
+    const newCount = count - 1;
     if (count > 1) {
-      setCount(count - 1);
+      setCount(newCount);
+      setSelectedCount(newCount);
     }
   };
 
-  const disabled = count === 1;
+  const disabled = count === 1 || count === 10;
+
+  const handleButtonClick = () => {
+    if (disabled) {
+      // Show error message if button is disabled
+      toast.error(errorMessages.count, {
+        position: "top-center",
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    } else {
+      // Proceed with the button click logic
+      // For example, you can increment/decrement the count
+      setCount(count + 1);
+    }
+  };
 
   const relatedProducts = fruits
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 3);
 
+  const openSelectedProductModal = () => {
+    setSelectedProduct(product);
+  };
+
+  const closeSelectedProductModal = () => {
+    setSelectedProduct(null);
+  };
+
+  console.log(selectedCount);
+
   return (
     <div>
       <Hero title="Products" subTitle="Fruits" pathName={product.name} />
-      <div className="pt-10 mx-auto">
+      <div className="pt-10 mx-auto max-w-7xl px-2">
         <div className="py-6 lg:py16">
           <div className="px-4 xl:px-[100px] bg-white divide-y-2 divide-[#F0F2F5]  ">
             <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full pb-4 lg:pb-10 ">
@@ -68,19 +106,19 @@ const ProductDetailsCard = () => {
                 </div>
                 <div className="flex py-4 gap-4 mx-10">
                   <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-6 mx-auto rounded-lg border border-[#D0D5DD]"
+                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
                     src={product.image}
                     alt={product.name}
                     effect="blur"
                   />
                   <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-6 mx-auto rounded-lg border border-[#D0D5DD]"
+                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
                     src={product.image}
                     alt={product.name}
                     effect="blur"
                   />
                   <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-6 mx-auto rounded-lg border border-[#D0D5DD]"
+                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
                     src={product.image}
                     alt={product.name}
                     effect="blur"
@@ -96,7 +134,8 @@ const ProductDetailsCard = () => {
                     <div className="fle gap-2 items-end py-2">
                       <p className="text-base py-4">{product.description}</p>
                       <span className="text-[#101828] text-[28px] font-semibold">
-                        {product.price}
+                        $100.00
+                        {/* {product.price} */}
                       </span>
                       <span className="text-grey700 text-[18px] pl-1 ">
                         per ton
@@ -121,18 +160,19 @@ const ProductDetailsCard = () => {
                       <div className="flex gap-2 items-center py-2">
                         <div className="flex gap-2 items-center p-2 px-4 px10 border border-[#F0F2F5] rounded-[40px] bg-[#F9FAFB] ">
                           <button
+                            onClick={handleButtonClick}
                             className={
                               (disabled
                                 ? " text-red-900 text[#667185] bg-[#F9FAFB] "
                                 : " text-green  ",
                               " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
                             }
-                            onClick={decrement}
+                            // onClick={decrement}
                             disabled={count === 1}
                           >
                             <FaMinus className=" w-5 h-5" />
                           </button>
-                          <span className="text-green text-[18px] font-bold px-1 py-2">
+                          <span className="text-green text-[18px] font-bold px-3 py-1">
                             {count}
                           </span>
                           <button
@@ -149,10 +189,23 @@ const ProductDetailsCard = () => {
                           </button>
                         </div>
                       </div>
-                      <button className="bg-green hover:bg-lemonGreen text-white flex items-center justify-center py-3 px-8 rounded-md mt-4 w-full ">
+                      <button
+                        onClick={() => openSelectedProductModal(product)}
+                        className="bg-green hover:bg-lemonGreen text-white flex items-center justify-center py-3 px-8 rounded-md mt-4 w-full "
+                      >
                         <BsFillHandbagFill className="inline-block w-6 h-6 mr-1" />
                         Order now
                       </button>
+                      {selectedProduct && (
+                        <OrderProduct
+                          product={product}
+                          onClose={closeSelectedProductModal}
+                          selectedCount={selectedCount}
+                          increment={increment}
+                          decrement={decrement}
+                          disabled={disabled}
+                        />
+                      )}
                       <div className=" ">
                         <p className="py-4 flex items-start gap-2">
                           <HiShoppingCart className="inline-block w-6 h-6 mr-1 text-green" />
