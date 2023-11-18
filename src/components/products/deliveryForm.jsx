@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import { toast } from "sonner";
 import { fetchCountries } from "../../utils/countries";
+import { CiGlobe } from "react-icons/ci";
 
 const DeliveryForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,8 +18,9 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const countryNames = await fetchCountries();
-        setCountries(countryNames);
+        const sortedCountries = await fetchCountries();
+        setCountries(sortedCountries);
+        console.log(sortedCountries);
       } catch (error) {
         // Handle error
       }
@@ -26,6 +28,8 @@ const DeliveryForm = () => {
 
     fetchData();
   }, []);
+
+  console.log(countries);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -72,8 +76,7 @@ const DeliveryForm = () => {
 
     if (validateForm()) {
       success();
-      // Proceed with submission or further processing
-      // Reset form fields
+
       setFirstName("");
       setLastName("");
       setMobileNumber("");
@@ -84,8 +87,6 @@ const DeliveryForm = () => {
       setZipCode("");
       setFormSubmitted(false);
     }
-
-    // formSubmitted && validateForm();
   };
 
   return (
@@ -209,27 +210,65 @@ const DeliveryForm = () => {
                 id="country"
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e)}
-                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-sm"
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
-                <Listbox.Button className="w-full text-left px-2 relive ">
-                  {selectedCountry || "Country"}
+                <Listbox.Button className="w-full text-left px2 relive ">
+                  {
+                    <div className=" flex items-center ">
+                      {selectedCountry ? (
+                        <div className="bg-gray-200 py-2 px-2 w-full flex items-center">
+                          <img
+                            src={
+                              countries.find(
+                                (country) => country.name === selectedCountry
+                              )?.flag
+                            }
+                            alt={`${selectedCountry} flag`}
+                            className="w-auto h-6 mr-2"
+                          />
+                          {selectedCountry}
+                        </div>
+                      ) : (
+                        <>
+                          <div className="py-2 px-2 w-full flex items-center">
+                            <CiGlobe
+                              className="w-auto h-6 mr-2"
+                              aria-hidden="true"
+                            />
+                            <span className=" text-sm font-medium text-[#98A2B3] ">Country</span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  }
                 </Listbox.Button>
-                <Listbox.Options className="w-fit mt-1 absol bg-white text-gray-800 max-h-[300px] overflow-auto border border-gray-300 rounded-md shadow-md focus:outline-none scrollbar-none ">
-                  {countries.map((country) => (
+                <Listbox.Options className="w-fit mt-1 absol bg-slate-200 text-gray-800 max-h-[300px] overflow-auto border border-gray-300 rounded shadow-md focus:outline-none scrollbar-none ">
+                  {countries.map((country, index) => (
                     <Listbox.Option
-                      key={country}
-                      value={country}
+                      key={index}
+                      value={country.name}
                       className={({ active }) =>
-                        `py-2 px-4 ${active ? "bg-lemonGreen text-white" : ""}`
+                        `py-2 px-2 hover:cursor-pointer ${
+                          active ? "bg-lemonGreen text-white" : ""
+                        }`
                       }
                     >
                       {({ selected, active }) => (
-                        <div
-                          className={`${
-                            selected ? "font-semibold" : "font-normal"
-                          }`}
-                        >
-                          {country}
+                        <div className={`flex items-center`}>
+                          <div className="bg-gray200 p-1 w-14 mr-2 rounded flex justify-center ">
+                            <img
+                              src={country.flag}
+                              alt={`${country.name} flag`}
+                              className="w-auto h-6"
+                            />
+                          </div>
+                          <span
+                            className={`${
+                              selected ? "font-semibold" : "font-normal"
+                            }`}
+                          >
+                            {country.name}
+                          </span>
                         </div>
                       )}
                     </Listbox.Option>

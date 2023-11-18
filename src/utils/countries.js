@@ -4,21 +4,26 @@ export const fetchCountries = async () => {
   try {
     const response = await fetch(`${API_URL}/region/africa`);
     const data = await response.json();
+    console.log(data);
 
     // Extracting country names
-    const countryNames = data
-      .map((country) => country.name.common)
-      .sort((a, b) => a.localeCompare(b));
+    const countriesData = data.map((country) => ({
+      name: country.name.common,
+      flag: country.flags.svg,
+    }));
 
-    console.log(countryNames);
-    return countryNames;
+    // Sorting by country name
+    const sortedCountries = countriesData.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+
+    console.log(sortedCountries);
+    return sortedCountries;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 };
-
-
 
 /* <select
   value={selectedCountry}

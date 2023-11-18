@@ -8,14 +8,6 @@ const ContactForm = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  const errorMessages = {
-    firstName: "Please enter your First Name",
-    lastName: "Please enter your last name",
-    email: "Please enter your email address",
-    phone: "Please enter your phone number",
-    message: "Please enter your message",
-  };
-
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -24,13 +16,7 @@ const ContactForm = () => {
     setFormSubmitted(true);
 
     if (!firstName || !lastName || !email || !phone || !message) {
-      errorMessages.firstName = "Please enter your first name";
-      errorMessages.lastName = "Please enter your last name";
-      errorMessages.email = "Please enter your email address";
-      errorMessages.phone = "Please enter your phone number";
-      errorMessages.message = "Please enter your message";
-
-      toast.warning("Please fill in all required fields", {
+      toast.error("Please fill in all required fields", {
         position: "top-center",
         autoClose: 5000,
         closeOnClick: true,
@@ -92,11 +78,6 @@ const ContactForm = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
-                  {formSubmitted && !firstName && (
-                    <span className="text-red-500 text-sm">
-                      {errorMessages.firstName}
-                    </span>
-                  )}
                 </div>
                 <div className="w-full md:w-[48%] ">
                   <label
@@ -113,11 +94,6 @@ const ContactForm = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                   />
-                  {formSubmitted && !lastName && (
-                    <span className="text-red-500 text-sm">
-                      {errorMessages.lastName}
-                    </span>
-                  )}
                 </div>
               </div>
               <div className="w-full mb-6 md:mb-0">
@@ -135,11 +111,6 @@ const ContactForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                {formSubmitted && !email && (
-                  <span className="text-red-500 text-sm">
-                    {errorMessages.email}
-                  </span>
-                )}
               </div>
               <div className="w-full mb-6 md:mb-0">
                 <label
@@ -156,11 +127,6 @@ const ContactForm = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                {formSubmitted && !phone && (
-                  <span className="text-red-500 text-sm">
-                    {errorMessages.phone}
-                  </span>
-                )}
               </div>
               <div className="w-full mb-6 md:mb-0">
                 <label
@@ -178,11 +144,6 @@ const ContactForm = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
-                {formSubmitted && !message && (
-                  <span className="text-red-500 text-sm">
-                    {errorMessages.message}
-                  </span>
-                )}
               </div>
               <div className="mt-8 text-center">
                 <button
