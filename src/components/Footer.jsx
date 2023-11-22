@@ -145,10 +145,10 @@ const Footer = () => {
                     +250 786 416 032
                   </NavLink>
                   <NavLink
-                    to="mailto:afrifoodsrwanda@gmail.com"
+                    to="mailto:info@afrfoodsltd.com"
                     className="block flex-shrink-0"
                   >
-                    afrifoodsrwanda@gmail.com
+                    info@afrfoodsltd.com
                   </NavLink>
                 </div>
                 <div className="  ">
@@ -201,7 +201,6 @@ const Footer = () => {
               <div className="flex items-center border border-gray-300 rounded-md px-3 py-1 mb-4">
                 <LuMail className="text-gray-400 w-6 h-6 text-opacity-70 sm:h-auto" />
                 <input
-                
                   autoComplete="off"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
