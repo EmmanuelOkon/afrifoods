@@ -71,7 +71,7 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                           </h2>
 
                           <span className="text-[20px] font-semibold pl-1">
-                            ${totalPrice}.00
+                            {/* ${totalPrice}.00 */}
                             <span className="text-green text-[20px] font-semibold">
                               {/* ${totalPrice}.00 */}
                             </span>
@@ -81,15 +81,15 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                           <h2 className="text-lg hidden md:text-[28px] font-semibold">
                             {product?.name}
                           </h2>
-                          <p className="py-3">
+                          {/* <p className="py-3">
                             Price :
                             <span className="text-base font-semibold pl-1">
                               $100 per ton
                             </span>
-                          </p>
+                          </p> */}
                         </div>
 
-                        <div className=" gap-2 items-center py-">
+                        <div className=" gap-2 items-center pt-10">
                           <div className="flex w-fit gap-2 items-center p-1 px-3 border border-[#F0F2F5] rounded-[40px] bg-[#F9FAFB] ">
                             <button
                               className={
