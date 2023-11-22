@@ -110,10 +110,10 @@ const Fruits = () => {
                       </h3>
                       <div className="flex gap-2 items-end pt-2">
                         <span className="text-[#475367] text-[20px] font-semibold">
-                          {feature.price}
+                          {/* {feature.price} */}
                         </span>
                         <span className="text-[#98A2B3] text-[14px] line-through">
-                          {feature.discount}
+                          {/* {feature.discount} */}
                         </span>
                       </div>
                     </div>

@@ -134,12 +134,12 @@ const ProductDetailsCard = () => {
                     <div className="fle gap-2 items-end py-2">
                       <p className="text-base py-4">{product.description}</p>
                       <span className="text-[#101828] text-[28px] font-semibold">
-                        $100.00
+                        {/* $100.00 */}
                         {/* {product.price} */}
                       </span>
-                      <span className="text-grey700 text-[18px] pl-1 ">
+                      {/* <span className="text-grey700 text-[18px] pl-1 ">
                         per ton
-                      </span>
+                      </span> */}
                     </div>
                     <div className="text-[#101928] text-base py-2 ">
                       <p className="font-semibold py-1 ">
