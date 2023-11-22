@@ -15,12 +15,12 @@ function MediaFiles() {
           <div className="mx-auto max-w-[500px]">
             <p className="text-[#475367] pt-3 text-base font-medium  ">
               Stay Informed and Engaged with the Latest Updates, Insights, and
-              Press Releases from Afrifood
+              Press Releases from Afri Food
             </p>
           </div>
         </div>
         <div>
-          <div className=" mx-auto">
+          <div className="mx-auto max-w-7xl px-2">
             <div className="py-6 lg:py16">
               <div className="xl:px-100px]  bg-white ">
                 <div className="flex flex-col gap-6 items-center lg:flex-row lg:justify-between w-full">

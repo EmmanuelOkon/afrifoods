@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "@fontsource/karla";
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import CustomPreloader from "./components/preloader/preloader.jsx";
+import { Toaster } from "sonner";
 
 function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -12,10 +13,17 @@ function Preloader() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000); 
+    }, 2000);
   }, []);
 
-  return loading ? <CustomPreloader /> : <App />;
+  return loading ? (
+    <CustomPreloader />
+  ) : (
+    <>
+      <App />
+      <Toaster richColors />
+    </>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

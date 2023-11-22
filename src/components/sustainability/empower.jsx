@@ -53,7 +53,7 @@ const Empower = () => {
               farms.
             </p>
             <p>
-              Afri Foods’s impact goal is to increase our workforce to 2,000
+              Afri Foods’ impact goal is to increase our workforce to 2,000
               farmers in the next two years. This is a sustainable goal that we
               can achieve through capacity building, youth programs, and
               National Agriculture Development Board (NAEB) activities.
@@ -100,7 +100,7 @@ const Empower = () => {
               education beyond school and few economic prospects.
             </p>
             <p className="pb-4">
-              At AfriFoods, we aim to empower women farmers by paying them a
+              At Afri Foods, we aim to empower women farmers by paying them a
               real living wage for their premium produce. This gives them
               independence, stature, and dignity. Our farmers take pride in
               their work and are encouraged to continue to grow high-quality
@@ -122,9 +122,9 @@ const Empower = () => {
             </p>
           </div>
         </div>
-        <div className="pt-4">
-          <LazyLoadImage src={empowerWomenFarmers} effect="blur" />
-        </div>
+      </div>
+      <div className="pt-4">
+        <LazyLoadImage src={empowerWomenFarmers} effect="blur" />
       </div>
     </div>
   );

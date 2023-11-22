@@ -4,9 +4,9 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 const OurStory = () => {
   return (
     <>
-      <div className="px-[20px]  xl:px-[100px] md:bg-white mx-auto">
+      <div className="px-[20px]  xl:px-[100px] md:bg-white mx-auto  max-w-7xl">
         <div className="py-[3rem] sm:py-6 lg:py-10">
-          <div className="pb-[2rem] text-center max-w-2xl mx-auto ">
+          <div className="pb-[2rem] text-center ">
             <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:trcking-wider lg:leading-none">
               Our Story
             </h1>
@@ -85,7 +85,7 @@ const OurStory = () => {
             <p className="pb-4">
               In August 2019, she tried a third time. This time, she consulted
               agriculture and agribusiness experts, and established her own
-              company, AfriFoods Ltd.
+              company, Afri Foods Ltd.
             </p>
           </div>
 

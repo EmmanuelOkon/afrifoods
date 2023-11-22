@@ -164,72 +164,72 @@
 
 // export default Test;
 
-// import React, { useState } from "react";
-// import { products } from "../utils/data";
-// import "../test.css";
+import React, { useState } from "react";
+import { products } from "../utils/data";
+import "../test.css";
 
-// export default function Test() {
-//   const [currentIndex, setCurrentIndex] = useState(0);
+export default function Test() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-//   const nextSlide = () => {
-//     setCurrentIndex((prevIndex) =>
-//       prevIndex === products.length - 1 ? 0 : prevIndex + 1
-//     );
-//   };
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === products.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-//   const prevSlide = () => {
-//     setCurrentIndex((prevIndex) =>
-//       prevIndex === 0 ? products.length - 1 : prevIndex - 1
-//     );
-//   };
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? products.length - 1 : prevIndex - 1
+    );
+  };
 
-//   return (
-//     <div className="max-w-screen-sm mx-auto my-4">
-//       <h2 className="text-2xl font-bold text-gray-700 text-center mb-2">
-//         Product Categories
-//       </h2>
-//       <div className="w-12 h-2 bg-green-500 mx-auto mb-4"></div>
-//       <div className="flex items-center justify-between">
-//         <button
-//           className="bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center text-2xl text-gray-600 hover:bg-green-500 hover:text-white focus:outline-none"
-//           onClick={prevSlide}
-//         >
-//           &lt;
-//         </button>
-//         <div className="w-full flex overflow-hidden">
-//           {products.map((product, index) => (
-//             <div
-//               key={index}
-//               className={`w-full p-4`}
-//               style={{
-//                 transform: `translateX(-${currentIndex * 100}%)`,
-//                 opacity: index === currentIndex ? 1 : 0,
-//               }}
-//             >
-//               <h3 className="text-2xl font-bold text-gray-700 mb-2 uppercase">
-//                 {product.name}
-//               </h3>
-//               <a
-//                 href="/products"
-//                 className="text-green-500 text-lg hover:text-green-700 border-b border-green-500 pb-2"
-//               >
-//                 Shop now
-//               </a>
-//               <img
-//                 src={product.image}
-//                 alt={product.name}
-//                 className="mt-4 w-full h-48 object-cover rounded-lg"
-//               />
-//             </div>
-//           ))}
-//         </div>
-//         <button
-//           className="bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center text-2xl text-gray-600 hover:bg-green-500 hover:text-white focus:outline-none"
-//           onClick={nextSlide}
-//         >
-//           &gt;
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
+  return (
+    <div className="max-w-screen-sm mx-auto my-4">
+      <h2 className="text-2xl font-bold text-gray-700 text-center mb-2">
+        Product Categories
+      </h2>
+      <div className="w-12 h-2 bg-green-500 mx-auto mb-4"></div>
+      <div className="flex items-center justify-between">
+        <button
+          className="bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center text-2xl text-gray-600 hover:bg-green-500 hover:text-white focus:outline-none"
+          onClick={prevSlide}
+        >
+          &lt;
+        </button>
+        <div className="w-full flex overflow-hidden">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className={`w-full p-4`}
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                opacity: index === currentIndex ? 1 : 0,
+              }}
+            >
+              <h3 className="text-2xl font-bold text-gray-700 mb-2 uppercase">
+                {product.name}
+              </h3>
+              <a
+                href="/products"
+                className="text-green-500 text-lg hover:text-green-700 border-b border-green-500 pb-2"
+              >
+                Shop now
+              </a>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="mt-4 w-full h-48 object-cover rounded-lg"
+              />
+            </div>
+          ))}
+        </div>
+        <button
+          className="bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center text-2xl text-gray-600 hover:bg-green-500 hover:text-white focus:outline-none"
+          onClick={nextSlide}
+        >
+          &gt;
+        </button>
+      </div>
+    </div>
+  );
+}

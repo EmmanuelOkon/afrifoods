@@ -48,8 +48,7 @@ const Approach = () => {
             </p>
           </div>
         </div>
-
-        <div className="">
+        <div className="mx-auto max-w-7xl px-2">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className=" pb-2 lg:pb-8">
@@ -79,7 +78,7 @@ const Approach = () => {
         </div>
       </div>
       <div>
-        <div className=" mx-auto">
+        <div className="max-w-7xl px-2 mx-auto">
           <div className="py-6 lg:py16">
             <div className="px-4 xl:px-[100px]  bg-white ">
               <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full">
@@ -108,7 +107,7 @@ const Approach = () => {
                         communities we work with.
                       </p>
                       <p className="text-base py-4">
-                        AfriFoods is proud to be part of this transformation by
+                        Afri Foods is proud to be part of this transformation by
                         developing skills and employment opportunities in the
                         private sector. Our business currently exports over
                         270MT of produce annually. We plan to increase

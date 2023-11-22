@@ -39,7 +39,7 @@ export default function TopNav() {
   return (
     <header className="bg-white drop-shadow-md sticky lg:z-[900] top-0 w-full">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between py-3 px-4 p6 lg:px-8"
+        className="mx-auto max-w-7xl xl:w-[1440px] px-4 lg:px-8 py-3 bgblue-600 flex items-center justify-between"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

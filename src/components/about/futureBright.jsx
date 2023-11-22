@@ -6,8 +6,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const FutureBright = () => {
   return (
     <div className="pt- ">
-      <div>
-        <div className=" mx-auto">
+      <div className="mx-auto max-w-7xl px-2">
+        <div className="">
           <div className="py-6 lg:py16">
             <div className="px-4 xl:px-[100px]  bg-white ">
               <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full">
@@ -51,7 +51,7 @@ const FutureBright = () => {
             </div>
           </div>
         </div>
-        <div className="pt-10 mx-auto">
+        <div className="pt-10 ">
           <div className="py-6 lg:py16">
             <div className="px-4 xl:px-[100px]  bg-white ">
               <div className="flex flex-col-reverse md:flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full">

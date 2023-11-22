@@ -1,59 +1,99 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import ReactPlayer from "react-player";
 import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
-import videoDetail from "../../assets/how afrifood works.mp4";
 
 import { FaPlay } from "react-icons/fa";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { BsPauseFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const HeroProducts = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [buttonText, setButtonText] = useState("how afrifood works?");
-  // const [playButtonVisible, setPlayButtonVisible] = useState(true);
+  const [buttonText, setButtonText] = useState("how afri Foods works?");
+  const [playButtonVisible, setPlayButtonVisible] = useState(true);
+
+  const videoDetail =
+    "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
+
+  useEffect(() => {
+    if (isPlaying) {
+      setTimeout(() => {
+        setPlayButtonVisible(false);
+      }, 2500);
+    } else {
+      setPlayButtonVisible(true);
+    }
+  }, [isPlaying]);
 
   const handlePlayVideo = () => {
     setIsPlaying(!isPlaying);
 
-    // const buttonText = isPlaying ? "" : "";
-    // setButtonText(buttonText);
+    const buttonText = isPlaying ? "" : "";
+    setButtonText(buttonText);
 
-    // setPlayButtonVisible(true);
+    setPlayButtonVisible(true);
 
-    // setTimeout(() => {
-    //   setPlayButtonVisible(false);
-    // }, 2500);
+    setTimeout(() => {
+      setPlayButtonVisible(false);
+    }, 2500);
   };
+
+  const handleMouseEnter = () => {
+    setPlayButtonVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isPlaying) {
+      setPlayButtonVisible(false);
+    }
+  };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   return (
     <>
-      <div className="py-10 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div className="relative overflow-hidden z-10 justify-center items-center min-w-fit h-[200px] lg:h-[500px] mx-auto bg-gradient-to-b from-deepGreen to-grey500 opacity-100 rounded-md lg:rounded-lg ">
-          <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
+      <div className="w-full lg:w-[800px] py-10 px-4 sm:px-8 mx-auto">
+        <div className="relative overflow-hidden z-10 justify-center items-center min-wfit h-[200px] lg:h-[500px] mx-auto   ">
+          <div className="absolute inset-0 flex mx-auto justify-center items-center bg-gradient-to-b from-zinc-950 to-grey500 opacity-100  h-auto  h[200px] lg:h[500px] rounded-md lg:rounded-lg">
             <ReactPlayer
               playing={isPlaying}
               controls={false}
               loop={false}
               width={"100%"}
               height={"100%"}
-              className="w-full h-full object-cover object-center overflow-hidden"
+              className=" rounded-md lg:rounded-lg object-cove objectcenter overflow-hidden mix-blend-overlay"
               url={videoDetail}
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center z-50">
+          <div className="absolute hidde inset-0 items-center justify-center flex  z-50">
             <div className="z-[100] w-fit">
               <button
                 onClick={handlePlayVideo}
-                className="text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-3 px-4 text-[16px] gap-3  "
+                className={classNames(
+                  isPlaying ? "bg-opacity-0 hover:bg-opacity-100 text-opacity-10 " : " ",
+                  "text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-1 md:py-3 px-2 md:px-4 text-[16px] gap-3 "
+                )}
               >
                 <span className="gap-4 items-center transition-all ease-in-out delay-300">
-                  {/* {buttonText} */}
+                  {buttonText}
                   {isPlaying ? (
-                    <BsPauseFill className="inline-flex ml1 text-white w-6 h-6" />
+                    <BsPauseFill
+                      className={classNames(
+                        isPlaying ? " ml-0" : "ml-0 md:ml-1",
+                        "inline-flex text-white w-3 h-3 md:w-6 md:h-6"
+                      )}
+                    />
                   ) : (
-                    <FaPlay className="inline-flex ml2 text-white w-4 h-4" />
+                    <FaPlay
+                      className={classNames(
+                        isPlaying ? " " : "mx-0 md:mx-1 ",
+                        " inline-flex text-white w-2 h-2 md:w-4 md:h-4 "
+                      )}
+                    />
                   )}
                 </span>
               </button>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const ContactForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -7,9 +8,38 @@ const ContactForm = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission here
+
+    setFormSubmitted(true);
+
+    if (!firstName || !lastName || !email || !phone || !message) {
+      toast.error("Please fill in all required fields", {
+        position: "top-center",
+        autoClose: 5000,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+
+      return;
+    }
+
+    toast.success("Form submitted successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
+    // Reset form fields
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
+    setFormSubmitted(false);
   };
 
   return (
@@ -36,15 +66,15 @@ const ContactForm = () => {
                 <div className="w-full md:w-[48%] mb-6 md:mb-0">
                   <label
                     className="block tracking-wide text-greyBlack text-sm font-semibold mb-2"
-                    htmlFor="first-name"
+                    htmlFor="firstName"
                   >
                     First Name
                   </label>
                   <input
-                    className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3]"
-                    id="first-name"
-                    type="text"
+                    className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize"
                     placeholder="First Name"
+                    id="firstName"
+                    type={firstName}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
@@ -57,9 +87,9 @@ const ContactForm = () => {
                     Last Name
                   </label>
                   <input
-                   className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3]"
+                    className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize"
                     id="last-name"
-                    type="text"
+                    type={lastName}
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
@@ -117,8 +147,8 @@ const ContactForm = () => {
               </div>
               <div className="mt-8 text-center">
                 <button
-                  className="bg-green text-white font-semibold w-fit py-3 text-base px-10 rounded focus:outline-none focus:shadow-outline border-2 border-green hover:bg-white hover:text-green transition-all"
                   type="submit"
+                  className="bg-green text-white font-semibold w-fit py-3 text-base px-10 rounded focus:outline-none focus:shadow-outline border-2 border-green hover:bg-white hover:text-green transition-all"
                 >
                   Send message
                 </button>

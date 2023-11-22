@@ -1,4 +1,5 @@
 import cultivateSuccessImage from "../../assets/images/cultivateSuccessTwo.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const successData = [
   {
@@ -35,10 +36,11 @@ function CultivateSuccess() {
           <div className="px-4 lg:px[45px] xl:px-[100px] bg-white mx-auto ">
             <div className="flex gap-6 flex-col-reverse items-center md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px10">
               <div className="hidde lg:w-1/2 h-auto justify-center">
-                <img
+                <LazyLoadImage
                   className="w[80%] h-auto md:w[60%] lg:w-full "
+                  alt="cultivateSuccessImage"
                   src={cultivateSuccessImage}
-                  alt="cultivate success"
+                  effect="blur"
                 />
               </div>
               <div className=" py-5 lg:w-1/2 ">
@@ -50,14 +52,14 @@ function CultivateSuccess() {
                     <span className="border-2 border-lemonGreen w-full"></span>
                   </div>
                   <p className="text-sm text-[#475367] py-4 lg:py-2">
-                    Exploring the Profound Impact of Afrifood's Years of
+                    Exploring the Profound Impact of Afri Foods' Years of
                     Unwavering Commitment to Farmers' Livelihoods, a Diverse
                     Range of Quality Products, and a Global Presence Serving
                     Multiple Countries Worldwide.
                   </p>
                   <div className="grid lg:grid-cols-2 gap-4 py-4 pt-8">
                     {successData.map((data) => (
-                      <div className="px-3 lg:px-0 flex flex-col items-center justify-center lg:h-[170px] ">
+                      <div key={data.title} className="px-3 lg:px-0 flex flex-col items-center justify-center lg:h-[170px] ">
                         <h1 className="text-4xl font-bold text-green">
                           {data.count}
                         </h1>

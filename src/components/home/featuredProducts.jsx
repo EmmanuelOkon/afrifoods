@@ -1,17 +1,6 @@
 import React, { useState } from "react";
-import fuerteAvocado from "../../assets/images/products/items/fuerteAvocado.png";
-import hassAvocado from "../../assets/images/products/items/hassAvocado.png";
-import appleBanana from "../../assets/images/products/items/appleBanana.png";
-import pineapple from "../../assets/images/products/items/pineapple.png";
-import yellowPassion from "../../assets/images/products/items/yellowPassionFruit.png";
-import rosePassion from "../../assets/images/products/items/rosePassionFruit.png";
-import bitterLemon from "../../assets/images/products/items/bitterLemonFruit.png";
-import redPepper from "../../assets/images/products/items/redPepper.png";
-import longRedPepper from "../../assets/images/products/items/longRedPepper.png";
-import gardenEgg from "../../assets/images/products/items/gardenEgg.png";
-import plantain from "../../assets/images/products/items/plantain.png";
-import carrot from "../../assets/images/products/items/carrot.png";
 import { Link, NavLink } from "react-router-dom";
+import { fruits } from "../../utils/data";
 
 const categories = [
   {
@@ -28,104 +17,6 @@ const categories = [
   },
 ];
 
-const fruits = [
-  {
-    id: 1,
-    name: "Fuerte Avocado",
-    image: fuerteAvocado,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 2,
-    name: "Hass Avocado",
-    image: hassAvocado,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 3,
-    name: "Apple Banana",
-    image: appleBanana,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 4,
-    name: "Pineapple",
-    image: pineapple,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 5,
-    name: "Yellow Passion Fruit",
-    image: yellowPassion,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 6,
-    name: "Rose Passion Fruit",
-    image: rosePassion,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 7,
-    name: "Bitter Lemon Fruit",
-    image: bitterLemon,
-    category: "Fruits",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 8,
-    name: "Red Pepper",
-    image: redPepper,
-    category: "Vegetables",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 9,
-    name: "Long Red Pepper",
-    image: longRedPepper,
-    category: "Vegetables",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 10,
-    name: "Garden Egg",
-    image: gardenEgg,
-    category: "Vegetables",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 11,
-    name: "Plantain",
-    image: plantain,
-    category: "Vegetables",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-  {
-    id: 12,
-    name: "Carrot",
-    image: carrot,
-    category: "Root Crops",
-    price: "$40.29",
-    discount: "$60.29",
-  },
-];
 
 const FeaturedProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/icons/whiteLogo.svg";
 import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 import { LuMail } from "react-icons/lu";
+import { toast } from "sonner";
 
 const navigation = {
   solutions: [
@@ -76,6 +77,47 @@ const navigation = {
 };
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const warning = () =>
+    toast.warning("Please enter a valid email address", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
+  const success = () =>
+    toast.success("Thank you for subscribing to our newsletter", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
+  function isValidEmailFormat(email) {
+    const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || email.trim() === "") {
+      warning("Please enter a valid email address");
+      return;
+    } else if (!email.includes("@")) {
+      warning("Email address must contain '@'");
+      return;
+    } else if (!isValidEmailFormat(email)) {
+      warning("Invalid email format");
+      return;
+    } else {
+      success("Thank you for subscribing to our newsletter");
+      // Proceed with submission or further processing
+    }
+  };
+
   return (
     <footer className="bg-deepGreen" aria-labelledby="footer-heading">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -83,13 +125,15 @@ const Footer = () => {
           <div className="grid md:grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-4">
               <div>
-                <img
-                  alt="logo"
-                  width={14}
-                  height={14}
-                  src={Logo}
-                  className="w-[30%] lg:w-[60%] h-auto"
-                />
+                <NavLink to="/">
+                  <img
+                    alt="logo"
+                    width={14}
+                    height={14}
+                    src={Logo}
+                    className="w-[30%] lg:w-[60%] h-auto"
+                  />
+                </NavLink>
                 <div className="my-4 text-white">
                   <p className="block flex-shrink-0 font-normal">
                     KK 621 St, Kigali, Rwanda, Gikondo
@@ -153,16 +197,15 @@ const Footer = () => {
               Signup to our newsletter to get update information, news, insight
               or promotions.
             </p>
-            <form className="mt-4 ">
+            <form className="mt-4 " onSubmit={handleSubmit}>
               <div className="flex items-center border border-gray-300 rounded-md px-3 py-1 mb-4">
                 <LuMail className="text-gray-400 w-6 h-6 text-opacity-70 sm:h-auto" />
                 <input
-                  type="email"
-                  name="email-address"
-                  id="email-address"
-                  autoComplete="email"
-                  required
-                  className="appearance-none min-w-0 w-full bg-transparent shadow-sm text-base text-white placeholder-gray-500 outline-0 ring-0 border-0 focus:outline-0 focus:ring-0 focus:placeholder-gray-400"
+                
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="appearance-none min-w-0 w-full py-2 pl-2 bg-transparent shadow-sm text-base text-white placeholder-gray-500 outline-0 ring-0 border-0 focus:outline-0 focus:ring-0 focus:placeholder-gray-400"
                   placeholder="Enter your email"
                 />
               </div>

@@ -1,3 +1,9 @@
+import heroOne from "../assets/images/home/home_1.png";
+import heroTwo from "../assets/images/home/home_2.png";
+import heroThree from "../assets/images/home/home_3.png";
+import heroFour from "../assets/images/home/home_4.png";
+import heroFive from "../assets/images/home/home_5.png";
+
 import fuerteAvocado from "../assets/images/products/items/fuerteAvocado.png";
 import hassAvocado from "../assets/images/products/items/hassAvocado.png";
 import appleBanana from "../assets/images/products/items/appleBanana.png";
@@ -28,6 +34,34 @@ import customerImage from "../assets/images/customer.png";
 
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
+
+export const heroImages = [
+  {
+    id: 1,
+    title: "heroOne",
+    image: heroOne,
+  },
+  {
+    id: 2,
+    title: "heroTwo",
+    image: heroTwo,
+  },
+  {
+    id: 3,
+    title: "heroThree",
+    image: heroThree,
+  },
+  {
+    id: 4,
+    title: "heroFour",
+    image: heroFour,
+  },
+  {
+    id: 5,
+    title: "heroFive",
+    image: heroFive,
+  },
+];
 
 export const fruits = [
   {
@@ -160,7 +194,6 @@ export const fruits = [
   },
 ];
 
-
 export const articles = [
   {
     title: `SAKINA USENGIMANA – CEO of Afri-foods Rwanda “Overcoming failures in setting up her agri-business venture”`,
@@ -285,5 +318,11 @@ export const customers = [
       "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
     title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
   },
+  {
+    name: "Abraham Laiseca",
+    image: customerImage,
+    description:
+      "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
+    title: "Agricultural Minister, India",
+  },
 ];
-
