@@ -377,14 +377,14 @@ const ProductDetailsCard = () => {
                           <h3 className="pt-2 lg:pt4 text-greyBlack text-[18px] md:text-[20px] font-semibold tracking-tighter">
                             {item.name}
                           </h3>
-                          <div className="flex gap-2 items-end pt-2">
+                          {/* <div className="flex gap-2 items-end pt-2">
                             <span className="text-[#475367] text-[20px] font-semibold">
                               {item.price}
                             </span>
                             <span className="text-[#98A2B3] text-[14px] line-through">
                               {item.discount}
                             </span>
-                          </div>
+                          </div> */}
                         </div>
                       </Link>
                     </div>
