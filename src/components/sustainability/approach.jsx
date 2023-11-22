@@ -107,7 +107,7 @@ const Approach = () => {
                         communities we work with.
                       </p>
                       <p className="text-base py-4">
-                        AfriFoods is proud to be part of this transformation by
+                        Afri Foods is proud to be part of this transformation by
                         developing skills and employment opportunities in the
                         private sector. Our business currently exports over
                         270MT of produce annually. We plan to increase

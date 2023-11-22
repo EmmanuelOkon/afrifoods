@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 const HeroProducts = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [buttonText, setButtonText] = useState("how afrifood works?");
+  const [buttonText, setButtonText] = useState("how afri Foods works?");
   const [playButtonVisible, setPlayButtonVisible] = useState(true);
 
   const videoDetail =

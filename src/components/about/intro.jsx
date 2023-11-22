@@ -19,7 +19,7 @@ const Intro = () => {
                     </div>
                     <div className="py-4 pt-8">
                       <p className="text-base py-4">
-                        At Afrifood, our journey is rooted in a profound love
+                        At Afri Foods, our journey is rooted in a profound love
                         for the rich agricultural heritage of Africa. We are
                         more than a company; we are a passionate community of
                         individuals committed to bringing the very best of
@@ -33,7 +33,7 @@ const Intro = () => {
                         for it's your trust and support that fuels our ambition.
                       </p>
                       <p className="text-base py-4">
-                        Welcome to Afrifood, where quality, sustainability, and
+                        Welcome to Afri Foods, where quality, sustainability, and
                         community engagement intersect to cultivate a better
                         future for all.
                       </p>

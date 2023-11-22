@@ -85,7 +85,7 @@ const OurStory = () => {
             <p className="pb-4">
               In August 2019, she tried a third time. This time, she consulted
               agriculture and agribusiness experts, and established her own
-              company, AfriFoods Ltd.
+              company, Afri Foods Ltd.
             </p>
           </div>
 

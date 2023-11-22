@@ -53,7 +53,7 @@ function CultivateSuccess() {
                     <span className="border-2 border-lemonGreen w-full"></span>
                   </div>
                   <p className="text-sm text-[#475367] py-4 lg:py-2">
-                    Exploring the Profound Impact of Afrifood's Years of
+                    Exploring the Profound Impact of Afri Foods' Years of
                     Unwavering Commitment to Farmers' Livelihoods, a Diverse
                     Range of Quality Products, and a Global Presence Serving
                     Multiple Countries Worldwide.

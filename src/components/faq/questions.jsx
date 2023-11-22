@@ -5,61 +5,61 @@ import { NavLink } from "react-router-dom";
 const faqs = [
   {
     question: "Where does Afrifood source its agricultural products?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question: "What payment methods are accepted?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question: "How can I track my order?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question: "What is the minimum order quantity for your products?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question: "Can I return or exchange products if I'm not satisfied?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question:
       "Are your products available year-round, or do they vary by season?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question: "Can I cancel or modify my order after it's been placed?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question:
       "What payment security measures do you have in place for online transactions?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question:
       "Can I return products if they arrive damaged or not as expected?",
-    answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
   {
     question:
-      "What sustainability practices does Afrifood employ in its operations?",
+      "What sustainability practices does Afri Foods employ in its operations?",
     answer: `Afrifood sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
   },
 ];
 
 const faqsTwo = [
   {
-    question: "How can I place an order on Afrifood's website?",
+    question: "How can I place an order on Afri Foods' website?",
     answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
   },
   {
-    question: "Where does Afrifood deliver?",
+    question: "Where does Afri Foods deliver?",
     answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
   },
   {
-    question: "Are Afrifood's products organic and sustainably sourced?",
+    question: "Are Afri Foods' products organic and sustainably sourced?",
     answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
   },
   {
@@ -67,7 +67,7 @@ const faqsTwo = [
     answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
   },
   {
-    question: "How can I get in touch with Afrifood's customer support?",
+    question: "How can I get in touch with Afri Foods' customer support?",
     answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
   },
   {

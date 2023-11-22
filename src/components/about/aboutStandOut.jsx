@@ -60,7 +60,7 @@ const AboutStandOut = () => {
           <div className="z-[100] w-fit">
             <div className="py10">
               <h2 className="text-3xl lg:text-4xl font-bold text-white text-center ">
-                Why Afrifood Stands Out
+                Why Afri Foods Stands Out
               </h2>
               <div className="flex justify-center mx-auto w-[120px] text-center py-2 ">
                 <span className="border-2 border-lemonGreen w-full"></span>

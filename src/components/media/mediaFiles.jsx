@@ -15,7 +15,7 @@ function MediaFiles() {
           <div className="mx-auto max-w-[500px]">
             <p className="text-[#475367] pt-3 text-base font-medium  ">
               Stay Informed and Engaged with the Latest Updates, Insights, and
-              Press Releases from Afrifood
+              Press Releases from Afri Food
             </p>
           </div>
         </div>
