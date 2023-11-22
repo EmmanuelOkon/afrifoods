@@ -9,7 +9,6 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <TopNav />
-
       <div className="items-center justify-between  2xl:w-[100%] 2xl:mx-auto sm:mx-auto ">
         <main>{children}</main>
       </div>

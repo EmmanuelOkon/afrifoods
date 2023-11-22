@@ -17,7 +17,9 @@ function Preloader() {
   }, []);
 
   return loading ? (
-    <CustomPreloader />
+    <>
+      <CustomPreloader />
+    </>
   ) : (
     <>
       <App />
