@@ -76,11 +76,13 @@ const FeaturedProducts = () => {
                     {fruit.name}
                   </h3>
                   <div className="flex gap-2 items-end pt-2">
-                    <span className="text-[#475367] text-[20px] font-semibold">
-                      {fruit.price}
+                    <span className="text[#475367] text[20px] fontsemibold   text-lemonGreen font-medium text-[16px]">
+                      {/* {fruit.price} */}
+                      {fruit.category}
                     </span>
                     <span className="text-[#98A2B3] text-[14px] line-through">
-                      {fruit.discount}
+                      {/* {fruit.discount} */}
+                      
                     </span>
                   </div>
                 </div>

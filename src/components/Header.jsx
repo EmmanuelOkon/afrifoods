@@ -5,7 +5,7 @@ import { LuMail } from "react-icons/lu";
 import { Fragment, useState } from "react";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Rwanda from "../assets/icons/rwanda.svg"
+import Rwanda from "../assets/icons/rwanda.svg";
 // import HeadCountries from "./SelectCountry";
 
 const language = [
@@ -43,13 +43,11 @@ const Header = () => {
             </NavLink>
             <div className="border-l border-white border-opacity-70 mx-4"></div>
             <NavLink
-              to="mailto:afrifoodsrwanda@gmail.com"
+              to="mailto:info@afrfoodsltd.com"
               className="flex items-center gap-2"
             >
-              <LuMail
-                className="text-white w-6 h-6 text-opacity-70 p-[2px] sm:h-auto"
-              />
-              <span>afrifoodsrwanda@gmail.com</span>
+              <LuMail className="text-white w-6 h-6 text-opacity-70 p-[2px] sm:h-auto" />
+              <span>info@afrfoodsltd.com</span>
             </NavLink>
           </div>
           <div className="flex items-center gap-4">
@@ -118,12 +116,7 @@ const Header = () => {
                         onClick={() => setCountryMenuOpen(!countryMenuOpen)}
                         className="inline-flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white text-opacity-70 shadow-sm ring-0"
                       >
-                        <img
-                          src={Rwanda}
-                          width={20}
-                          height={20}
-                          alt="Rwanda"
-                        />
+                        <img src={Rwanda} width={20} height={20} alt="Rwanda" />
                         Rwanda
                         <ChevronDownIcon
                           className={classNames(
