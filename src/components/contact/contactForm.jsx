@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import Loading from "../loader";
 
 const ContactForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -7,12 +8,15 @@ const ContactForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+    // console.log("loading...");
     setFormSubmitted(true);
 
     if (!firstName || !lastName || !email || !phone || !message) {
@@ -22,23 +26,62 @@ const ContactForm = () => {
         closeOnClick: true,
         pauseOnHover: false,
       });
+      setLoading(false)
+      // console.log("error encountered");
 
       return;
     }
 
-    toast.success("Form submitted successfully", {
-      position: "top-center",
-      autoClose: 3000,
-      closeOnClick: true,
-      pauseOnHover: false,
-    });
+    try {
+      // Send form data to the endpoint
+      const response = await fetch("https://apis.afrifoodsltd.com/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          message,
+        }),
+      });
+      if (response.ok) {
+        // console.log("Form submitted successfully");
+        toast.success("Form submitted successfully", {
+          position: "top-center",
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
 
-    // Reset form fields
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
+        // Reset form fields
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setFormSubmitted(false);
+      } else {
+        toast.error("Failed to submit the form. Please try again.", {
+          position: "top-center",
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      toast.error("An error occurred. Please try again later.", {
+        position: "top-center",
+        autoClose: 5000,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    }
+
+    setLoading(false);
     setFormSubmitted(false);
   };
 
@@ -145,12 +188,28 @@ const ContactForm = () => {
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </div>
+
               <div className="mt-8 text-center">
                 <button
                   type="submit"
-                  className="bg-green text-white font-semibold w-fit py-3 text-base px-10 rounded focus:outline-none focus:shadow-outline border-2 border-green hover:bg-white hover:text-green transition-all"
+                  className={
+                    (loading
+                      ? " w-[190px] h-[52px]"
+                      : "bg-green text-white hover:bg-white hover:text-green ",
+                    "border-green  text-base rounded focus:outline-none focus:shadow-outline border-2  font-semibold transition-all")
+                  }
                 >
-                  Send message
+                  {loading ? (
+                    <>
+                      <div className="bg-white py-0 my-0 flex items-center">
+                        <Loading />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="w-fit py-3 px-10 bg-green text-white hover:bg-white hover:text-green">
+                      Send message
+                    </div>
+                  )}
                 </button>
               </div>
             </form>
