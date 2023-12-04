@@ -3,47 +3,32 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const faqs = [
   {
-    question: "Where does Afri Foods source its agricultural products?",
-    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    question: "Where does Afrifood source its agricultural products?",
+    answer: `Afri-Foods source its agricultural products from a dual-source strategy, comprising our proprietary farms located in Gatsibo and Nyanza, as well as collaborating with local farms throughout Rwanda. Our commitment to excellence is reflected in our close partnerships with farmers, guaranteeing the highest standards of quality, freshness, and consistency across all our products.`,
   },
   {
     question: "What payment methods are accepted?",
-    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `AFRI-FOODS accommodates various payment methods to facilitate a seamless transaction process. Customers can opt for advance payment, leverage LC (Letter of Credit), or select from other mutually agreed-upon payment modalities outlined in the sales contract. Our commitment to flexibility in payment options is designed to meet the diverse preferences and needs of our valued clients while maintaining the company's financial security.`,
   },
   {
     question: "How can I track my order?",
-    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
-  },
-  {
-    question: "What is the minimum order quantity for your products?",
-    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
-  },
-  {
-    question: "Can I return or exchange products if I'm not satisfied?",
-    answer: `Afri Foods sources its agricultural products directly from local farms across Rwanda. We work closely with farmers to ensure the quality and freshness of our products.`,
+    answer: `To track your order of fresh fruits and vegetables, we provide real-time communication. Once your shipment is dispatched, you will receive a shipment document along with relevant details. This allows you to stay informed about the progress of your shipment and ensures transparency in the delivery process. If you have any specific inquiries or need assistance with tracking, our customer support team is readily available to provide prompt and accurate information. For air freight clients, you can use the Air Waybill tracking number on the airline partner's website to monitor the real-time status and location of your order during its journey by air.`,
   },
 ];
 
 const faqsTwo = [
   {
-    question: "How can I place an order on Afri Foods' website?",
-    answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
+    question: "What is the minimum order quantity for your products?",
+    answer: `The minimum order quantity for our products is contingent upon the destination and the specific produce in question. Generally, individual consignments do not fall below 500 kgs per produce, with a total consignment requirement starting at 1 ton. For a more tailored understanding based on your requirements, please feel free to reach out and contact us.`,
   },
   {
-    question: "Where does Afri Foods deliver?",
-    answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
+    question: "How can I place an order on AFRI-FOODS’ WEBSITE?",
+    answer: `To place an order on AFRI-FOODS' website, please visit the "Contact" section and furnish the necessary details for your order. Include information such as your company details, required quantity, specific quality standards or certifications, preferred destination with a specific airport or port, price preference (FOB or CIF), desired payment modality, expected time of delivery, and any other relevant details. Our dedicated sales team will expeditiously reach out to you within the next 24 hours to provide a quotation and guide you through the order process.`,
   },
   {
-    question: "Are Afri Foods' products organic and sustainably sourced?",
-    answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
-  },
-  {
-    question: "Do you offer bulk or wholesale pricing for businesses?",
-    answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
-  },
-  {
-    question: "How can I get in touch with Afri Foods' customer support?",
-    answer: `Ordering with us is easy! Simply browse our products, select the items you want, and add them to your cart. Then, proceed to checkout, provide your shipping details, and complete your order.`,
+    question:
+      "Where does AFRI-FOODS deliver?",
+    answer: `AFRI-FOODS extends its delivery services primarily to Europe, encompassing countries such as Germany, France, Italy, Belgium, Spain, and the Netherlands. Additionally, we cater to the United Kingdom and the United Arab Emirates. In alignment with the African Continental Free Trade Area (AfCFTA), we are actively exploring opportunities in Ghana and Egypt and have commenced exports to Kenya. We remain open to expanding our reach to more countries. As part of our strategic growth, we are diligently working towards entering the Asian market, with plans set for implementation by the fall of 2024.`,
   },
 ];
 
