@@ -145,10 +145,10 @@ const Footer = () => {
                     +250 786 416 032
                   </NavLink>
                   <NavLink
-                    to="mailto:info@afrfoodsltd.com"
+                    to="mailto:info@afrifoodsltd.com"
                     className="block flex-shrink-0"
                   >
-                    info@afrfoodsltd.com
+                    info@afrifoodsltd.com
                   </NavLink>
                 </div>
                 <div className="  ">
