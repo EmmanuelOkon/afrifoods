@@ -123,14 +123,14 @@ const HeroProducts = () => {
                   </div>
                   <div className="py-4 pt-8">
                     <p className="text-base py-4">
-                      At Afri Foods, we're a forward-thinking horticulture
-                      company with a touch of innovation. Led by women, we're
+                      At Afri Foods, we are a forward-thinking horticulture
+                      company with a touch of innovation. Led by women, we are
                       proud to bring you the finest fresh produce from Rwanda.
                     </p>
                     <p className="text-base py-4">
                       Our array of fresh fruits and vegetables is a testament to
-                      the richness of Rwandan soil. You'll find treasures like
-                      avocados, chili peppers, passionfruit, bitter lemons,
+                      the richness of Rwandan soil. You will find treasures like
+                      avocados, chili peppers, passionfruit, bitter lemons
                       pineapples, eggplants, plantains, and apple bananas in our
                       range.
                     </p>
@@ -142,7 +142,7 @@ const HeroProducts = () => {
                       produce is of the highest quality and can be traced back
                       to the very farms it came from.
                       <br />
-                      At Afri Foods, it's about a commitment to excellence and a
+                      At Afri Foods, it is about a commitment to excellence and a
                       passion for freshness. Join us in savoring the flavors of
                       Rwanda!
                     </p>

@@ -47,7 +47,7 @@ const ProductDetailsCard = () => {
       setSelectedCount(newCount);
     }
   };
-
+  console.log(product);
   const decrement = () => {
     const newCount = count - 1;
     if (count > 1) {
@@ -151,7 +151,7 @@ const ProductDetailsCard = () => {
                       <p className="font-semibold py-1 ">
                         <span className="">Tags:</span>
                         <span className="pl-1 font-normal ">
-                          fresh, fruits, avocado
+                          fresh, {product.category},  {product.name}
                         </span>
                       </p>
                     </div>
@@ -240,34 +240,17 @@ const ProductDetailsCard = () => {
                 </h1>
                 <div className="text-grey700 flex-col text-base ">
                   <p className="py-2">
-                    The Fuerte avocado is a popular and delicious variety of
-                    avocado (Persea americana) known for its unique
-                    characteristics. It was first developed in California in the
-                    early 20th century and is now widely cultivated in various
-                    avocado-growing regions.
+                    {product?.productDetails[0].textOne}
                   </p>
                   <p className="py-2">
-                    The Fuerte avocado is pear-shaped with smooth, medium-thick
-                    skin that changes from green to purplish-black as it ripens.
-                    Its creamy, pale green flesh has a slightly nutty flavor and
-                    a smooth, buttery texture. One of the key features of the
-                    Fuerte avocado is its extended harvesting season, typically
-                    from late fall through early spring, making it available for
-                    an extended period.
+                  {product?.productDetails[1].textTwo}
                   </p>
                   <p className="py-2">
-                    This variety is prized for its versatility in culinary
-                    applications, from making creamy guacamole to enhancing
-                    salads and sandwiches, and it is a favorite among avocado
-                    enthusiasts for its rich, well-balanced flavor.
+                  {product?.productDetails[2].textThree}
                   </p>
 
                   <p className="py-2">
-                    Fuerte avocados have a smooth medium-thin skin which is easy
-                    to peel and dense, pale green flesh with some dark
-                    speckling. <br />
-                    Fuerte avocados are rich and creamy with notes of hazelnuts
-                    and a clean, grassy finish.
+                  {product?.productDetails[3].textFour}
                   </p>
                 </div>
                 <h2 className="text-[#101928] text-2xl font-semibold pt-4 pb-2">
@@ -275,14 +258,7 @@ const ProductDetailsCard = () => {
                 </h2>
                 <div className="text-base text-grey700 ">
                   <p className="text-base">
-                    The avocado is a superfood worthy of the name. It contains
-                    more protein, potassium, magnesium, folic acid, thiamin,
-                    riboflavin, niacin, biotin, pantothenic acid, vitamin E, and
-                    vitamin K per ounce than any other fruit. The avocado also
-                    has monounsaturated fat, such as oleic acid that acts as a
-                    “nutrient booster”. It enables the human body to absorb more
-                    fat-soluble nutrients, such as alpha and beta-carotene and
-                    lutein, from other foods eaten with the fruit.
+                  {product?.healthBenefit}
                   </p>
                 </div>
               </div>
@@ -295,14 +271,14 @@ const ProductDetailsCard = () => {
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
                       Weight
                     </h2>
-                    <p className="w-[360px]">0.5kg, 1.5kg, 1kg, 2.5kg, 5kg</p>
+                    <p className="w-[360px]">{product?.specifications[0].weight}</p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
                       Harvesting Season
                     </h2>
                     <p className="py2  w-[360px]">
-                      Late Fall through Early Spring
+                    {product?.specifications[1].harvestingSeason}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -310,8 +286,7 @@ const ProductDetailsCard = () => {
                       Nutritional Content
                     </h2>
                     <p className="w-[360px]">
-                      Healthy monounsaturated fats, Fiber, vitamin K, vitamin C,
-                      vitamin E, and several B vitamins
+                    {product?.specifications[2].nutritionalContent}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -319,10 +294,7 @@ const ProductDetailsCard = () => {
                       Storage
                     </h2>
                     <p className="w-[360px] ">
-                      For best results, Fuerte avocados should be stored at room
-                      temperature until they reach the desired level of
-                      ripeness. Once ripe, they can be refrigerated to extend
-                      their shelf life.
+                    {product?.specifications[3].storage}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -330,9 +302,7 @@ const ProductDetailsCard = () => {
                       Culinary Uses
                     </h2>
                     <p className="w-[360px] ">
-                      Fuerte avocados used in a wide range of dishes, from
-                      guacamole and dips to salads, sandwiches, and as a
-                      versatile ingredient in both savory and sweet recipes.
+                    {product?.specifications[4].culinaryUses}
                     </p>
                   </div>
                 </div>

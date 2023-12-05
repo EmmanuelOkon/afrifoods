@@ -2,7 +2,7 @@ const API_URL = "https://restcountries.com/v3.1";
 
 export const fetchCountries = async () => {
   try {
-    const response = await fetch(`${API_URL}/region/africa`);
+    const response = await fetch(`${API_URL}/all`);
     const data = await response.json();
     console.log(data);
 
