@@ -37,11 +37,11 @@ export default function CustomerReview() {
               <div className="overflowhidden h-full w-full max- md:w-[560px] mx-auto">
                 <div className="flex flex-col justify-center max-w[10rem] w[860px] py-4 bg-red700 ">
                   <div className="flex justify-center">
-                    <img
+                    {/* <img
                       className="w-[56px] h-[56px] rounded-full bg-[#FFE7CC]"
                       src={customer.image}
                       alt={customer.name}
-                    />
+                    /> */}
                   </div>
                   <div className="textcenter ">
                     <p className="text-[#475367] text-base py-4 ">
