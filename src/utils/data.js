@@ -789,26 +789,26 @@ export const customers = [
     title: "CEO, Golden Tree Food Stuff LLC, Dubai, UAE",
   },
   {
-    name: "Mary Laiseca",
+    name: "Malik Abbas",
     image: customerImage,
     description:
-      "We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
-    title: "CTO, Silver Tree Food Stuff LLC, Dubai, UAE",
+      "Being in the business of importing fresh produce to the UK, partnering with Afri-Foods has been a remarkable journey. Their commitment to quality and timely deliveries has made sourcing vegetables from Africa stand out in The New Spitalfields Market. Our customers can taste the difference, and our business has flourished.",
+    title: "CTO, Fresh Import ltd, United Kingdom.",
   },
   {
-    name: "Sarah Laiseca",
+    name: "Hamid Haddouch",
     image: customerImage,
     description:
-      "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
-    title: "MD, Wooden Tree Food Stuff LLC, Dubai, UAE",
+      "Navigating the import quality standards in the Netherlands can be challenging, but Afri-Foods has made it seamless for us. Their range of chillies, particularly Habanero, is consistently high in quality, and their attention to detail ensures our customers get the best. Importing has never been this smooth. Afri-Foods, a partner you can rely on for excellence.",
+    title: "Chilli and Pepper, Netherlands",
   },
-  {
+  /*{
     name: "Abraham Laiseca",
     image: customerImage,
     description:
       "Rapid response, great communication, and excellent service. We have been working with AfriFoods since February 2020. Ms Sakina and her team have built a relationship based on trust and commitment.",
     title: "Agricultural Minister, India",
-  },
+  },*/
 ];
 
 export const termOfService = [
