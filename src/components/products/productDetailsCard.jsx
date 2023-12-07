@@ -212,11 +212,11 @@ const ProductDetailsCard = () => {
                           <span>
                             0rder in the next
                             <span className="text-lemonGreen underline px-1 ">
-                              07 hours 56 minutes
+                              07 hours 
                             </span>
-                            to get it by
+                            to get it in
                             <span className="text-lemonGreen underline pl-1">
-                              Oct 30, 2023
+                              3-5 days
                             </span>
                           </span>
                         </p>
