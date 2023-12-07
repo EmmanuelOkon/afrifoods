@@ -49,7 +49,7 @@ export default function CustomerReview() {
                     </p>
                     <p className="text-greyBlack">{customer.name}</p>
                     <span className="text-[#475367] italic text-sm">
-                      CEO, Golden Tree Food Stuff LLC, Dubai, UAE
+                      {customer.title}
                     </span>
                   </div>
                 </div>
