@@ -69,6 +69,7 @@ const DeliveryForm = () => {
 
     return true;
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
