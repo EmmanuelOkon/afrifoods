@@ -123,7 +123,7 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                       </div>
                     </div>
                     <div>
-                      <DeliveryForm />
+                      <DeliveryForm product={product} selectedCount={selectedCount} />
                     </div>
                   </Dialog.Panel>
                 </Dialog.Panel>

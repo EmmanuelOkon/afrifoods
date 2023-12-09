@@ -4,21 +4,23 @@ import { toast } from "sonner";
 import { fetchCountries } from "../../utils/countries";
 import { CiGlobe } from "react-icons/ci";
 
-const DeliveryForm = () => {
+const DeliveryForm = ({ product, selectedCount }) => {
 
+  console.log(product.name)
+  console.log(selectedCount)
 
 
   const [companyName, setCompanyName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [product, setProduct] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [streetAddress, setStreetAddress] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState({ name: product.name })
+  const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState(0);
-  const [selectedCountry, setSelectedCountry] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
@@ -30,25 +32,24 @@ const DeliveryForm = () => {
         setCountries(sortedCountries);
         console.log(sortedCountries);
       } catch (error) {
-        // Handle error
+        console.log("error fetching countries")
       }
     };
 
     fetchData();
   }, []);
 
-  console.log(countries);
+  // console.log(countries);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const fieldErrorMessages = {
     companyName: "Please enter your company name.",
-    lastName: "Please enter your last name.",
-    mobileNumber: "Please enter a valid mobile number.",
     email: "Please enter a valid email address.",
-    streetAddress: "Please enter your street address.",
+    phone: "Please enter a valid Phone.",
+    address: "Please enter your Address.",
     city: "Please enter your city/town.",
-    selectedCountry: "Please select your country.",
+    country: "Please select your country.",
     zipCode: "Please enter your zip code.",
   };
 
@@ -71,40 +72,38 @@ const DeliveryForm = () => {
   };
 
   const validateForm = () => {
-    const mobileNumberRegex = /^[0-9]\d{2}[2-9](?!11)\d{6}$/;
+    const phoneRegex = /^\+?\d{0,4}[2-9](?!11)\d{6}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // Check if mobile number is empty or does not match the regex
-    const numberCheck = mobileNumber === "" || !mobileNumberRegex.test(mobileNumber);
+    // const numberCheck = phone === "" || !phoneRegex.test(phone);
     const emailCheck = email === "" || !emailRegex.test(email);
 
-    setNumberCheck(numberCheck);
+    // setNumberCheck(numberCheck);
     setEmailCheck(emailCheck);
 
     if (numberCheck || emailCheck) {
       if (numberCheck) {
-        setErrorMessage(fieldErrorMessages.mobileNumber);
+        setErrorMessage(fieldErrorMessages.phone);
       } else {
         setErrorMessage(fieldErrorMessages.email);
       }
       return false;
     }
 
-
-    setErrorMessage(""); // Clear error message if all validations pass
-
-
+    setErrorMessage("");
     const requiredFields = [
       companyName,
-      lastName,
-      mobileNumber,
       email,
-      streetAddress,
+      phone,
+      selectedProduct,
+      quantity,
+      address,
       city,
-      selectedCountry,
+      country,
       zipCode,
     ];
-    if (requiredFields.some((field) => field === "")) {
+    console.log(requiredFields);
+    if (requiredFields.some((field) => (field === "" || field === null || (Array.isArray(field) && field.length === 0)))) {
       warning();
       return false;
     }
@@ -118,40 +117,44 @@ const DeliveryForm = () => {
 
     if (validateForm()) {
       try {
+        const payload = {
+          companyName,
+          phone,
+          email,
+          product: selectedProduct.name,
+          quantity: selectedCount,
+          address,
+          city,
+          country,
+          zipCode,
+        };
+
+        console.log(country)
+
+        console.log("Payload sent to server:", payload);
+
         const response = await fetch('https://apis.afrifoodsltd.com/sendOrder', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            companyName,
-            lastName,
-            mobileNumber,
-            email,
-            product,
-            quantity,
-            streetAddress,
-            city,
-            selectedCountry,
-            zipCode,
-          }),
+          body: JSON.stringify(payload),
         });
 
         if (response.ok) {
           success();
-
           setCompanyName("");
-          setLastName("");
-          setMobileNumber("");
+          setSelectedProduct("");
+          setPhone("");
           setEmail("");
-          setStreetAddress("");
+          setAddress("");
           setCity("");
-          setSelectedCountry("");
+          setCountry("");
           setZipCode("");
           setFormSubmitted(false);
-
         } else {
           const responseData = await response.json();
+          console.error("Failed to submit the order:", responseData.message);
           setErrorMessage(responseData.message || "Failed to submit the order.");
         }
       } catch (error) {
@@ -162,16 +165,16 @@ const DeliveryForm = () => {
     }
 
     if (numberCheck) {
-      setErrorMessage(fieldErrorMessages.mobileNumber);
+      setErrorMessage(fieldErrorMessages.phone);
       return false;
     }
 
     if (emailCheck) {
       setErrorMessage(fieldErrorMessages.email);
-
       return false;
     }
   };
+
 
   return (
     <>
@@ -202,55 +205,8 @@ const DeliveryForm = () => {
                 )
               }
             </div>
-
-            <div className="flex flex-col gap-1 w-full">
-              <label
-                htmlFor="lastName"
-                className="text-sm text-[#101928] font-semibold mt-3"
-              >
-                Last Name
-              </label>
-              <input
-                type={lastName}
-                value={lastName}
-                id="lastName"
-                placeholder="Last Name"
-                onChange={(e) => setLastName(e.target.value)}
-                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize placeholder:text-sm"
-              />
-              {
-                formSubmitted && lastName === "" && (
-                  <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.lastName}
-                  </span>
-                )
-              }
-            </div>
           </div>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
-            <div className="flex flex-col gap-1 w-full">
-              <label
-                htmlFor="mobileNumber"
-                className="text-sm text-[#101928] font-semibold mt-3 "
-              >
-                Mobile Number
-              </label>
-              <input
-                type="text"
-                id="mobileNumber"
-                value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value)}
-                placeholder="Mobile number"
-                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
-              />
-              {
-                formSubmitted && numberCheck && (
-                  <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.mobileNumber}
-                  </span>
-                )
-              }
-            </div>
             <div className="flex flex-col gap-1 w-full">
               <label
                 htmlFor="emailAddress"
@@ -274,54 +230,80 @@ const DeliveryForm = () => {
                 )
               }
             </div>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
             <div className="flex flex-col gap-1 w-full">
               <label
-                htmlFor="streetAddress"
+                htmlFor="product"
                 className="text-sm text-[#101928] font-semibold mt-3 "
               >
-                Street Address
+                Product
               </label>
               <input
-                type={streetAddress}
-                value={streetAddress}
-                onChange={(e) => setStreetAddress(e.target.value)}
-                id="streetAddress"
-                placeholder="Street Address"
+                type="text"
+                id="product"
+                value={product.name}
+                onChange={(e) => setSelectedProduct({ ...selectedProduct, name: e.target.value })}
+
+                placeholder="Product"
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
               {
-                formSubmitted && streetAddress === "" && (
+                formSubmitted && product === "" && (
                   <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.streetAddress}
+                    {fieldErrorMessages.product}
+                  </span>
+                )
+              }
+            </div>
+
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
+          <div className="flex flex-col gap-1 w-full">
+              <label
+                htmlFor="address"
+                className="text-sm text-[#101928] font-semibold mt-3 "
+              >
+                Address
+              </label>
+              <input
+                type={address}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                id="address"
+                placeholder="Address"
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
+              />
+              {
+                formSubmitted && address === "" && (
+                  <span className="text-red-500 text-sm">
+                    {fieldErrorMessages.address}
                   </span>
                 )
               }
             </div>
             <div className="flex flex-col gap-1 w-full">
               <label
-                htmlFor="city"
-                className="text-sm text-[#101928] font-semibold mt-3"
+                htmlFor="quantity"
+                className="text-sm text-[#101928] font-semibold mt-3 "
               >
-                City/Town
+                Quantity
               </label>
               <input
-                type={city}
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                id="city"
-                placeholder="City/Town"
-                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize placeholder:text-sm"
+                type="number"
+                id="quantity"
+                value={selectedCount}
+                onChange={(e) => setQuantity({ quantity: e.target.value })}
+                placeholder="Product"
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
               {
-                formSubmitted && city === "" && (
+                formSubmitted && quantity === 0 && (
                   <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.city}
+                    {fieldErrorMessages.quantity}
                   </span>
                 )
               }
             </div>
+
           </div>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
             <div className="flex flex-col gap-1 w-full">
@@ -334,25 +316,25 @@ const DeliveryForm = () => {
               <Listbox
                 as={"div"}
                 id="country"
-                value={selectedCountry}
-                onChange={(e) => setSelectedCountry(e)}
+                value={country}
+                onChange={(e) => setCountry(e)}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
                 <Listbox.Button className="w-full text-left px2 relive ">
                   {
                     <div className=" flex items-center ">
-                      {selectedCountry ? (
+                      {country ? (
                         <div className="bg-gray-200 py-2 px-2 w-full flex items-center">
                           <img
                             src={
                               countries.find(
-                                (country) => country.name === selectedCountry
+                                (country) => country.name === country
                               )?.flag
                             }
-                            alt={`${selectedCountry} flag`}
+                            alt={`${country} flag`}
                             className="w-auto h-6 mr-2"
                           />
-                          {selectedCountry}
+                          {country}
                         </div>
                       ) : (
                         <>
@@ -402,13 +384,68 @@ const DeliveryForm = () => {
                 </Listbox.Options>
               </Listbox>
               {
-                formSubmitted && selectedCountry === "" && (
+                formSubmitted && country === "" && (
                   <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.selectedCountry}
+                    {fieldErrorMessages.country}
                   </span>
                 )
               }
             </div>
+
+            <div className="flex flex-col gap-1 w-full">
+              <label
+                htmlFor="city"
+                className="text-sm text-[#101928] font-semibold mt-3"
+              >
+                City/Town
+              </label>
+              <input
+                type={city}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                id="city"
+                placeholder="City/Town"
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize placeholder:text-sm"
+              />
+              {
+                formSubmitted && city === "" && (
+                  <span className="text-red-500 text-sm">
+                    {fieldErrorMessages.city}
+                  </span>
+                )
+              }
+            </div>
+
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
+
+
+          <div className="flex flex-col gap-1 w-full">
+              <label
+                htmlFor="phone"
+                className="text-sm text-[#101928] font-semibold mt-3 "
+              >
+                Phone
+              </label>
+              <input
+                type="text"
+                id="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone"
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
+              />
+
+              {
+                formSubmitted && numberCheck && (
+                  <span className="text-red-500 text-sm">
+                    {fieldErrorMessages.phone}
+                  </span>
+                )
+              }
+            </div>
+            
+
             <div className="flex flex-col gap-1 w-full">
               <label
                 htmlFor="zipCode"
@@ -425,13 +462,15 @@ const DeliveryForm = () => {
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize placeholder:text-sm"
               />
               {
-                formSubmitted && zipCode === "" && (
+                formSubmitted && zipCode === 0 && (
                   <span className="text-red-500 text-sm">
                     {fieldErrorMessages.zipCode}
                   </span>
                 )
               }
             </div>
+
+
           </div>
           <button
             type="submit"

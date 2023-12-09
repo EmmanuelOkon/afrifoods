@@ -5,13 +5,13 @@ import heroFour from "../assets/images/home/home_4.png";
 import heroFive from "../assets/images/home/home_5.png";
 
 import fuerteAvocado from "../assets/images/products/items/fuerteAvocado.png";
-import hassAvocado from "../assets/images/products/items/hassAvocado.png";
+// import hassAvocado from "../assets/images/products/items/hassAvocado.png";
 import appleBanana from "../assets/images/products/items/appleBanana.png";
 import pineapple from "../assets/images/products/items/pineapple.png";
 import yellowPassion from "../assets/images/products/items/yellowPassionFruit.png";
-import rosePassion from "../assets/images/products/items/rosePassionFruit.png";
+// import rosePassion from "../assets/images/products/items/rosePassionFruit.png";
 import bitterLemon from "../assets/images/products/items/bitterLemonFruit.png";
-import redPepper from "../assets/images/products/items/redPepper.png";
+// import redPepper from "../assets/images/products/items/redPepper.png";
 import longRedPepper from "../assets/images/products/items/longRedPepper.png";
 import gardenEgg from "../assets/images/products/items/gardenEgg.png";
 import plantain from "../assets/images/products/items/plantain.png";
