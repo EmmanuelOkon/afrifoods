@@ -24,6 +24,8 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
+  const [countryImg, setCountryImg] = useState("");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +41,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
     fetchData();
   }, []);
 
-  // console.log(countries);
+  console.log(countries);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -72,7 +74,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   };
 
   const validateForm = () => {
-    const phoneRegex = /^\+?\d{0,4}[2-9](?!11)\d{6}$/;
+    // const phoneRegex = /^\+?\d{0,4}[2-9](?!11)\d{6}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     // const numberCheck = phone === "" || !phoneRegex.test(phone);
@@ -241,8 +243,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 type="text"
                 id="product"
                 value={product.name}
-                onChange={(e) => setSelectedProduct({ ...selectedProduct, name: e.target.value })}
-
+                onChange={(e) => setSelectedProduct({ product: e.target.value })}
                 placeholder="Product"
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
@@ -257,7 +258,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
 
           </div>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
-          <div className="flex flex-col gap-1 w-full">
+            <div className="flex flex-col gap-1 w-full">
               <label
                 htmlFor="address"
                 className="text-sm text-[#101928] font-semibold mt-3 "
@@ -317,21 +318,23 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 as={"div"}
                 id="country"
                 value={country}
-                onChange={(e) => setCountry(e)}
+                onChange={(selectedCountry) => {
+                  setCountry(selectedCountry);
+                  const selectedCountryObject = countries.find(
+                    (country) => country.name === selectedCountry
+                  );
+                  setCountryImg(selectedCountryObject ? selectedCountryObject.flag : "");
+                }}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
                 <Listbox.Button className="w-full text-left px2 relive ">
                   {
                     <div className=" flex items-center ">
                       {country ? (
-                        <div className="bg-gray-200 py-2 px-2 w-full flex items-center">
+                        <div className="bg-gray-200 py-2 px-2 w-full flex items-center" >
                           <img
-                            src={
-                              countries.find(
-                                (country) => country.name === country
-                              )?.flag
-                            }
-                            alt={`${country} flag`}
+                            src={countryImg}
+                            alt={`${countryImg} flag`}
                             className="w-auto h-6 mr-2"
                           />
                           {country}
@@ -420,7 +423,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
 
 
-          <div className="flex flex-col gap-1 w-full">
+            <div className="flex flex-col gap-1 w-full">
               <label
                 htmlFor="phone"
                 className="text-sm text-[#101928] font-semibold mt-3 "
@@ -444,7 +447,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 )
               }
             </div>
-            
+
 
             <div className="flex flex-col gap-1 w-full">
               <label
