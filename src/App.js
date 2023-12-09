@@ -16,6 +16,7 @@ import Error from "./pages/Error";
 import ScrollTop from "./components/ScrollTop";
 import ProductDetails from "./pages/ProductDetails";
 import TermOfService from "./pages/TermOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -54,8 +55,10 @@ const MainContent = () => {
         return "Product Details";
       case pathname === "/sustainability":
         return "Sustainability";
-        case pathname === "/termsofservice":
+      case pathname === "/termsofservice":
         return "Term of Service";
+      case pathname === "/privacypolicy":
+        return "Pricacy Policy";
       default:
         return "Error 404";
     }
@@ -74,6 +77,7 @@ const MainContent = () => {
         <Route path="/product/:productName" element={<ProductDetails />} />
         <Route path="/sustainability" element={<Sustainability />} />
         <Route path="/termsofservice" element={<TermOfService />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Error />} />
       </Routes>
 

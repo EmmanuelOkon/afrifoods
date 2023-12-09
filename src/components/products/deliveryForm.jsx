@@ -23,8 +23,6 @@ const DeliveryForm = () => {
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -114,22 +112,53 @@ const DeliveryForm = () => {
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
 
     if (validateForm()) {
-      success();
+      try {
+        const response = await fetch('https://apis.afrifoodsltd.com/sendOrder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            companyName,
+            lastName,
+            mobileNumber,
+            email,
+            product,
+            quantity,
+            streetAddress,
+            city,
+            selectedCountry,
+            zipCode,
+          }),
+        });
 
-      setCompanyName("");
-      setLastName("");
-      setMobileNumber("");
-      setEmail("");
-      setStreetAddress("");
-      setCity("");
-      setSelectedCountry("");
-      setZipCode("");
-      setFormSubmitted(false);
+        if (response.ok) {
+          success();
+
+          setCompanyName("");
+          setLastName("");
+          setMobileNumber("");
+          setEmail("");
+          setStreetAddress("");
+          setCity("");
+          setSelectedCountry("");
+          setZipCode("");
+          setFormSubmitted(false);
+
+        } else {
+          const responseData = await response.json();
+          setErrorMessage(responseData.message || "Failed to submit the order.");
+        }
+      } catch (error) {
+        // Handle fetch error
+        console.error('Error submitting order:', error);
+        setErrorMessage("Failed to submit the order. Please try again.");
+      }
     }
 
     if (numberCheck) {
@@ -142,9 +171,6 @@ const DeliveryForm = () => {
 
       return false;
     }
-
-
-
   };
 
   return (

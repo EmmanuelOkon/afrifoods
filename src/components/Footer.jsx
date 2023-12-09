@@ -15,13 +15,16 @@ const navigation = {
   links: [
     { name: "Home", href: "/" },
     // { name: "Support", href: "/support" },
-    { name: "Products", href: "/products" },
-    { name: "Terms of Service", href: "/termsofservice" },
-    { name: "Sustainability", href: "/sustainability" },
-    // { name: "Privacy Policy", href: "/privacypolicy" },
-    { name: "About Us", href: "/about" },
-    { name: "FAQ", href: "/faq" },
     { name: "Contact Us", href: "/contact" },
+    
+    { name: "Products", href: "/products" },
+    { name: "FAQ", href: "/faq" },
+    
+    { name: "About Us", href: "/about" },
+    { name: "Privacy Policy", href: "/privacypolicy" },
+
+    { name: "Sustainability", href: "/sustainability" },
+    { name: "Terms of Service", href: "/termsofservice" },
   ],
   company: [
     { name: "About", href: "#" },
