@@ -25,6 +25,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
   const [countryImg, setCountryImg] = useState("");
+  const [countryPhoneCode, setCountryPhoneCode] = useState("");
 
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
       try {
         const sortedCountries = await fetchCountries();
         setCountries(sortedCountries);
+
         console.log(sortedCountries);
       } catch (error) {
         console.log("error fetching countries")
@@ -48,7 +50,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const fieldErrorMessages = {
     companyName: "Please enter your company name.",
     email: "Please enter a valid email address.",
-    phone: "Please enter a valid Phone.",
+    phone: "Please enter a valid Phone Number.",
     address: "Please enter your Address.",
     city: "Please enter your city/town.",
     country: "Please select your country.",
@@ -74,13 +76,13 @@ const DeliveryForm = ({ product, selectedCount }) => {
   };
 
   const validateForm = () => {
-    // const phoneRegex = /^\+?\d{0,4}[2-9](?!11)\d{6}$/;
+    const phoneRegex = /^\d{1,10}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // const numberCheck = phone === "" || !phoneRegex.test(phone);
+    const numberCheck = phone === "" || !phoneRegex.test(phone);
     const emailCheck = email === "" || !emailRegex.test(email);
 
-    // setNumberCheck(numberCheck);
+    setNumberCheck(numberCheck);
     setEmailCheck(emailCheck);
 
     if (numberCheck || emailCheck) {
@@ -119,9 +121,10 @@ const DeliveryForm = ({ product, selectedCount }) => {
 
     if (validateForm()) {
       try {
+        const fullPhoneNumber = countryPhoneCode + phone;
         const payload = {
           companyName,
-          phone,
+          phone: fullPhoneNumber,
           email,
           product: selectedProduct.name,
           quantity: selectedCount,
@@ -323,8 +326,18 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   const selectedCountryObject = countries.find(
                     (country) => country.name === selectedCountry
                   );
+                  setCountryPhoneCode(
+                    selectedCountryObject ? selectedCountryObject.phone : ""
+                  );
                   setCountryImg(selectedCountryObject ? selectedCountryObject.flag : "");
                 }}
+                // onChange={(selectedCountry) => {
+                //   setCountry(selectedCountry);
+                //   const selectedCountryObject = countries.find(
+                //     (country) => country.name === selectedCountry
+                //   );
+                //   setCountryImg(selectedCountryObject ? selectedCountryObject.flag : "");
+                // }}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
                 <Listbox.Button className="w-full text-left px2 relive ">
@@ -421,8 +434,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
 
           </div>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
-
-
             <div className="flex flex-col gap-1 w-full">
               <label
                 htmlFor="phone"
@@ -430,15 +441,30 @@ const DeliveryForm = ({ product, selectedCount }) => {
               >
                 Phone
               </label>
-              <input
-                type="text"
-                id="phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone"
-                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
-              />
+              <div className="flex items-center bg-gray-100 rounded-md"
+              >
+                {
+                  countryPhoneCode ? (
+                    <span className="bgray-100 px-1">
+                      {countryPhoneCode}
+                    </span>
+                    ) : (
+                    <span className="bgray-100 px-1">
+                      +000
+                    </span>
+                  )
+                }
 
+                <input
+                  type="text"
+                  id="phone"
+                  // value={countryPhoneCode + phone}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="123-4567-890"
+                  className="appearance-none font-semibold bock w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 ml-1 px-2 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
+                />
+              </div>
               {
                 formSubmitted && numberCheck && (
                   <span className="text-red-500 text-sm">
@@ -446,6 +472,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   </span>
                 )
               }
+
             </div>
 
 
@@ -464,13 +491,19 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 placeholder="Zip Code"
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] capitalize placeholder:text-sm"
               />
-              {
-                formSubmitted && zipCode === 0 && (
+              {formSubmitted && (zipCode === 0 || zipCode.toString().length < 5) && (
+                <span className="text-red-500 text-sm">
+                  {fieldErrorMessages.zipCode}
+                </span>
+              )
+              }
+              {/* {
+                formSubmitted && (zipCode === "" || (zipCode !== "" && zipCode.toString().length < 5)) && (
                   <span className="text-red-500 text-sm">
                     {fieldErrorMessages.zipCode}
                   </span>
                 )
-              }
+              } */}
             </div>
 
 
