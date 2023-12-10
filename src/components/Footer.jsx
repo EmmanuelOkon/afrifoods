@@ -16,10 +16,10 @@ const navigation = {
     { name: "Home", href: "/" },
     // { name: "Support", href: "/support" },
     { name: "Contact Us", href: "/contact" },
-    
+
     { name: "Products", href: "/products" },
     { name: "FAQ", href: "/faq" },
-    
+
     { name: "About Us", href: "/about" },
     { name: "Privacy Policy", href: "/privacypolicy" },
 
@@ -123,7 +123,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-deepGreen" aria-labelledby="footer-heading">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid md:grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-4">

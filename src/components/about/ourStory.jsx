@@ -4,7 +4,7 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 const OurStory = () => {
   return (
     <>
-      <div className="px-[20px]  xl:px-[100px] md:bg-white mx-auto  max-w-7xl">
+      <div className="px-[20px]  xl:px-[100px] md:bg-white mx-auto  lg:max-w-7xl 2xl:max-w-[1560px]">
         <div className="py-[3rem] sm:py-6 lg:py-10">
           <div className="pb-[2rem] text-center ">
             <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:trcking-wider lg:leading-none">
@@ -100,11 +100,11 @@ const OurStory = () => {
               Just two years later and Afri Foods is well-known in Rwanda for
               exporting fresh, spicy chillies and avocados. Our CEO, Sakina, has
               not slowed down either. Her drive, enthusiasm, and desire for
-              continual improvement, powers the company’s every step. 
+              continual improvement, powers the company’s every step.
             </p>
           </div>
         </div>
-        
+
       </div>
     </>
   );

@@ -31,7 +31,7 @@ const successData = [
 function CultivateSuccess() {
   return (
     <>
-      <div className=" max-w-7xl mx-auto">
+      <div className=" lg:max-w-7xl 2xl:max-w-[1560px] mx-auto">
         <div className="  py-6 lg:py16">
           <div className="px-4 lg:px[45px] xl:px-[100px] bg-white mx-auto ">
             <div className="flex gap-6 flex-col-reverse items-center md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px10">

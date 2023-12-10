@@ -101,7 +101,7 @@ const HeroProducts = () => {
           </div>
         </div>
       </div>
-      <div className=" max-w-7xl mx-auto">
+      <div className=" lg:max-w-7xl 2xl:max-w-[1560px] mx-auto">
         <div className="  py-6 lg:py16">
           <div className="px-4 lg:px[45px] xl:px[100px]  bg-white  mx-auto ">
             <div className="flex flex-col-reverse items-center rounded-lg md:gap-[4rem] lg:flex-row lg:justify-between w-full lg:px-20">

@@ -5,7 +5,7 @@ import { termOfService } from "../utils/data";
 const TermOfService = () => {
   return (
     <Layout>
-      <div className="pt-10 mx-auto max-w-7xl px-4 pb-8">
+      <div className="pt-10 mx-auto lg:max-w-7xl 2xl:max-w-[1560px] px-4 pb-8">
         <h1 className="text-center text-green text-2xl font-extrabold">AFRI-FOODS WEBSITE TERMS AND CONDITIONS</h1>
         {termOfService.map((item) => (
           <div key={item.text} className="py-2 max-w-xl lg:max-w-4xl mx-auto ">
@@ -14,7 +14,7 @@ const TermOfService = () => {
           </div>
         ))}
       </div>
-    </Layout> 
+    </Layout>
   );
 };
 
