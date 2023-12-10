@@ -33,7 +33,7 @@ const Fruits = () => {
       <HeadCategories categories={categories} setCategories={setCategories} />
       <div className="pt- md:mt- bg-white ">
         <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg- mx-auto ">
-          <div className="max-w-7xl mx-auto px-2 py-6">
+          <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 py-6">
             <div className="block md:flex items-center justify-between lg:px-2 py-4 border-b ">
               <div className="text-center md:text-left py-3">
                 <span>Showing 1 - 12 of 20 results</span>
@@ -53,9 +53,8 @@ const Fruits = () => {
                   )}
 
                   <FiList
-                    className={`cursor-pointer h-6 w-6 ${
-                      !isGrid ? "text-green font-bold" : "text-[#98A2B3]"
-                    }`}
+                    className={`cursor-pointer h-6 w-6 ${!isGrid ? "text-green font-bold" : "text-[#98A2B3]"
+                      }`}
                     onClick={toggleView}
                   />
                 </div>
@@ -80,7 +79,7 @@ const Fruits = () => {
               </div>
             </div>
           </div>
-          <div className="max-w-7xl mx-auto px-2 pb-10 ">
+          <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 pb-10 ">
             {isGrid ? (
               <div className="grid grid-cols-1 lgrid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
                 {filteredProducts.map((feature) => (

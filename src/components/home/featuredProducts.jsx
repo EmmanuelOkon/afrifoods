@@ -42,11 +42,10 @@ const FeaturedProducts = () => {
             {categories.map((category) => (
               <li
                 key={category.name}
-                className={`border-b text-sm font-semibold px-4 hover:cursor-pointer py-3 ${
-                  category.name === selectedCategory
+                className={`border-b text-sm font-semibold px-4 hover:cursor-pointer py-3 ${category.name === selectedCategory
                     ? "text-green border-green"
                     : "border-[#E4E7EC] text-[#344054]"
-                }`}
+                  }`}
                 onClick={() => setSelectedCategory(category.name)}
               >
                 {category.name}
@@ -54,7 +53,7 @@ const FeaturedProducts = () => {
             ))}
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-2 pb-10 ">
+        <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 pb-10 ">
           <div className="flex overflow-x-scroll md:overflow-hidden lg:grid lgrid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {displayedFruits.map((fruit) => (
               <Link
@@ -82,7 +81,7 @@ const FeaturedProducts = () => {
                     </span>
                     <span className="text-[#98A2B3] text-[14px] line-through">
                       {/* {fruit.discount} */}
-                      
+
                     </span>
                   </div>
                 </div>

@@ -48,7 +48,7 @@ const Approach = () => {
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-7xl px-2">
+        <div className="mx-auto lg:max-w-7xl 2xl:max-w-[1560px] px-2">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className=" pb-2 lg:pb-8">
@@ -78,7 +78,7 @@ const Approach = () => {
         </div>
       </div>
       <div>
-        <div className="max-w-7xl px-2 mx-auto">
+        <div className="lg:max-w-7xl 2xl:max-w-[1560px] px-2 mx-auto">
           <div className="py-6 lg:py16">
             <div className="px-4 xl:px-[100px]  bg-white ">
               <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full">

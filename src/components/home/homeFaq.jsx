@@ -39,7 +39,7 @@ function classNames(...classes) {
 function HomeFaq() {
   return (
     <div className="bg-white px-[20px] lg:px-[45px] ">
-      <div className="  xl:px[100px]  max-w-7xl px-2 mx-auto">
+      <div className="  xl:px[100px]  lg:max-w-7xl 2xl:max-w-[1560px] px-2 mx-auto">
         <div className="py-[3rem] sm:py-6 lg:py-10">
           <div className="pb-[4rem] text-center max-w-2xl mx-auto ">
             <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:trcking-wider lg:leading-none">

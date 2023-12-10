@@ -19,7 +19,11 @@ h1::selection, h2::selection, h3::selection, h4::selection, p::selection, li::se
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 7rem;
+
+
 }
+
+
 
 body {
   scrollbar-width: thin;
