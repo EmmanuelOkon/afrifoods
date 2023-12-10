@@ -251,7 +251,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
               {
-                formSubmitted && product === "" && (
+                formSubmitted && selectedProduct === "" && (
                   <span className="text-red-500 text-sm">
                     {fieldErrorMessages.product}
                   </span>
@@ -448,7 +448,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                     <span className="bgray-100 px-1">
                       {countryPhoneCode}
                     </span>
-                    ) : (
+                  ) : (
                     <span className="bgray-100 px-1">
                       +000
                     </span>
