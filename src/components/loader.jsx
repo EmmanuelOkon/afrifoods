@@ -1,6 +1,5 @@
 import React from "react";
 import Spinner from "../assets/icons/spinner.svg";
-// import { TbLoader2 } from "react-icons/tb";
 
 export default function Loading() {
   return (
