@@ -3,6 +3,7 @@ import { Listbox } from "@headlessui/react";
 import { toast } from "sonner";
 import { fetchCountries } from "../../utils/countries";
 import { CiGlobe } from "react-icons/ci";
+import Loading from "../loader";
 
 const DeliveryForm = ({ product, selectedCount }) => {
   // console.log(product.name)
@@ -26,11 +27,12 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [numberCheck, setNumberCheck] = useState(false);
   const [countryImg, setCountryImg] = useState("");
   const [countryPhoneCode, setCountryPhoneCode] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sortedCountries = await fetchCountries();
+        const sortedCountries = fetchCountries();
         setCountries(sortedCountries);
 
         // console.log(sortedCountries);
@@ -115,6 +117,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
       )
     ) {
       warning();
+      setLoading(false);
       return false;
     }
 
@@ -123,9 +126,12 @@ const DeliveryForm = ({ product, selectedCount }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     setFormSubmitted(true);
 
+
     if (validateForm()) {
+      setLoading(true);
       try {
         const fullPhoneNumber = countryPhoneCode + phone;
         const payload = {
@@ -140,10 +146,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
           zipCode,
         };
 
-        console.log(country);
-
-        console.log("Payload sent to server:", payload);
-
         const response = await fetch(
           "https://apis.afrifoodsltd.com/sendOrder",
           {
@@ -156,7 +158,10 @@ const DeliveryForm = ({ product, selectedCount }) => {
         );
 
         if (response.ok) {
+          console.log("Payload sent to server:", payload);
+          setLoading(false);
           success();
+
           setCompanyName("");
           setSelectedProduct("");
           setPhone("");
@@ -172,9 +177,11 @@ const DeliveryForm = ({ product, selectedCount }) => {
           setErrorMessage(
             responseData.message || "Failed to submit the order."
           );
+          // setLoading(false);
         }
       } catch (error) {
         // Handle fetch error
+        setLoading(false);
         console.error("Error submitting order:", error);
         setErrorMessage("Failed to submit the order. Please try again.");
       }
@@ -482,21 +489,36 @@ const DeliveryForm = ({ product, selectedCount }) => {
                     {fieldErrorMessages.zipCode}
                   </span>
                 )}
-              {/* {
-                formSubmitted && (zipCode === "" || (zipCode !== "" && zipCode.toString().length < 5)) && (
-                  <span className="text-red-500 text-sm">
-                    {fieldErrorMessages.zipCode}
-                  </span>
-                )
-              } */}
             </div>
           </div>
           <button
             type="submit"
+            className={
+              (loading
+                ? " w[190px] h-[52px] bordergreen"
+                : "bg-green bordertransparent text-white hover:bg-white hover:text-green ",
+              " text-base rounded-md focus:outline-none focus:shadow-outline border2 mt-5 w-full mx-auto font-semibold transition-all")
+            }
+          >
+            {loading ? (
+              <>
+                <div className="bg-white border-2 border-green rounded-md h-[52px] w[190px] flex items-center justify-center">
+                  <Loading />
+                </div>
+              </>
+            ) : (
+              <div className=" py-3 px-10 rounded-md bg-green text-white hover:bg-lemonGreen">
+                {/* Continue */}
+                Place Order
+              </div>
+            )}
+          </button>
+          {/* <button
+            type="submit"
             className="bg-green hover:bg-lemonGreen  mt-5 w-full text-white py-3 rounded-md"
           >
-            Continue
-          </button>
+            hey
+          </button> */}
         </form>
       </div>
     </>
