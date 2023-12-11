@@ -4,10 +4,12 @@ import { toast } from "sonner";
 import { fetchCountries } from "../../utils/countries";
 import { CiGlobe } from "react-icons/ci";
 import Loading from "../loader";
+import { useNavigate } from "react-router-dom";
 
 const DeliveryForm = ({ product, selectedCount }) => {
   // console.log(product.name)
   // console.log(selectedCount)
+  const navigate = useNavigate();
 
   const [companyName, setCompanyName] = useState("");
 
@@ -126,9 +128,8 @@ const DeliveryForm = ({ product, selectedCount }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    setFormSubmitted(true);
 
+    setFormSubmitted(true);
 
     if (validateForm()) {
       setLoading(true);
@@ -158,6 +159,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
         );
 
         if (response.ok) {
+          
           console.log("Payload sent to server:", payload);
           setLoading(false);
           success();
@@ -171,13 +173,16 @@ const DeliveryForm = ({ product, selectedCount }) => {
           setCountry("");
           setZipCode("");
           setFormSubmitted(false);
+
+          navigate("/products");
+
         } else {
           const responseData = await response.json();
           console.error("Failed to submit the order:", responseData.message);
           setErrorMessage(
             responseData.message || "Failed to submit the order."
           );
-          // setLoading(false);
+          setLoading(false);
         }
       } catch (error) {
         // Handle fetch error
