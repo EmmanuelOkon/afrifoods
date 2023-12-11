@@ -1,11 +1,11 @@
 .loader {
   display: block;
   --height-of-loader: 2px;
-  --loader-color: #226A35;
+  --loader-color: #226a35;
   width: 200px;
   height: var(--height-of-loader);
   border-radius: 50px;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -20,16 +20,17 @@
   height: 100%;
   border-radius: 50px;
   animation: moving 2.6s linear infinite;
-  ;
 }
 
 @keyframes moving {
-  0%, 100% {
+  0%,
+  100% {
     width: 0;
     left: 0;
-    right: 0
+    right: 0;
   }
-  25%, 75% {
+  25%,
+  75% {
     width: 100%;
     left: 0;
   }
@@ -37,4 +38,33 @@
     width: 100%;
     left: 100%;
   }
-} 
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 3px solid #226a35;
+  width: 38px;
+  height: 38px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin .8s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

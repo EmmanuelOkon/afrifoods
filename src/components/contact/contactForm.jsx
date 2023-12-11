@@ -196,17 +196,17 @@ const ContactForm = () => {
                     (loading
                       ? " w-[190px] h-[52px]"
                       : "bg-green text-white hover:bg-white hover:text-green ",
-                    "border-green  text-base rounded focus:outline-none focus:shadow-outline border-2  font-semibold transition-all")
+                    "border-green text-base rounded-md focus:outline-none focus:shadow-outline border-2  font-semibold transition-all")
                   }
                 >
                   {loading ? (
                     <>
-                      <div className="bg-white py-0 my-0 flex items-center">
+                      <div className="bg-white h-[52px] rounded-md w-[190px] py-0 my-0 flex items-center justify-center">
                         <Loading />
                       </div>
                     </>
                   ) : (
-                    <div className="w-fit py-3 px-10 bg-green text-white hover:bg-white hover:text-green">
+                    <div className="w-fit hover:rounded-md py-3 px-10 bg-green text-white hover:bg-white hover:text-green">
                       Send message
                     </div>
                   )}
