@@ -7,11 +7,19 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import HeadCategories from "./headCategories";
 import { Link } from "react-router-dom";
 import { fruits } from "../../utils/data";
+import Loading from "../loader";
 
 const Fruits = () => {
   const [isGrid, setIsGrid] = useState(true);
   const [allProducts, setAllProducts] = useState(fruits);
   const [categories, setCategories] = useState("All Products");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
 
   const filteredProducts =
     categories === "All Products"
@@ -51,10 +59,10 @@ const Fruits = () => {
                       onClick={toggleView}
                     />
                   )}
-
                   <FiList
-                    className={`cursor-pointer h-6 w-6 ${!isGrid ? "text-green font-bold" : "text-[#98A2B3]"
-                      }`}
+                    className={`cursor-pointer h-6 w-6 ${
+                      !isGrid ? "text-green font-bold" : "text-[#98A2B3]"
+                    }`}
                     onClick={toggleView}
                   />
                 </div>
@@ -90,16 +98,27 @@ const Fruits = () => {
                     key={feature.name}
                     className=" pb-2 lg:py-8 flex flex-col justify-end bg-[#F7F9FC] rounded-lg hover:bg-lemonGreen hover:bg-opacity-40  cursor-pointer "
                   >
-                    <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
-                      <div className="w-[192px] flex justify-center ">
-                        <LazyLoadImage
-                          src={feature.image}
-                          className="w-full h-full text-green "
-                          alt={feature.name}
-                          effect="blur"
-                        />
-                      </div>
-                    </div>
+                    {loading ? (
+                      <>
+                        <div className="w-full h-[267px] flex items-center justify-center ">
+                          <Loading />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
+                          <div className="w-[192px] flex justify-center ">
+                            <LazyLoadImage
+                              src={feature.image}
+                              className="w-full h-full text-green "
+                              alt={feature.name}
+                              effect="blur"
+                            />
+                          </div>
+                        </div>
+                      </>
+                    )}
+
                     <div className="px-4 ">
                       <span className="text-lemonGreen">
                         {feature.category}

@@ -23,7 +23,7 @@ const ProductDetailsCard = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 5000);
   }, []);
 
   const errorMessages = {
@@ -103,10 +103,10 @@ const ProductDetailsCard = () => {
         <div className="py-6 lg:py16">
           <div className="px-4 xl:px-[100px] bg-white divide-y-2 divide-[#F0F2F5]  ">
             <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full pb-4 lg:pb-10 ">
-              <div className="lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden  ">
+              <div className="w-[327px] sm:w-[400px] lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden">
                 <div className="rounded-lg flex justify-center overflow-hidden bg-[#E7F6EC]">
                   {loading ? (
-                    <div className="p-10 ">
+                    <div className="w-[327px] h-[327px] lg:h-[480px] lg:w-[480px] flex items-center justify-center ">
                       <Loading />
                     </div>
                   ) : (
@@ -121,7 +121,7 @@ const ProductDetailsCard = () => {
                   {Array.from({ length: 3 }).map((_, index) => (
                     <>
                       {loading ? (
-                        <div className="p-10 border border-[#D0D5DD] bg-[#F7F9FC] mx-auto rounded-lg">
+                        <div className="p-4 lg:p-10 border border-[#D0D5DD] bg-[#F7F9FC] mx-auto rounded-lg">
                           <Loading />
                         </div>
                       ) : (
