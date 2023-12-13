@@ -79,16 +79,22 @@
 
 .circle {
   display: block;
-  width: 40px;
-  height: 40px;
+  z-index: 10;
   border: 3px solid #f3f3f3;
   border-radius: 50%;
   border-top-color: #226a35;
-  animation: pen 1s linear infinite;
+  -webkit-animation: pen .6s linear infinite;
+  animation: pen .6s linear infinite;
+}
+
+@-webkit-keyframes pen {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes pen {
   to {
-    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
