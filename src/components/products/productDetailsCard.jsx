@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Hero from "./hero";
 import { NavLink, useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -11,12 +11,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import OrderProduct from "./orderProduct";
 import { toast } from "sonner";
+import Loading from "../loader";
 
 const ProductDetailsCard = () => {
   const { productName } = useParams();
   const [count, setCount] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCount, setSelectedCount] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const errorMessages = {
     count: "Quantity must be between 1 and 10",
@@ -86,7 +94,7 @@ const ProductDetailsCard = () => {
     setSelectedProduct(null);
   };
 
-  console.log(selectedCount);
+  // console.log(selectedCount);
 
   return (
     <div>
@@ -97,32 +105,37 @@ const ProductDetailsCard = () => {
             <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full pb-4 lg:pb-10 ">
               <div className="lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden  ">
                 <div className="rounded-lg flex justify-center overflow-hidden bg-[#E7F6EC]">
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg[#E7F6EC] p-10 mx-auto "
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
+                  {loading ? (
+                    <div className="p-10 ">
+                      <Loading />
+                    </div>
+                  ) : (
+                    <img
+                      className="w[80%] h-auto md:w[60%] lg:w-full p-10 mx-auto "
+                      src={product.image}
+                      alt={product.name}
+                    />
+                  )}
                 </div>
                 <div className="flex py-4 gap-4 mx-10">
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <>
+                      {loading ? (
+                        <div className="p-10 border border-[#D0D5DD] bg-[#F7F9FC] mx-auto rounded-lg">
+                          <Loading />
+                        </div>
+                      ) : (
+                        <div>
+                          <img
+                            key={index}
+                            className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
+                            src={product.image}
+                            alt={product.name}
+                          />
+                        </div>
+                      )}
+                    </>
+                  ))}
                 </div>
               </div>
               <div className="pt-5 lg:py-5 lg:w-1/2 ">
@@ -151,7 +164,7 @@ const ProductDetailsCard = () => {
                       <p className="font-semibold py-1 ">
                         <span className="">Tags:</span>
                         <span className="pl-1 font-normal ">
-                          fresh, {product.category},  {product.name}
+                          fresh, {product.category}, {product.name}
                         </span>
                       </p>
                     </div>
@@ -165,7 +178,7 @@ const ProductDetailsCard = () => {
                               (disabled
                                 ? " text-red-900 text[#667185] bg-[#F9FAFB] "
                                 : " text-green  ",
-                                " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
+                              " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
                             }
                             // onClick={decrement}
                             disabled={count === 1}
@@ -180,7 +193,7 @@ const ProductDetailsCard = () => {
                               (disabled
                                 ? " text-red-900 text[#667185] bg-[#F9FAFB] "
                                 : " text-green  ",
-                                " p-2 text-red900 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px]")
+                              " p-2 text-red900 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px]")
                             }
                             onClick={increment}
                             disabled={count === 10}
@@ -239,27 +252,17 @@ const ProductDetailsCard = () => {
                   Product Details
                 </h1>
                 <div className="text-grey700 flex-col text-base ">
-                  <p className="py-2">
-                    {product?.productDetails[0].textOne}
-                  </p>
-                  <p className="py-2">
-                    {product?.productDetails[1].textTwo}
-                  </p>
-                  <p className="py-2">
-                    {product?.productDetails[2].textThree}
-                  </p>
+                  <p className="py-2">{product?.productDetails[0].textOne}</p>
+                  <p className="py-2">{product?.productDetails[1].textTwo}</p>
+                  <p className="py-2">{product?.productDetails[2].textThree}</p>
 
-                  <p className="py-2">
-                    {product?.productDetails[3].textFour}
-                  </p>
+                  <p className="py-2">{product?.productDetails[3].textFour}</p>
                 </div>
                 <h2 className="text-[#101928] text-2xl font-semibold pt-4 pb-2">
                   Health benefits:
                 </h2>
                 <div className="text-base text-grey700 ">
-                  <p className="text-base">
-                    {product?.healthBenefit}
-                  </p>
+                  <p className="text-base">{product?.healthBenefit}</p>
                 </div>
               </div>
               <div className="w-full lg:w-1/2">
@@ -271,7 +274,9 @@ const ProductDetailsCard = () => {
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
                       Weight
                     </h2>
-                    <p className="w-[360px]">{product?.specifications[0].weight}</p>
+                    <p className="w-[360px]">
+                      {product?.specifications[0].weight}
+                    </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
