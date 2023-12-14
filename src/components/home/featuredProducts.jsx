@@ -25,7 +25,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 99000);
+    }, 5000);
   }, []);
 
   const displayedFruits = fruits
