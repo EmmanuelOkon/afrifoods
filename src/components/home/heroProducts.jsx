@@ -14,8 +14,8 @@ const HeroProducts = () => {
   const [buttonText, setButtonText] = useState("how afri Foods works?");
   const [playButtonVisible, setPlayButtonVisible] = useState(true);
 
-  const videoDetail =
-    "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
+  const videoDetail = "https://streamable.com/qy8wj3";
+    // "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
 
   useEffect(() => {
     if (isPlaying) {

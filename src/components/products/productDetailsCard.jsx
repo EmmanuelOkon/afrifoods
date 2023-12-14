@@ -55,7 +55,7 @@ const ProductDetailsCard = () => {
       setSelectedCount(newCount);
     }
   };
-  console.log(product);
+  // console.log(product);
   const decrement = () => {
     const newCount = count - 1;
     if (count > 1) {
