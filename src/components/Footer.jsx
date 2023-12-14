@@ -4,8 +4,10 @@ import Logo from "../assets/icons/whiteLogo.svg";
 import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 import { LuMail } from "react-icons/lu";
 import { toast } from "sonner";
+import Loading from "./loader";
 
 const navigation = {
+  
   solutions: [
     { name: "Marketing", href: "#" },
     { name: "Analytics", href: "#" },
@@ -81,6 +83,7 @@ const navigation = {
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const warning = () =>
     toast.warning("Please enter a valid email address", {
@@ -103,21 +106,49 @@ const Footer = () => {
     return regex.test(email);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!email || email.trim() === "") {
       warning("Please enter a valid email address");
+      setLoading(false);
       return;
     } else if (!email.includes("@")) {
       warning("Email address must contain '@'");
+      setLoading(false);
       return;
     } else if (!isValidEmailFormat(email)) {
       warning("Invalid email format");
+      setLoading(false);
       return;
     } else {
-      success("Thank you for subscribing to our newsletter");
-      // Proceed with submission or further processing
+      try {
+        const response = await fetch(
+          "https://apis.afrifoodsltd.com/newsletter",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        if (response.ok) {
+          success("Thank you for subscribing to our newsletter");
+
+          setEmail("");
+          setLoading(false);
+        } else {
+          // Handle error cases
+          console.error("Failed to subscribe:", response.statusText);
+          warning("Failed to subscribe. Please try again later.");
+        }
+      } catch (error) {
+        console.error("Error during subscription:", error);
+        warning("Failed to subscribe. Please try again later.");
+      }
     }
   };
 

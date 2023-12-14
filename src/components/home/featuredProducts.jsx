@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { fruits } from "../../utils/data";
+import Loading from "../loader";
 
 const categories = [
   {
@@ -17,9 +18,15 @@ const categories = [
   },
 ];
 
-
 const FeaturedProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 99000);
+  }, []);
 
   const displayedFruits = fruits
     .filter(
@@ -42,10 +49,11 @@ const FeaturedProducts = () => {
             {categories.map((category) => (
               <li
                 key={category.name}
-                className={`border-b text-sm font-semibold px-4 hover:cursor-pointer py-3 ${category.name === selectedCategory
+                className={`border-b text-sm font-semibold px-4 hover:cursor-pointer py-3 ${
+                  category.name === selectedCategory
                     ? "text-green border-green"
                     : "border-[#E4E7EC] text-[#344054]"
-                  }`}
+                }`}
                 onClick={() => setSelectedCategory(category.name)}
               >
                 {category.name}
@@ -63,11 +71,17 @@ const FeaturedProducts = () => {
               >
                 <div className="flex justify-center">
                   <div className="w-[192px] flex justify-center ">
-                    <img
-                      src={fruit.image}
-                      className="w-full h-full text-green "
-                      alt={fruit.name}
-                    />
+                    {loading ? (
+                      <div className="w-[327px] h-[250px] lg:w-[480px] flex items-center justify-center ">
+                        <Loading />
+                      </div>
+                    ) : (
+                      <img
+                        src={fruit.image}
+                        className="w-full h-full text-green "
+                        alt={fruit.name}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="px-4">
@@ -81,7 +95,6 @@ const FeaturedProducts = () => {
                     </span>
                     <span className="text-[#98A2B3] text-[14px] line-through">
                       {/* {fruit.discount} */}
-
                     </span>
                   </div>
                 </div>
