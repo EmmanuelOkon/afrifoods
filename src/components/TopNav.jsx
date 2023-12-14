@@ -5,7 +5,7 @@ import Logo from "../../src/assets/images/logo.png";
 import { FiMenu as MenuIcon } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Rwanda from "../assets/icons/rwanda.svg"
+import Rwanda from "../assets/icons/rwanda.svg";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -36,8 +36,18 @@ export default function TopNav() {
   const [countryMenuOpen, setCountryMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   return (
-    <header className="bg-white drop-shadow-md sticky lg:z-[900] top-0 w-full">
+    <header
+      className={classNames(
+        mobileMenuOpen ? "" : "z-[900]",
+        "bg-white drop-shadow-md sticky top-0 w-full"
+      )}
+    >
       <nav
         className="mx-auto lg:lg:max-w-7xl 2xl:max-w-[1560px] px-4 lg:px-8 py-3 flex items-center justify-between"
         aria-label="Global"
@@ -96,7 +106,7 @@ export default function TopNav() {
       >
         {/* <div className="fixed inset-0 z-10" /> */}
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white drop-shadow-md h-fit px6 py6 sm:ring-1 sm:ring-green">
-          <div className="flex px-6 py-4 items-center justify-between bg-white drop-shadow-md">
+          <div className="flex px-6 py-4 items-center justify-between bg-white drop-shadow-md z-[900]">
             <div className="">
               <NavLink to="/">
                 <img
@@ -136,13 +146,15 @@ export default function TopNav() {
                 ))}
               </div>
               <div className="py-6 text-center">
-                <Menu as="div" className=" inline-block text-left">
+                <Menu as="div" className="inline-block text-left">
                   <div>
                     <Popover as="div" className="relative">
                       {({ open }) => (
                         <>
                           <Menu.Button
-                            onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
+                            onClick={() =>
+                              setLanguageMenuOpen(!languageMenuOpen)
+                            }
                             className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-[#344054] text-opacity-70  ring-0"
                           >
                             EN
@@ -229,7 +241,10 @@ export default function TopNav() {
                             <Menu.Items className="absolute right-0 z-[2000] mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-green focus:outline-none">
                               <div className="py-1 dividy-y divide-black">
                                 {countries.map((item, index) => (
-                                  <Menu.Item key={index} className="dividy-y divide-black">
+                                  <Menu.Item
+                                    key={index}
+                                    className="dividy-y divide-black"
+                                  >
                                     {({ active }) => (
                                       <a
                                         href={item.href}

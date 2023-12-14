@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import Loading from "./loader";
 
 const navigation = {
-  
   solutions: [
     { name: "Marketing", href: "#" },
     { name: "Analytics", href: "#" },
@@ -101,6 +100,14 @@ const Footer = () => {
       pauseOnHover: false,
     });
 
+  const failed = () =>
+    toast.error("Could not subscribe at this time, check your internet", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
   function isValidEmailFormat(email) {
     const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
@@ -141,16 +148,26 @@ const Footer = () => {
           setEmail("");
           setLoading(false);
         } else {
-          // Handle error cases
-          console.error("Failed to subscribe:", response.statusText);
-          warning("Failed to subscribe. Please try again later.");
+          if (response instanceof TypeError || response instanceof Error) {
+            console.error("Network error:", response.message);
+            failed("No internet connection. Please check your network.");
+          } else {
+            // Handle error cases
+            console.error("Failed to subscribe:", response.statusText);
+            failed("Failed to subscribe. Please try again later.");
+          }
         }
       } catch (error) {
+        failed("Failed to subscribe. Please try again later.");
         console.error("Error during subscription:", error);
-        warning("Failed to subscribe. Please try again later.");
+        setLoading(false);
       }
     }
   };
+
+    function classNames(...classes) {
+      return classes.filter(Boolean).join(" ");
+    }
 
   return (
     <footer className="bg-deepGreen" aria-labelledby="footer-heading">
@@ -245,9 +262,26 @@ const Footer = () => {
               <div className="mt-3 rounded-md sm:mt-0 sm3 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  className="w-1/3 bg-green flex items-center justify-center border border-transparent rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0"
+                  className={classNames(
+                    loading
+                      ? " w-[150px] h[22px] px4 py2 bg-lemonGreen"
+                      : "bg-green text-white hover:bg-lemonGreen hover:text-green py-2 ",
+                    "w-1/3 flex items-center justify-center border border-transparent rounded-md text-base font-medium  hover:bg-lemonGreen hover:text-white focus:ring-0"
+                  )}
                 >
-                  Subscribe
+                  {loading ? (
+                    <>
+                      <div className="bg-lemonGreen h-[42px] rounded-md w-[150px] py2 my-0 flex items-center justify-center">
+                        <Loading />
+                      </div>
+                    </>
+                  ) : (
+                    <span
+                    // className="w-full bg-green flex md:justify-end items-center justify-center rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0"
+                    >
+                      Subscribe
+                    </span>
+                  )}
                 </button>
               </div>
             </form>

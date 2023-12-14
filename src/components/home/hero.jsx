@@ -2,29 +2,6 @@ import React, { useState, useEffect } from "react";
 import { heroImages } from "../../utils/data";
 import { NavLink } from "react-router-dom";
 
-// const items = [
-//   {
-//     title: "heroOne",
-//     image: heroOne,
-//   },
-//   {
-//     title: "heroTwo",
-//     image: heroTwo,
-//   },
-//   {
-//     title: "heroThree",
-//     image: heroThree,
-//   },
-//   {
-//     title: "heroFour",
-//     image: heroFour,
-//   },
-//   {
-//     title: "heroFive",
-//     image: heroFive,
-//   },
-// ];
-
 const Hero = () => {
   const [activeElement, setActiveElement] = useState(0);
 
