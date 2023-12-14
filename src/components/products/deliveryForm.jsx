@@ -78,6 +78,14 @@ const DeliveryForm = ({ product, selectedCount }) => {
     });
   };
 
+  const failed = () =>
+    toast.error("Could not place an order at this time", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
   const validateForm = () => {
     const phoneRegex = /^\d{1,10}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -159,7 +167,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
         );
 
         if (response.ok) {
-          
           console.log("Payload sent to server:", payload);
           setLoading(false);
           success();
@@ -175,19 +182,23 @@ const DeliveryForm = ({ product, selectedCount }) => {
           setFormSubmitted(false);
 
           navigate("/products");
-
         } else {
-          const responseData = await response.json();
-          console.error("Failed to submit the order:", responseData.message);
-          setErrorMessage(
-            responseData.message || "Failed to submit the order."
-          );
           setLoading(false);
+
+          if (response instanceof TypeError || response instanceof Error) {
+            console.error("Network error:", response.message);
+            failed("No internet connection. Please check your network.");
+          } else {
+            // Handle error cases
+            console.error("Failed to place order:", response.statusText);
+            failed("Failed to place order. Please try again later.");
+          }
         }
       } catch (error) {
         // Handle fetch error
         setLoading(false);
-        console.error("Error submitting order:", error);
+        failed("Failed to place order. Please try again later.");
+        console.log("Error submitting order:", error);
         setErrorMessage("Failed to submit the order. Please try again.");
       }
     }
@@ -518,12 +529,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
               </div>
             )}
           </button>
-          {/* <button
-            type="submit"
-            className="bg-green hover:bg-lemonGreen  mt-5 w-full text-white py-3 rounded-md"
-          >
-            hey
-          </button> */}
         </form>
       </div>
     </>

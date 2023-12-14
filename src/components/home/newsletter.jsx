@@ -23,6 +23,14 @@ const Newsletter = () => {
       pauseOnHover: false,
     });
 
+  const failed = () =>
+    toast.error("Could not subscribe at this time, check your internet", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
   function isValidEmailFormat(email) {
     const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
@@ -63,13 +71,19 @@ const Newsletter = () => {
           setEmail("");
           setLoading(false);
         } else {
-          // Handle error cases
-          console.error("Failed to subscribe:", response.statusText);
-          warning("Failed to subscribe. Please try again later.");
+          if (response instanceof TypeError || response instanceof Error) {
+            console.error("Network error:", response.message);
+            failed("No internet connection. Please check your network.");
+          } else {
+            // Handle error cases
+            console.error("Failed to subscribe:", response.statusText);
+            failed("Failed to subscribe. Please try again later.");
+          }
         }
       } catch (error) {
-        console.error("Error during subscription:", error);
-        warning("Failed to subscribe. Please try again later.");
+        failed("Failed to subscribe. Please try again later.");
+        console.log("Error during subscription:", error);
+        setLoading(false);
       }
     }
   };
@@ -108,13 +122,13 @@ const Newsletter = () => {
                 className={
                   (loading
                     ? " w-[150px] h[22px] py-2 "
-                    : "bg-green text-white hover:bg-white hover:text-green ",
-                  "border-green text-base rounded-md focus:outline-none focus:shadow-outline border-2  font-semibold transition-all ")
+                    : "bg-green text-white hover:bg-white hover:text-green",
+                  "text-base rounded-md focus:outline-none focus:shadow-outline font-semibold transition-all ")
                 }
               >
                 {loading ? (
                   <>
-                    <div className="bg-white border2 hfit h-[42px] rounded-md w-[150px] py2 my-0 flex items-center justify-center">
+                    <div className="bg-white border-2 border-green h-[42px] md:h-full rounded-md w-[150px] my-0 flex items-center justify-center">
                       <Loading />
                     </div>
                   </>
