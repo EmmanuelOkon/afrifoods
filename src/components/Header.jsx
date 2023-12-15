@@ -6,17 +6,12 @@ import { Fragment, useState } from "react";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Rwanda from "../assets/icons/rwanda.svg";
-// import HeadCountries from "./SelectCountry";
+
 
 const language = [
   { text: "FR", href: "#" },
   { text: "ES", href: "#" },
 ];
-
-// const countries = [
-//   { text: "Nigeria", href: "#" },
-//   { text: "Togo", href: "#" },
-// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

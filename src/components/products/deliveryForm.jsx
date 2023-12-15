@@ -7,8 +7,7 @@ import Loading from "../loader";
 import { useNavigate } from "react-router-dom";
 
 const DeliveryForm = ({ product, selectedCount }) => {
-  // console.log(product.name)
-  // console.log(selectedCount)
+
   const navigate = useNavigate();
 
   const [companyName, setCompanyName] = useState("");
@@ -27,7 +26,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
-  const [countryImg, setCountryImg] = useState("");
+  
   const [countryPhoneCode, setCountryPhoneCode] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -36,17 +35,14 @@ const DeliveryForm = ({ product, selectedCount }) => {
       try {
         const sortedCountries = fetchCountries();
         setCountries(sortedCountries);
-
-        // console.log(sortedCountries);
       } catch (error) {
-        console.log("error fetching countries");
+        throw error;
       }
     };
-
     fetchData();
   }, []);
 
-  console.log(countries.length);
+  
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -117,7 +113,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
       country,
       zipCode,
     ];
-    console.log(requiredFields);
+    
     if (
       requiredFields.some(
         (field) =>
@@ -167,7 +163,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
         );
 
         if (response.ok) {
-          console.log("Payload sent to server:", payload);
+          
           setLoading(false);
           success();
 
@@ -186,20 +182,21 @@ const DeliveryForm = ({ product, selectedCount }) => {
           setLoading(false);
 
           if (response instanceof TypeError || response instanceof Error) {
-            console.error("Network error:", response.message);
             failed("No internet connection. Please check your network.");
+            setLoading(false)
           } else {
-            // Handle error cases
-            console.error("Failed to place order:", response.statusText);
+            
             failed("Failed to place order. Please try again later.");
+            setLoading(false);
           }
         }
       } catch (error) {
-        // Handle fetch error
+        
         setLoading(false);
         failed("Failed to place order. Please try again later.");
-        console.log("Error submitting order:", error);
+        
         setErrorMessage("Failed to submit the order. Please try again.");
+        throw error;
       }
     }
 
@@ -352,9 +349,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   setCountryPhoneCode(
                     selectedCountryObject ? selectedCountryObject.phone : ""
                   );
-                  // setCountryImg(
-                  //   selectedCountryObject ? selectedCountryObject.flag : ""
-                  // );
+                  
                 }}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
@@ -363,11 +358,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
                     <div className=" flex items-center ">
                       {country ? (
                         <div className="bg-gray-200 py-2 px-2 w-full flex items-center">
-                          <img
-                            src={countryImg}
-                            alt={`${countryImg} flag`}
-                            className="hidden w-auto h-6 mr-2"
-                          />
                           {country}
                         </div>
                       ) : (
@@ -470,7 +460,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 <input
                   type="text"
                   id="phone"
-                  // value={countryPhoneCode + phone}
+                  
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="123-4567-890"

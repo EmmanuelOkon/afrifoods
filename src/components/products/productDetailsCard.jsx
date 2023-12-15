@@ -55,7 +55,7 @@ const ProductDetailsCard = () => {
       setSelectedCount(newCount);
     }
   };
-  // console.log(product);
+  
   const decrement = () => {
     const newCount = count - 1;
     if (count > 1) {
@@ -68,7 +68,7 @@ const ProductDetailsCard = () => {
 
   const handleButtonClick = () => {
     if (disabled) {
-      // Show error message if button is disabled
+      
       toast.error(errorMessages.count, {
         position: "top-center",
         autoClose: 3000,
@@ -76,8 +76,7 @@ const ProductDetailsCard = () => {
         pauseOnHover: false,
       });
     } else {
-      // Proceed with the button click logic
-      // For example, you can increment/decrement the count
+   
       setCount(count + 1);
     }
   };
@@ -93,8 +92,6 @@ const ProductDetailsCard = () => {
   const closeSelectedProductModal = () => {
     setSelectedProduct(null);
   };
-
-  // console.log(selectedCount);
 
   return (
     <div>
@@ -180,7 +177,7 @@ const ProductDetailsCard = () => {
                                 : " text-green  ",
                               " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
                             }
-                            // onClick={decrement}
+                            
                             disabled={count === 1}
                           >
                             <FaMinus className=" w-5 h-5" />
