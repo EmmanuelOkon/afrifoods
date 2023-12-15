@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import ReactPlayer from "react-player";
 import fruitBasketTwo from "../../assets/images/fruitBasketTwo.png";
 
@@ -12,42 +12,25 @@ import { NavLink } from "react-router-dom";
 const HeroProducts = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [buttonText, setButtonText] = useState("how afri Foods works?");
-  const [playButtonVisible, setPlayButtonVisible] = useState(true);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   const videoDetail = "https://streamable.com/qy8wj3";
-    // "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
+  // "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
 
   useEffect(() => {
-    if (isPlaying) {
-      setTimeout(() => {
-        setPlayButtonVisible(false);
-      }, 2500);
-    } else {
-      setPlayButtonVisible(true);
+    if (isPlaying && !inView) {
+      setIsPlaying(false);
     }
-  }, [isPlaying]);
+  }, [inView, isPlaying]);
 
   const handlePlayVideo = () => {
     setIsPlaying(!isPlaying);
 
     const buttonText = isPlaying ? "" : "";
     setButtonText(buttonText);
-
-    setPlayButtonVisible(true);
-
-    setTimeout(() => {
-      setPlayButtonVisible(false);
-    }, 2500);
-  };
-
-  const handleMouseEnter = () => {
-    setPlayButtonVisible(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (!isPlaying) {
-      setPlayButtonVisible(false);
-    }
   };
 
   function classNames(...classes) {
@@ -58,7 +41,10 @@ const HeroProducts = () => {
     <>
       <div className="w-full lg:w-[800px] py-10 px-4 sm:px-8 mx-auto">
         <div className="relative overflow-hidden z-10 justify-center items-center min-wfit h-[200px] lg:h-[500px] mx-auto   ">
-          <div className="absolute inset-0 flex mx-auto justify-center items-center bg-gradient-to-b from-zinc-950 to-grey500 opacity-100  h-auto  h[200px] lg:h[500px] rounded-md lg:rounded-lg">
+          <div
+            ref={ref}
+            className="absolute inset-0 flex mx-auto justify-center items-center bg-gradient-to-b from-zinc-950 to-grey500 opacity-100  h-auto  h[200px] lg:h[500px] rounded-md lg:rounded-lg"
+          >
             <ReactPlayer
               playing={isPlaying}
               controls={false}
@@ -74,7 +60,9 @@ const HeroProducts = () => {
               <button
                 onClick={handlePlayVideo}
                 className={classNames(
-                  isPlaying ? "bg-opacity-0 hover:bg-opacity-100 text-opacity-10 " : " ",
+                  isPlaying
+                    ? "bg-opacity-0 hover:bg-opacity-100 text-opacity-10 "
+                    : " ",
                   "text-white capitalize bg-green hover:bg-lemonGreen rounded-md lg:rounded-lg py-1 md:py-3 px-2 md:px-4 text-[16px] gap-3 "
                 )}
               >
@@ -142,9 +130,9 @@ const HeroProducts = () => {
                       produce is of the highest quality and can be traced back
                       to the very farms it came from.
                       <br />
-                      At Afri Foods, it is about a commitment to excellence and a
-                      passion for freshness. Join us in savoring the flavors of
-                      Rwanda!
+                      At Afri Foods, it is about a commitment to excellence and
+                      a passion for freshness. Join us in savoring the flavors
+                      of Rwanda!
                     </p>
                   </div>
                   <NavLink

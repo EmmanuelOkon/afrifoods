@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { BsFillGridFill } from "react-icons/bs";
 import { LuListFilter, LuChevronsUpDown } from "react-icons/lu";
 import { FiList, FiChevronDown } from "react-icons/fi";
@@ -11,9 +11,11 @@ import Loading from "../loader";
 
 const Fruits = () => {
   const [isGrid, setIsGrid] = useState(true);
-  const [allProducts, setAllProducts] = useState(fruits);
   const [categories, setCategories] = useState("All Products");
   const [loading, setLoading] = useState(true);
+
+  const allProducts = useMemo(() => fruits, []);
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,12 +27,6 @@ const Fruits = () => {
     categories === "All Products"
       ? allProducts
       : allProducts.filter((product) => product.category === categories);
-
-  useEffect(() => {
-    if (categories) {
-      setAllProducts(fruits);
-    }
-  }, [categories]);
 
   const toggleView = () => {
     setIsGrid(!isGrid);

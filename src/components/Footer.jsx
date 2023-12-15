@@ -15,7 +15,7 @@ const navigation = {
   ],
   links: [
     { name: "Home", href: "/" },
-    // { name: "Support", href: "/support" },
+    
     { name: "Contact Us", href: "/contact" },
 
     { name: "Products", href: "/products" },
@@ -152,7 +152,7 @@ const Footer = () => {
             console.error("Network error:", response.message);
             failed("No internet connection. Please check your network.");
           } else {
-            // Handle error cases
+            
             console.error("Failed to subscribe:", response.statusText);
             failed("Failed to subscribe. Please try again later.");
           }
@@ -211,6 +211,7 @@ const Footer = () => {
                         to={item.href}
                         className="text-white hover:textgray-500 bg-green500 hover:bg-lemonGreen p-2 rounded-full"
                       >
+                        <span className="sr-only">{item.name}</span>
                         <item.icon className="h-6 w-6 " aria-hidden="true" />
                       </NavLink>
                     ))}
@@ -277,7 +278,7 @@ const Footer = () => {
                     </>
                   ) : (
                     <span
-                    // className="w-full bg-green flex md:justify-end items-center justify-center rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0"
+                   
                     >
                       Subscribe
                     </span>

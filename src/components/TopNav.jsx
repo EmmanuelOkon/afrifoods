@@ -27,10 +27,6 @@ const countries = [
   { text: "Togo", href: "#" },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function TopNav() {
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [countryMenuOpen, setCountryMenuOpen] = useState(false);
@@ -58,6 +54,8 @@ export default function TopNav() {
               className="w-[50px] lg:h-full lg:w-[80px] sm:h-auto"
               src={Logo}
               alt="Afri Foods Logo"
+              width="300"
+              height="200"
             />
           </NavLink>
         </div>
@@ -113,6 +111,8 @@ export default function TopNav() {
                   className="w-[60px] lg:h-full sm:h-auto"
                   src={Logo}
                   alt="Afri Foods Logo"
+                  width="300"
+                  height="200"
                 />
               </NavLink>
             </div>

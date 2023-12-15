@@ -75,15 +75,15 @@ const Newsletter = () => {
             console.error("Network error:", response.message);
             failed("No internet connection. Please check your network.");
           } else {
-            // Handle error cases
+            
             console.error("Failed to subscribe:", response.statusText);
             failed("Failed to subscribe. Please try again later.");
           }
         }
       } catch (error) {
-        failed("Failed to subscribe. Please try again later.");
-        console.log("Error during subscription:", error);
         setLoading(false);
+        failed("Failed to subscribe. Please try again later.");
+        throw error;
       }
     }
   };

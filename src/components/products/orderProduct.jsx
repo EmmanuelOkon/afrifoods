@@ -5,9 +5,9 @@ import { FaMinus, FaPlus } from "react-icons/fa6";
 import DeliveryForm from "./deliveryForm";
 
 const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
-  console.log(product);
-  console.log(selectedCount);
-  const totalPrice = selectedCount * 100;
+  
+  
+  // const totalPrice = selectedCount * 100;
 
   return (
     <Transition appear show={true} as={Fragment}>
