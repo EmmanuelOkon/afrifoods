@@ -17,7 +17,7 @@ const HeroProducts = () => {
     threshold: 0,
   });
 
-  const videoDetail = "https://streamable.com/qy8wj3";
+  const videoDetail = "https://player.vimeo.com/video/895711784?h=41c1cd5e01";
   // "https://d212gbka2aac4s.cloudfront.net/private/how%20afrifood%20works.mp4";
 
   useEffect(() => {
