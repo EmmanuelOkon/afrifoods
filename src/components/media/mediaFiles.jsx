@@ -58,7 +58,7 @@ function MediaFiles() {
                         <span>
                           <a
                             target="_blank"
-                            rel="noreferrer"
+                            rel="preconnect noreferrer"
                             href="https://www.youtube.com/embed/jevPKTdRUPU?si=j641DS7kKS1emjM3&amp;controls=0"
                             className="border-[1.5px] border-green text-white rounded-md py-3  text-base font-semibold bg-green hover:bg-white hover:text-green px-4"
                           >
