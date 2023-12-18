@@ -46,6 +46,7 @@ const HeroProducts = () => {
             className="absolute inset-0 flex mx-auto justify-center items-center bg-gradient-to-b from-zinc-950 to-grey500 opacity-100  h-auto  h[200px] lg:h[500px] rounded-md lg:rounded-lg"
           >
             <ReactPlayer
+              rel="preconnect"
               playing={isPlaying}
               controls={false}
               loop={false}
