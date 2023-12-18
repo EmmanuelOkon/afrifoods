@@ -26,6 +26,7 @@ function MediaFiles() {
                 <div className="flex flex-col gap-6 items-center lg:flex-row lg:justify-between w-full">
                   <div className="lg:w-1/2 h-auto justify-center">
                     <iframe
+                      rel="preconnect"
                       src="https://www.youtube.com/embed/jevPKTdRUPU?si=j641DS7kKS1emjM3&amp;controls=0"
                       title="How to Export to New Markets"
                       className="aspect-video w-full rounded-md"
@@ -57,7 +58,7 @@ function MediaFiles() {
                         <span>
                           <a
                             target="_blank"
-                            rel="noreferrer"
+                            rel="preconnect noreferrer"
                             href="https://www.youtube.com/embed/jevPKTdRUPU?si=j641DS7kKS1emjM3&amp;controls=0"
                             className="border-[1.5px] border-green text-white rounded-md py-3  text-base font-semibold bg-green hover:bg-white hover:text-green px-4"
                           >
