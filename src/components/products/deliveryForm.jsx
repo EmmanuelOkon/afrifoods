@@ -184,10 +184,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
           if (response instanceof TypeError || response instanceof Error) {
             failed("No internet connection. Please check your network.");
             setLoading(false)
-          } else {
-            
-            failed("Failed to place order. Please try again later.");
-            setLoading(false);
           }
         }
       } catch (error) {
