@@ -454,7 +454,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 )}
 
                 <input
-                  type="text"
+                  type="number"
                   id="phone"
                   
                   value={phone}

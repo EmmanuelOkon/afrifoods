@@ -11,19 +11,27 @@
   transition: all 0.2s linear;
 }
 
-h1::selection, h2::selection, h3::selection, h4::selection, p::selection, li::selection, a::selection, span::selection, label::selection {
+::selection {
   background-color: #226a35;
-  color: #FFF;
+  color: #fff;
+}
+
+/* For Webkit browsers like Chrome and Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 7rem;
-
-
 }
-
-
 
 body {
   scrollbar-width: thin;
@@ -45,7 +53,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: #226a35;
 }
-
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
@@ -91,4 +98,3 @@ body::-webkit-scrollbar-thumb {
   margin: 0 auto;
   /* background-color: rebeccapurple; */
 }
-
