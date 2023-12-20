@@ -8,6 +8,7 @@ import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { BsPauseFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NavLink } from "react-router-dom";
+import { toast } from "sonner";
 
 const HeroProducts = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,6 +24,12 @@ const HeroProducts = () => {
   useEffect(() => {
     if (isPlaying && !inView) {
       setIsPlaying(false);
+      toast.info("The video has been paused", {
+        position: "bottom-right",
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
     }
   }, [inView, isPlaying]);
 

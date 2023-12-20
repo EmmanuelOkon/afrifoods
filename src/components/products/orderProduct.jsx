@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import { GrClose as XIcon } from "react-icons/gr";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import DeliveryForm from "./deliveryForm";
-import { toast } from "sonner";
 
 const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
   // const totalPrice = selectedCount * 100;
