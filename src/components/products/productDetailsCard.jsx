@@ -55,7 +55,7 @@ const ProductDetailsCard = () => {
       setSelectedCount(newCount);
     }
   };
-  
+
   const decrement = () => {
     const newCount = count - 1;
     if (count > 1) {
@@ -64,22 +64,10 @@ const ProductDetailsCard = () => {
     }
   };
 
-  const disabled = count === 1 || count === 10;
+  const min = selectedCount === 1;
+  const max = selectedCount === 10;
 
-  const handleButtonClick = () => {
-    if (disabled) {
-      
-      toast.error(errorMessages.count, {
-        position: "top-center",
-        autoClose: 3000,
-        closeOnClick: true,
-        pauseOnHover: false,
-      });
-    } else {
-   
-      setCount(count + 1);
-    }
-  };
+  console.log(selectedCount);
 
   const relatedProducts = fruits
     .filter((p) => p.category === product.category && p.id !== product.id)
@@ -92,6 +80,10 @@ const ProductDetailsCard = () => {
   const closeSelectedProductModal = () => {
     setSelectedProduct(null);
   };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   return (
     <div>
@@ -122,9 +114,8 @@ const ProductDetailsCard = () => {
                           <Loading />
                         </div>
                       ) : (
-                        <div>
+                        <div key={index}>
                           <img
-                            key={index}
                             className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
                             src={product.image}
                             alt={product.name}
@@ -143,13 +134,13 @@ const ProductDetailsCard = () => {
                   <div className="py- p8 divide-y-2 divide-[#F0F2F5] ">
                     <div className="fle gap-2 items-end py-2">
                       <p className="text-base py-4">{product.description}</p>
-                      <span className="text-[#101828] text-[28px] font-semibold">
-                        {/* $100.00 */}
+                      <span className="hidden text-[#101828] text-[28px] font-semibold">
+                        $100.00
                         {/* {product.price} */}
                       </span>
-                      {/* <span className="text-grey700 text-[18px] pl-1 ">
-                        per ton
-                      </span> */}
+                      <span className="hidden text-grey700 text-[18px] pl-1 ">
+                        per tonne
+                      </span>
                     </div>
                     <div className="text-[#101928] text-base py-2 ">
                       <p className="font-semibold py-1 ">
@@ -166,34 +157,37 @@ const ProductDetailsCard = () => {
                       </p>
                     </div>
                     <div className="text-[#101928] text-base py-2 ">
-                      <p className="font-semibold py-1 ">Quantity</p>
+                      <div className="flex items-center">
+                        <p className="font-semibold py-1 ">Quantity</p>
+                        <span className="text-grey700 text-[14px] pl-1 ">
+                          (tonnes)
+                        </span>
+                      </div>
                       <div className="flex gap-2 items-center py-2">
                         <div className="flex gap-2 items-center p-2 px-4 px10 border border-[#F0F2F5] rounded-[40px] bg-[#F9FAFB] ">
                           <button
-                            onClick={handleButtonClick}
-                            className={
-                              (disabled
-                                ? " text-red-900 text[#667185] bg-[#F9FAFB] "
-                                : " text-green  ",
-                              " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
-                            }
-                            
-                            disabled={count === 1}
+                            onClick={decrement}
+                            className={classNames(
+                              min
+                                ? " text-gray-300 text[#667185] bg-[#F9FAFB] cursor-not-allowed "
+                                : " text-green hover:bg-lemonGreen ",
+                              " p-2 text-red900  hover:bg-opacity-30 rounded-full text-[18px]"
+                            )}
                           >
                             <FaMinus className=" w-5 h-5" />
                           </button>
                           <span className="text-green text-[18px] font-bold px-3 py-1">
                             {count}
                           </span>
+
                           <button
-                            className={
-                              (disabled
-                                ? " text-red-900 text[#667185] bg-[#F9FAFB] "
-                                : " text-green  ",
-                              " p-2 text-red900 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px]")
-                            }
+                            className={classNames(
+                              max
+                                ? " text-gray-300 text[#667185] bg-[#F9FAFB] cursor-not-allowed "
+                                : " text-green hover:bg-lemonGreen ",
+                              " p-2 text-red900  hover:bg-opacity-30 rounded-full text-[18px]"
+                            )}
                             onClick={increment}
-                            disabled={count === 10}
                           >
                             <FaPlus className="w-5 h-5" />
                           </button>
@@ -213,7 +207,6 @@ const ProductDetailsCard = () => {
                           selectedCount={selectedCount}
                           increment={increment}
                           decrement={decrement}
-                          disabled={disabled}
                         />
                       )}
                       <div className=" ">
