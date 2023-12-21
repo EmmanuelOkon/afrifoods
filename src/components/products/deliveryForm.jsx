@@ -7,6 +7,7 @@ import Loading from "../loader";
 import { useNavigate } from "react-router-dom";
 
 const DeliveryForm = ({ product, selectedCount }) => {
+
   const navigate = useNavigate();
 
   const [companyName, setCompanyName] = useState("");
@@ -25,7 +26,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
-
+  
   const [countryPhoneCode, setCountryPhoneCode] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +41,8 @@ const DeliveryForm = ({ product, selectedCount }) => {
     };
     fetchData();
   }, []);
+
+  
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -110,7 +113,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
       country,
       zipCode,
     ];
-
+    
     if (
       requiredFields.some(
         (field) =>
@@ -160,6 +163,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
         );
 
         if (response.ok) {
+          
           setLoading(false);
           success();
 
@@ -176,15 +180,17 @@ const DeliveryForm = ({ product, selectedCount }) => {
           navigate("/products");
         } else {
           setLoading(false);
+
           if (response instanceof TypeError || response instanceof Error) {
             failed("No internet connection. Please check your network.");
-            setLoading(false);
+            setLoading(false)
           }
         }
       } catch (error) {
+        
         setLoading(false);
         failed("Failed to place order. Please try again later.");
-
+        
         setErrorMessage("Failed to submit the order. Please try again.");
         throw error;
       }
@@ -204,9 +210,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   return (
     <>
       <div className="h-fit w-full">
-        <h2 className="text-green text-2xl font-bold tracking-tighter">
-          Delivery Information
-        </h2>
+        <h2>Delivery Information</h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
             <div className="flex flex-col gap-1 w-full">
@@ -268,8 +272,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   setSelectedProduct({ product: e.target.value })
                 }
                 placeholder="Product"
-                className="appearance-none font-semibold block w-full bg-white text-grey500 placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
-                disabled
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
               {formSubmitted && selectedProduct === "" && (
                 <span className="text-red-500 text-sm">
@@ -301,23 +304,19 @@ const DeliveryForm = ({ product, selectedCount }) => {
               )}
             </div>
             <div className="flex flex-col gap-1 w-full">
-              <div className="flex items-center  mt-3 ">
-                <label
-                  htmlFor="quantity"
-                  className="text-sm text-[#101928] font-semibold"
-                >
-                  Quantity
-                </label>
-                <span className="text-grey700 text-[14px] pl-1 ">(tonnes)</span>
-              </div>
+              <label
+                htmlFor="quantity"
+                className="text-sm text-[#101928] font-semibold mt-3 "
+              >
+                Quantity
+              </label>
               <input
                 type="number"
                 id="quantity"
                 value={selectedCount}
                 onChange={(e) => setQuantity({ quantity: e.target.value })}
                 placeholder="Product"
-                className="appearance-none font-semibold block w-full bg-white text-grey500 placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
-                disabled
+                className="appearance-none font-semibold block w-full bg-white text-greyBlack placeholder:font-medium border-2 border-gray-200 rounded-md py-3 px-2 mb3 leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen placeholder:text-[#98A2B3] placeholder:text-sm"
               />
               {formSubmitted && quantity === 0 && (
                 <span className="text-red-500 text-sm">
@@ -346,6 +345,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   setCountryPhoneCode(
                     selectedCountryObject ? selectedCountryObject.phone : ""
                   );
+                  
                 }}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
@@ -456,6 +456,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 <input
                   type="number"
                   id="phone"
+                  
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="123-4567-890"

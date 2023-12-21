@@ -5,16 +5,9 @@ import { FaMinus, FaPlus } from "react-icons/fa6";
 import DeliveryForm from "./deliveryForm";
 
 const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
+  
+  
   // const totalPrice = selectedCount * 100;
-
-  const min = selectedCount === 1;
-  const max = selectedCount === 10;
-
-  // const
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   return (
     <Transition appear show={true} as={Fragment}>
@@ -97,23 +90,16 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                         </div>
 
                         <div className=" gap-2 items-center pt-10">
-                          <div className="flex items-center  mb-3 ">
-                            <span className="text-[16px] text-[#101928] font-semibold">
-                              Quantity
-                            </span>
-                            <span className="text-grey700 text-[14px] pl-1 ">
-                              (tonnes)
-                            </span>
-                          </div>
                           <div className="flex w-fit gap-2 items-center p-1 px-3 border border-[#F0F2F5] rounded-[40px] bg-[#F9FAFB] ">
                             <button
-                              className={classNames(
-                                min
-                                  ? " text-gray-300 text[#667185] bg-[#F9FAFB] cursor-not-allowed "
-                                  : " text-green hover:bg-lemonGreen ",
-                                " p-2 text-red900  hover:bg-opacity-30 rounded-full text-[18px]"
-                              )}
+                              className={
+                                (props.disabled
+                                  ? " text-red-900 text[#667185] bg-[#F9FAFB] "
+                                  : " text-green  ",
+                                " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
+                              }
                               onClick={props.decrement}
+                              disabled={props.count === 1}
                             >
                               <FaMinus className=" w-4 h-4" />
                             </button>
@@ -121,13 +107,14 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                               {selectedCount}
                             </span>
                             <button
-                              className={classNames(
-                                max
-                                  ? " text-gray-300 text[#667185] bg-[#F9FAFB] cursor-not-allowed "
-                                  : " text-green hover:bg-lemonGreen ",
-                                " p-2 text-red900  hover:bg-opacity-30 rounded-full text-[18px]"
-                              )}
+                              className={
+                                (props.disabled
+                                  ? " text-red-900 text[#667185] bg-[#F9FAFB] "
+                                  : " text-green  ",
+                                " p-2 text-red900 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px]")
+                              }
                               onClick={props.increment}
+                              disabled={props.count === 10}
                             >
                               <FaPlus className="w-5 h-5" />
                             </button>
@@ -136,10 +123,7 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                       </div>
                     </div>
                     <div>
-                      <DeliveryForm
-                        product={product}
-                        selectedCount={selectedCount}
-                      />
+                      <DeliveryForm product={product} selectedCount={selectedCount} />
                     </div>
                   </Dialog.Panel>
                 </Dialog.Panel>
