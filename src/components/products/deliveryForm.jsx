@@ -211,7 +211,9 @@ const DeliveryForm = ({ product, selectedCount }) => {
   return (
     <>
       <div className="h-fit w-full">
-        <h2>Delivery Information</h2>
+        <h2 className="text-green text-xl mt-4 md:text-2xl font-bold tracking-tighter">
+          Delivery Information
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
             <div className="flex flex-col gap-1 w-full">
@@ -346,7 +348,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
                   setCountryPhoneCode(
                     selectedCountryObject ? selectedCountryObject.phone : ""
                   );
-                  
                 }}
                 className="appearance-none font-semibold block w-full bg-white text-greyBlack border-2 border-gray-200 rounded-md  leading-tight focus:outline-0 focus:ring-0 focus:ringlemonGreen focus:bg-white focus:border-lemonGreen "
               >
@@ -457,7 +458,6 @@ const DeliveryForm = ({ product, selectedCount }) => {
                 <input
                   type="number"
                   id="phone"
-                  
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="123-4567-890"

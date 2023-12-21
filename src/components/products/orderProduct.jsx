@@ -133,7 +133,7 @@ const OrderProduct = ({ product, onClose, selectedCount, ...props }) => {
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div className="border-t border-gray-300 mt-5">
                       <DeliveryForm
                         product={product}
                         selectedCount={selectedCount}
