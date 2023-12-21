@@ -10,7 +10,6 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import React from "react";
 import { Link } from "react-router-dom";
 import OrderProduct from "./orderProduct";
-import { toast } from "sonner";
 import Loading from "../loader";
 
 const ProductDetailsCard = () => {
