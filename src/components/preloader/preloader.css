@@ -10,6 +10,12 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .loader {
+    width: 100px;
+  }
+}
+
 .loader::before {
   content: "";
   position: absolute;
@@ -83,8 +89,8 @@
   border: 3px solid #f3f3f3;
   border-radius: 50%;
   border-top-color: #226a35;
-  -webkit-animation: pen .6s linear infinite;
-  animation: pen .6s linear infinite;
+  -webkit-animation: pen 0.6s linear infinite;
+  animation: pen 0.6s linear infinite;
 }
 
 @-webkit-keyframes pen {
