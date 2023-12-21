@@ -66,8 +66,6 @@ const ProductDetailsCard = () => {
   const min = selectedCount === 1;
   const max = selectedCount === 10;
 
-  console.log(selectedCount);
-
   const relatedProducts = fruits
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 3);
