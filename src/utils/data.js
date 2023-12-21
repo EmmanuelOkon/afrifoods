@@ -635,8 +635,6 @@ export const fruits = [
     description: `A biennial vegetable belonging to the family Apiaceae, the carrot is a culinary staple celebrated for its fleshy, edible, and colorful roots.`,
     price: "$40.29",
     discount: "$60.29",
-    description: `A biennial vegetable belonging to the family Apiaceae, the carrot is a culinary staple celebrated for its fleshy, edible, and colorful roots. 
-    `,
 
     productDetails: [
       {
