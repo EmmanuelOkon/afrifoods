@@ -10,7 +10,6 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import React from "react";
 import { Link } from "react-router-dom";
 import OrderProduct from "./orderProduct";
-import { toast } from "sonner";
 import Loading from "../loader";
 
 const ProductDetailsCard = () => {
@@ -65,21 +64,6 @@ const ProductDetailsCard = () => {
   };
 
   const disabled = count === 1 || count === 10;
-
-  const handleButtonClick = () => {
-    if (disabled) {
-      
-      toast.error(errorMessages.count, {
-        position: "top-center",
-        autoClose: 3000,
-        closeOnClick: true,
-        pauseOnHover: false,
-      });
-    } else {
-   
-      setCount(count + 1);
-    }
-  };
 
   const relatedProducts = fruits
     .filter((p) => p.category === product.category && p.id !== product.id)
