@@ -10,14 +10,10 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
-    // console.log("loading...");
-    setFormSubmitted(true);
 
     if (!firstName || !lastName || !email || !phone || !message) {
       toast.error("Please fill in all required fields", {
@@ -26,14 +22,12 @@ const ContactForm = () => {
         closeOnClick: true,
         pauseOnHover: false,
       });
-      setLoading(false)
-      // console.log("error encountered");
+      setLoading(false);
 
       return;
     }
 
     try {
-      // Send form data to the endpoint
       const response = await fetch("https://apis.afrifoodsltd.com/sendEmail", {
         method: "POST",
         headers: {
@@ -48,7 +42,7 @@ const ContactForm = () => {
         }),
       });
       if (response.ok) {
-        // console.log("Form submitted successfully");
+        setLoading(false);
         toast.success("Form submitted successfully", {
           position: "top-center",
           autoClose: 3000,
@@ -56,13 +50,12 @@ const ContactForm = () => {
           pauseOnHover: false,
         });
 
-        // Reset form fields
         setFirstName("");
         setLastName("");
         setEmail("");
         setPhone("");
         setMessage("");
-        setFormSubmitted(false);
+        return;
       } else {
         toast.error("Failed to submit the form. Please try again.", {
           position: "top-center",
@@ -72,17 +65,17 @@ const ContactForm = () => {
         });
       }
     } catch (error) {
-      console.error("Error submitting the form:", error);
       toast.error("An error occurred. Please try again later.", {
         position: "top-center",
         autoClose: 5000,
         closeOnClick: true,
         pauseOnHover: false,
       });
+      throw error;
     }
 
     setLoading(false);
-    setFormSubmitted(false);
+    
   };
 
   return (
@@ -196,17 +189,17 @@ const ContactForm = () => {
                     (loading
                       ? " w-[190px] h-[52px]"
                       : "bg-green text-white hover:bg-white hover:text-green ",
-                    "border-green  text-base rounded focus:outline-none focus:shadow-outline border-2  font-semibold transition-all")
+                    "border-green text-base rounded-md focus:outline-none focus:shadow-outline border-2  font-semibold transition-all")
                   }
                 >
                   {loading ? (
                     <>
-                      <div className="bg-white py-0 my-0 flex items-center">
+                      <div className="bg-white h-[52px] rounded-md w-[190px] py-0 my-0 flex items-center justify-center">
                         <Loading />
                       </div>
                     </>
                   ) : (
-                    <div className="w-fit py-3 px-10 bg-green text-white hover:bg-white hover:text-green">
+                    <div className="w-fit hover:rounded-md py-3 px-10 bg-green text-white hover:bg-white hover:text-green">
                       Send message
                     </div>
                   )}

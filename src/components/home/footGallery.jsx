@@ -56,7 +56,7 @@ const items = [
 const FootGallery = () => {
   return (
     <>
-      <div className=" md:max-w-7xl md:w-full mx-auto my-2 px-4">
+      <div className=" md:lg:max-w-7xl 2xl:max-w-[1560px] md:w-full mx-auto my-2 px-4">
         <Swiper
           autoplay={{
             delay: 2500,
@@ -85,7 +85,7 @@ const FootGallery = () => {
           }}
           loop
           modules={[Autoplay, Navigation]}
-          
+
         >
           {items.map((item) => (
             <SwiperSlide key={item.id} className=" w-[200px] h-[200px] gap-10 ">

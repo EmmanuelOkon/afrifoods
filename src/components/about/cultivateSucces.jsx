@@ -1,6 +1,5 @@
 import cultivateSuccessImage from "../../assets/images/cultivateSuccess.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-// import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const successData = [
   {
@@ -33,7 +32,7 @@ function CultivateSuccess() {
   return (
     <>
       <div className=" bg-[#F7F9FC]">
-        <div className="py-6 lg:py16 max-w-7xl mx-auto ">
+        <div className="py-6 lg:py16 lg:max-w-7xl 2xl:max-w-[1560px] mx-auto ">
           <div className="px-4 lg:px[45px] xl:px-[100px] mx-auto ">
             <div className="flex gap-6 flex-col-reverse items-center md:gap[4rem] lg:flex-row lg:justify-between w-full lg:px10">
               <div className="hidde lg:w-1/2 h-auto justify-center">

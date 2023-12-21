@@ -70,7 +70,7 @@ const HomeStandOut = () => {
                   and Sustainable Agricultural Products
                 </p>
               </div>
-              <div className="px-4 max-w-7xl mx-auto mt-10">
+              <div className="px-4 lg:max-w-7xl 2xl:max-w-[1560px] mx-auto mt-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {standouts.map((stand) => (
                     <div

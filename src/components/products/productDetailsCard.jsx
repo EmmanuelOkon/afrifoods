@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Hero from "./hero";
 import { NavLink, useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -10,13 +10,20 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import React from "react";
 import { Link } from "react-router-dom";
 import OrderProduct from "./orderProduct";
-import { toast } from "sonner";
+import Loading from "../loader";
 
 const ProductDetailsCard = () => {
   const { productName } = useParams();
   const [count, setCount] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCount, setSelectedCount] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
 
   const errorMessages = {
     count: "Quantity must be between 1 and 10",
@@ -47,7 +54,7 @@ const ProductDetailsCard = () => {
       setSelectedCount(newCount);
     }
   };
-  console.log(product);
+  
   const decrement = () => {
     const newCount = count - 1;
     if (count > 1) {
@@ -57,22 +64,6 @@ const ProductDetailsCard = () => {
   };
 
   const disabled = count === 1 || count === 10;
-
-  const handleButtonClick = () => {
-    if (disabled) {
-      // Show error message if button is disabled
-      toast.error(errorMessages.count, {
-        position: "top-center",
-        autoClose: 3000,
-        closeOnClick: true,
-        pauseOnHover: false,
-      });
-    } else {
-      // Proceed with the button click logic
-      // For example, you can increment/decrement the count
-      setCount(count + 1);
-    }
-  };
 
   const relatedProducts = fruits
     .filter((p) => p.category === product.category && p.id !== product.id)
@@ -86,43 +77,46 @@ const ProductDetailsCard = () => {
     setSelectedProduct(null);
   };
 
-  console.log(selectedCount);
-
   return (
     <div>
       <Hero title="Products" subTitle="Fruits" pathName={product.name} />
-      <div className="pt-10 mx-auto max-w-7xl px-2">
+      <div className="pt-10 mx-auto lg:max-w-7xl 2xl:max-w-[1560px] px-2">
         <div className="py-6 lg:py16">
           <div className="px-4 xl:px-[100px] bg-white divide-y-2 divide-[#F0F2F5]  ">
             <div className="flex flex-col gap-6 items-center md:gap[4rem] lg:flex-row lg:justify-between w-full pb-4 lg:pb-10 ">
-              <div className="lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden  ">
+              <div className="w-[327px] sm:w-[400px] lg:w-1/2 h-auto rounded-lg justify-center overflow-hidden">
                 <div className="rounded-lg flex justify-center overflow-hidden bg-[#E7F6EC]">
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg[#E7F6EC] p-10 mx-auto "
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
+                  {loading ? (
+                    <div className="w-[327px] h-[327px] lg:h-[480px] lg:w-[480px] flex items-center justify-center ">
+                      <Loading />
+                    </div>
+                  ) : (
+                    <img
+                      className="w[80%] h-auto md:w[60%] lg:w-full p-10 mx-auto "
+                      src={product.image}
+                      alt={product.name}
+                    />
+                  )}
                 </div>
                 <div className="flex py-4 gap-4 mx-10">
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
-                  <LazyLoadImage
-                    className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
-                    src={product.image}
-                    alt={product.name}
-                    effect="blur"
-                  />
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <>
+                      {loading ? (
+                        <div className="p-4 lg:p-10 border border-[#D0D5DD] bg-[#F7F9FC] mx-auto rounded-lg">
+                          <Loading />
+                        </div>
+                      ) : (
+                        <div>
+                          <img
+                            key={index}
+                            className="w[80%] h-auto md:w[60%] lg:w-full bg-[#F7F9FC] p-2 lg:p-6 mx-auto rounded-lg border border-[#D0D5DD]"
+                            src={product.image}
+                            alt={product.name}
+                          />
+                        </div>
+                      )}
+                    </>
+                  ))}
                 </div>
               </div>
               <div className="pt-5 lg:py-5 lg:w-1/2 ">
@@ -151,7 +145,7 @@ const ProductDetailsCard = () => {
                       <p className="font-semibold py-1 ">
                         <span className="">Tags:</span>
                         <span className="pl-1 font-normal ">
-                          fresh, {product.category},  {product.name}
+                          fresh, {product.category}, {product.name}
                         </span>
                       </p>
                     </div>
@@ -167,7 +161,7 @@ const ProductDetailsCard = () => {
                                 : " text-green  ",
                               " p-2 hover:bg-lemonGreen hover:bg-opacity-30 rounded-full text-[18px] ")
                             }
-                            // onClick={decrement}
+                            
                             disabled={count === 1}
                           >
                             <FaMinus className=" w-5 h-5" />
@@ -212,7 +206,7 @@ const ProductDetailsCard = () => {
                           <span>
                             0rder in the next
                             <span className="text-lemonGreen underline px-1 ">
-                              07 hours 
+                              07 hours
                             </span>
                             to get it in
                             <span className="text-lemonGreen underline pl-1">
@@ -239,27 +233,17 @@ const ProductDetailsCard = () => {
                   Product Details
                 </h1>
                 <div className="text-grey700 flex-col text-base ">
-                  <p className="py-2">
-                    {product?.productDetails[0].textOne}
-                  </p>
-                  <p className="py-2">
-                  {product?.productDetails[1].textTwo}
-                  </p>
-                  <p className="py-2">
-                  {product?.productDetails[2].textThree}
-                  </p>
+                  <p className="py-2">{product?.productDetails[0].textOne}</p>
+                  <p className="py-2">{product?.productDetails[1].textTwo}</p>
+                  <p className="py-2">{product?.productDetails[2].textThree}</p>
 
-                  <p className="py-2">
-                  {product?.productDetails[3].textFour}
-                  </p>
+                  <p className="py-2">{product?.productDetails[3].textFour}</p>
                 </div>
                 <h2 className="text-[#101928] text-2xl font-semibold pt-4 pb-2">
                   Health benefits:
                 </h2>
                 <div className="text-base text-grey700 ">
-                  <p className="text-base">
-                  {product?.healthBenefit}
-                  </p>
+                  <p className="text-base">{product?.healthBenefit}</p>
                 </div>
               </div>
               <div className="w-full lg:w-1/2">
@@ -271,14 +255,16 @@ const ProductDetailsCard = () => {
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
                       Weight
                     </h2>
-                    <p className="w-[360px]">{product?.specifications[0].weight}</p>
+                    <p className="w-[360px]">
+                      {product?.specifications[0].weight}
+                    </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
                     <h2 className="text-[#101928] text-lg font-semibold w-[200px] ">
                       Harvesting Season
                     </h2>
                     <p className="py2  w-[360px]">
-                    {product?.specifications[1].harvestingSeason}
+                      {product?.specifications[1].harvestingSeason}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -286,7 +272,7 @@ const ProductDetailsCard = () => {
                       Nutritional Content
                     </h2>
                     <p className="w-[360px]">
-                    {product?.specifications[2].nutritionalContent}
+                      {product?.specifications[2].nutritionalContent}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -294,7 +280,7 @@ const ProductDetailsCard = () => {
                       Storage
                     </h2>
                     <p className="w-[360px] ">
-                    {product?.specifications[3].storage}
+                      {product?.specifications[3].storage}
                     </p>
                   </div>
                   <div className="text-grey700 flex items-start text-base py-3">
@@ -302,7 +288,7 @@ const ProductDetailsCard = () => {
                       Culinary Uses
                     </h2>
                     <p className="w-[360px] ">
-                    {product?.specifications[4].culinaryUses}
+                      {product?.specifications[4].culinaryUses}
                     </p>
                   </div>
                 </div>
@@ -310,7 +296,7 @@ const ProductDetailsCard = () => {
             </div>
           </div>
           <div>
-            <div className="container max-w-7xl mx-auto px-4">
+            <div className="container lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-4">
               <div className="py-8">
                 <div className="pb-[2rem] text-center max-w-2xl mx-auto ">
                   <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:leading-none">

@@ -6,17 +6,12 @@ import { Fragment, useState } from "react";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Rwanda from "../assets/icons/rwanda.svg";
-// import HeadCountries from "./SelectCountry";
+
 
 const language = [
   { text: "FR", href: "#" },
   { text: "ES", href: "#" },
 ];
-
-// const countries = [
-//   { text: "Nigeria", href: "#" },
-//   { text: "Togo", href: "#" },
-// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,7 +25,7 @@ const Header = () => {
     <>
       <header className="hidden lg:block bg-deepGrey text-white text-opacity-70 w-full ">
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between py-3 px-4 p6 lg:px-8"
+          className="mx-auto flex lg:max-w-7xl 2xl:max-w-[1560px] items-center justify-between py-3 px-4 p6 lg:px-8"
           aria-label="Global"
         >
           <div className="flex dividex dividewhite divide-opacity-70 text-sm ">

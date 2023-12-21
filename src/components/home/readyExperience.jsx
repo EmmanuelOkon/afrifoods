@@ -1,5 +1,4 @@
 import readyExperience from "../../assets/images/readyExperience.png";
-// import widevegetationMobile from "../../assets/images/wideVegetationMobile.png";
 
 import { NavLink } from "react-router-dom";
 

@@ -4,6 +4,7 @@ import Logo from "../assets/icons/whiteLogo.svg";
 import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 import { LuMail } from "react-icons/lu";
 import { toast } from "sonner";
+import Loading from "./loader";
 
 const navigation = {
   solutions: [
@@ -14,14 +15,17 @@ const navigation = {
   ],
   links: [
     { name: "Home", href: "/" },
-    // { name: "Support", href: "/support" },
-    { name: "Products", href: "/products" },
-    { name: "Terms of Service", href: "/termsofservice" },
-    { name: "Sustainability", href: "/sustainability" },
-    // { name: "Privacy Policy", href: "/privacypolicy" },
-    { name: "About Us", href: "/about" },
-    { name: "FAQ", href: "/faq" },
+    
     { name: "Contact Us", href: "/contact" },
+
+    { name: "Products", href: "/products" },
+    { name: "FAQ", href: "/faq" },
+
+    { name: "About Us", href: "/about" },
+    { name: "Privacy Policy", href: "/privacypolicy" },
+
+    { name: "Sustainability", href: "/sustainability" },
+    { name: "Terms of Service", href: "/termsofservice" },
   ],
   company: [
     { name: "About", href: "#" },
@@ -78,6 +82,7 @@ const navigation = {
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const warning = () =>
     toast.warning("Please enter a valid email address", {
@@ -95,32 +100,78 @@ const Footer = () => {
       pauseOnHover: false,
     });
 
+  const failed = () =>
+    toast.error("Could not subscribe at this time, check your internet", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
   function isValidEmailFormat(email) {
     const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!email || email.trim() === "") {
       warning("Please enter a valid email address");
+      setLoading(false);
       return;
     } else if (!email.includes("@")) {
       warning("Email address must contain '@'");
+      setLoading(false);
       return;
     } else if (!isValidEmailFormat(email)) {
       warning("Invalid email format");
+      setLoading(false);
       return;
     } else {
-      success("Thank you for subscribing to our newsletter");
-      // Proceed with submission or further processing
+      try {
+        const response = await fetch(
+          "https://apis.afrifoodsltd.com/newsletter",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        if (response.ok) {
+          success("Thank you for subscribing to our newsletter");
+
+          setEmail("");
+          setLoading(false);
+        } else {
+          if (response instanceof TypeError || response instanceof Error) {
+            console.error("Network error:", response.message);
+            failed("No internet connection. Please check your network.");
+          } else {
+            
+            console.error("Failed to subscribe:", response.statusText);
+            failed("Failed to subscribe. Please try again later.");
+          }
+        }
+      } catch (error) {
+        failed("Failed to subscribe. Please try again later.");
+        console.error("Error during subscription:", error);
+        setLoading(false);
+      }
     }
   };
 
+    function classNames(...classes) {
+      return classes.filter(Boolean).join(" ");
+    }
+
   return (
     <footer className="bg-deepGreen" aria-labelledby="footer-heading">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid md:grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-4">
@@ -160,6 +211,7 @@ const Footer = () => {
                         to={item.href}
                         className="text-white hover:textgray-500 bg-green500 hover:bg-lemonGreen p-2 rounded-full"
                       >
+                        <span className="sr-only">{item.name}</span>
                         <item.icon className="h-6 w-6 " aria-hidden="true" />
                       </NavLink>
                     ))}
@@ -211,9 +263,26 @@ const Footer = () => {
               <div className="mt-3 rounded-md sm:mt-0 sm3 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  className="w-1/3 bg-green flex items-center justify-center border border-transparent rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0"
+                  className={classNames(
+                    loading
+                      ? " w-[150px] h[22px] px4 py2 bg-lemonGreen"
+                      : "bg-green text-white hover:bg-lemonGreen hover:text-green py-2 ",
+                    "w-1/3 flex items-center justify-center border border-transparent rounded-md text-base font-medium  hover:bg-lemonGreen hover:text-white focus:ring-0"
+                  )}
                 >
-                  Subscribe
+                  {loading ? (
+                    <>
+                      <div className="bg-lemonGreen h-[42px] rounded-md w-[150px] py2 my-0 flex items-center justify-center">
+                        <Loading />
+                      </div>
+                    </>
+                  ) : (
+                    <span
+                   
+                    >
+                      Subscribe
+                    </span>
+                  )}
                 </button>
               </div>
             </form>

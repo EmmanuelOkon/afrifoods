@@ -15,7 +15,7 @@ const faqs = [
     question: "How can I track my order?",
     answer: `To track your order of fresh fruits and vegetables, we provide real-time communication. Once your shipment is dispatched, you will receive a shipment document along with relevant details. This allows you to stay informed about the progress of your shipment and ensures transparency in the delivery process. If you have any specific inquiries or need assistance with tracking, our customer support team is readily available to provide prompt and accurate information. For air freight clients, you can use the Air Waybill tracking number on the airline partner's website to monitor the real-time status and location of your order during its journey by air.`,
   },
-  
+
 ];
 
 const faqsTwo = [
@@ -32,7 +32,7 @@ const faqsTwo = [
       "Where does AFRI-FOODS deliver?",
     answer: `AFRI-FOODS extends its delivery services primarily to Europe, encompassing countries such as Germany, France, Italy, Belgium, Spain, and the Netherlands. Additionally, we cater to the United Kingdom and the United Arab Emirates. In alignment with the African Continental Free Trade Area (AfCFTA), we are actively exploring opportunities in Ghana and Egypt and have commenced exports to Kenya. We remain open to expanding our reach to more countries. As part of our strategic growth, we are diligently working towards entering the Asian market, with plans set for implementation by the fall of 2024.`,
   },
-  
+
 ];
 
 function classNames(...classes) {
@@ -41,7 +41,7 @@ function classNames(...classes) {
 
 function Questions() {
   return (
-    <div className="px-[20px] lg:px-[45px] xl:px-[100px] md:bg-white mx-auto max-w-7xl">
+    <div className="px-[20px] lg:px-[45px] xl:px-[100px] md:bg-white mx-auto lg:max-w-7xl 2xl:max-w-[1560px]">
       <div className="py-[3rem] sm:py-6 lg:py-10">
         <div className="pb-[4rem] text-center max-w-2xl mx-auto ">
           <h1 className="text-greyBlack text-3xl lg:text-5xl font-bold lg:trcking-wider lg:leading-none">

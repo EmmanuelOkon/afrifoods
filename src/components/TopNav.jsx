@@ -5,7 +5,7 @@ import Logo from "../../src/assets/images/logo.png";
 import { FiMenu as MenuIcon } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Rwanda from "../assets/icons/rwanda.svg"
+import Rwanda from "../assets/icons/rwanda.svg";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -27,19 +27,25 @@ const countries = [
   { text: "Togo", href: "#" },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function TopNav() {
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [countryMenuOpen, setCountryMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   return (
-    <header className="bg-white drop-shadow-md sticky lg:z-[900] top-0 w-full">
+    <header
+      className={classNames(
+        mobileMenuOpen ? "" : "z-[900]",
+        "bg-white drop-shadow-md sticky top-0 w-full"
+      )}
+    >
       <nav
-        className="mx-auto max-w-7xl xl:w-[1440px] px-4 lg:px-8 py-3 bgblue-600 flex items-center justify-between"
+        className="mx-auto lg:lg:max-w-7xl 2xl:max-w-[1560px] px-4 lg:px-8 py-3 flex items-center justify-between"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -48,6 +54,8 @@ export default function TopNav() {
               className="w-[50px] lg:h-full lg:w-[80px] sm:h-auto"
               src={Logo}
               alt="Afri Foods Logo"
+              width="300"
+              height="200"
             />
           </NavLink>
         </div>
@@ -96,13 +104,15 @@ export default function TopNav() {
       >
         {/* <div className="fixed inset-0 z-10" /> */}
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white drop-shadow-md h-fit px6 py6 sm:ring-1 sm:ring-green">
-          <div className="flex px-6 py-4 items-center justify-between bg-white drop-shadow-md">
+          <div className="flex px-6 py-4 items-center justify-between bg-white drop-shadow-md z-[900]">
             <div className="">
               <NavLink to="/">
                 <img
                   className="w-[60px] lg:h-full sm:h-auto"
                   src={Logo}
                   alt="Afri Foods Logo"
+                  width="300"
+                  height="200"
                 />
               </NavLink>
             </div>
@@ -136,123 +146,128 @@ export default function TopNav() {
                 ))}
               </div>
               <div className="py-6 text-center">
-              <Menu as="div" className=" inline-block text-left">
-              <div>
-                <Popover as="div" className="relative">
-                  {({ open }) => (
-                    <>
-                      <Menu.Button
-                        onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
-                        className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-[#344054] text-opacity-70  ring-0"
-                      >
-                        EN
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none ml-2"
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        show={languageMenuOpen}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute z-[2000] right-0 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-0 focus:outline-none">
-                          <div className="py-1">
-                            {language.map((item, index) => (
-                              <Menu.Item key={index}>
-                                {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={classNames(
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700",
-                                      "block px-4 py-2 text-sm"
+                <Menu as="div" className="inline-block text-left">
+                  <div>
+                    <Popover as="div" className="relative">
+                      {({ open }) => (
+                        <>
+                          <Menu.Button
+                            onClick={() =>
+                              setLanguageMenuOpen(!languageMenuOpen)
+                            }
+                            className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-[#344054] text-opacity-70  ring-0"
+                          >
+                            EN
+                            <ChevronDownIcon
+                              className={classNames(
+                                open ? "rotate-180" : "",
+                                "h-5 w-5 flex-none ml-2"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </Menu.Button>
+                          <Transition
+                            as={Fragment}
+                            show={languageMenuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-[2000] right-0 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-0 focus:outline-none">
+                              <div className="py-1">
+                                {language.map((item, index) => (
+                                  <Menu.Item key={index}>
+                                    {({ active }) => (
+                                      <a
+                                        href={item.href}
+                                        className={classNames(
+                                          active
+                                            ? "bg-gray-100 text-gray-900"
+                                            : "text-gray-700",
+                                          "block px-4 py-2 text-sm"
+                                        )}
+                                      >
+                                        {item.text}
+                                      </a>
                                     )}
-                                  >
-                                    {item.text}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </div>
-                        </Menu.Items>
-                      </Transition>
-                    </>
-                  )}
-                </Popover>
-              </div>
-            </Menu>
+                                  </Menu.Item>
+                                ))}
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  </div>
+                </Menu>
 
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <Popover as="div" className="relative">
-                  {({ open }) => (
-                    <>
-                      <Menu.Button
-                        onClick={() => setCountryMenuOpen(!countryMenuOpen)}
-                        className="inline-flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-[#344054] text-opacity-70 ring-0"
-                      >
-                        <img
-                          src={Rwanda}
-                          width={20}
-                          height={20}
-                          alt="Rwanda"
-                        />
-                        Rwanda
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none ml-2"
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        show={countryMenuOpen}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-[2000] mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-green focus:outline-none">
-                          <div className="py-1 dividy-y divide-black">
-                            {countries.map((item, index) => (
-                              <Menu.Item key={index} className="dividy-y divide-black">
-                                {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={classNames(
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700",
-                                      "block px-4 py-2 text-sm"
-                                    )}
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Popover as="div" className="relative">
+                      {({ open }) => (
+                        <>
+                          <Menu.Button
+                            onClick={() => setCountryMenuOpen(!countryMenuOpen)}
+                            className="inline-flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-[#344054] text-opacity-70 ring-0"
+                          >
+                            <img
+                              src={Rwanda}
+                              width={20}
+                              height={20}
+                              alt="Rwanda"
+                            />
+                            Rwanda
+                            <ChevronDownIcon
+                              className={classNames(
+                                open ? "rotate-180" : "",
+                                "h-5 w-5 flex-none ml-2"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </Menu.Button>
+                          <Transition
+                            as={Fragment}
+                            show={countryMenuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute right-0 z-[2000] mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-green focus:outline-none">
+                              <div className="py-1 dividy-y divide-black">
+                                {countries.map((item, index) => (
+                                  <Menu.Item
+                                    key={index}
+                                    className="dividy-y divide-black"
                                   >
-                                    {item.text}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </div>
-                        </Menu.Items>
-                      </Transition>
-                    </>
-                  )}
-                </Popover>
-              </div>
-            </Menu>
+                                    {({ active }) => (
+                                      <a
+                                        href={item.href}
+                                        className={classNames(
+                                          active
+                                            ? "bg-gray-100 text-gray-900"
+                                            : "text-gray-700",
+                                          "block px-4 py-2 text-sm"
+                                        )}
+                                      >
+                                        {item.text}
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                ))}
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  </div>
+                </Menu>
               </div>
             </div>
           </div>

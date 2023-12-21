@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { BsFillGridFill } from "react-icons/bs";
 import { LuListFilter, LuChevronsUpDown } from "react-icons/lu";
 import { FiList, FiChevronDown } from "react-icons/fi";
@@ -7,22 +7,26 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import HeadCategories from "./headCategories";
 import { Link } from "react-router-dom";
 import { fruits } from "../../utils/data";
+import Loading from "../loader";
 
 const Fruits = () => {
   const [isGrid, setIsGrid] = useState(true);
-  const [allProducts, setAllProducts] = useState(fruits);
   const [categories, setCategories] = useState("All Products");
+  const [loading, setLoading] = useState(true);
+
+  const allProducts = useMemo(() => fruits, []);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
 
   const filteredProducts =
     categories === "All Products"
       ? allProducts
       : allProducts.filter((product) => product.category === categories);
-
-  useEffect(() => {
-    if (categories) {
-      setAllProducts(fruits);
-    }
-  }, [categories]);
 
   const toggleView = () => {
     setIsGrid(!isGrid);
@@ -33,7 +37,7 @@ const Fruits = () => {
       <HeadCategories categories={categories} setCategories={setCategories} />
       <div className="pt- md:mt- bg-white ">
         <div className="px-[20px] pb-6 lg:px-[45px] xl:px-[100px] lg:py-10 bg- mx-auto ">
-          <div className="max-w-7xl mx-auto px-2 py-6">
+          <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 py-6">
             <div className="block md:flex items-center justify-between lg:px-2 py-4 border-b ">
               <div className="text-center md:text-left py-3">
                 <span>Showing 1 - 12 of 20 results</span>
@@ -51,7 +55,6 @@ const Fruits = () => {
                       onClick={toggleView}
                     />
                   )}
-
                   <FiList
                     className={`cursor-pointer h-6 w-6 ${
                       !isGrid ? "text-green font-bold" : "text-[#98A2B3]"
@@ -80,7 +83,7 @@ const Fruits = () => {
               </div>
             </div>
           </div>
-          <div className="max-w-7xl mx-auto px-2 pb-10 ">
+          <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 pb-10 ">
             {isGrid ? (
               <div className="grid grid-cols-1 lgrid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
                 {filteredProducts.map((feature) => (
@@ -91,16 +94,27 @@ const Fruits = () => {
                     key={feature.name}
                     className=" pb-2 lg:py-8 flex flex-col justify-end bg-[#F7F9FC] rounded-lg hover:bg-lemonGreen hover:bg-opacity-40  cursor-pointer "
                   >
-                    <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
-                      <div className="w-[192px] flex justify-center ">
-                        <LazyLoadImage
-                          src={feature.image}
-                          className="w-full h-full text-green "
-                          alt={feature.name}
-                          effect="blur"
-                        />
-                      </div>
-                    </div>
+                    {loading ? (
+                      <>
+                        <div className="w-full h-[267px] flex items-center justify-center ">
+                          <Loading />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
+                          <div className="w-[192px] flex justify-center ">
+                            <LazyLoadImage
+                              src={feature.image}
+                              className="w-full h-full text-green "
+                              alt={feature.name}
+                              effect="blur"
+                            />
+                          </div>
+                        </div>
+                      </>
+                    )}
+
                     <div className="px-4 ">
                       <span className="text-lemonGreen">
                         {feature.category}

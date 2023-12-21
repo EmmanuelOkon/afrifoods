@@ -1,9 +1,11 @@
 import { LuMail } from "react-icons/lu";
 import { useState } from "react";
 import { toast } from "sonner";
+import Loading from "../loader";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const warning = () =>
     toast.warning("Please enter a valid email address", {
@@ -21,27 +23,68 @@ const Newsletter = () => {
       pauseOnHover: false,
     });
 
+  const failed = () =>
+    toast.error("Could not subscribe at this time, check your internet", {
+      position: "top-center",
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: false,
+    });
+
   function isValidEmailFormat(email) {
     const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!email || email.trim() === "") {
       warning("Please enter a valid email address");
+      setLoading(false);
       return;
     } else if (!email.includes("@")) {
       warning("Email address must contain '@'");
+      setLoading(false);
       return;
     } else if (!isValidEmailFormat(email)) {
       warning("Invalid email format");
+      setLoading(false);
       return;
     } else {
-      success("Thank you for subscribing to our newsletter");
-      setEmail("");
-      // Proceed with submission or further processing
+      try {
+        const response = await fetch(
+          "https://apis.afrifoodsltd.com/newsletter",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        if (response.ok) {
+          success("Thank you for subscribing to our newsletter");
+
+          setEmail("");
+          setLoading(false);
+        } else {
+          if (response instanceof TypeError || response instanceof Error) {
+            console.error("Network error:", response.message);
+            failed("No internet connection. Please check your network.");
+          } else {
+            
+            console.error("Failed to subscribe:", response.statusText);
+            failed("Failed to subscribe. Please try again later.");
+          }
+        }
+      } catch (error) {
+        setLoading(false);
+        failed("Failed to subscribe. Please try again later.");
+        throw error;
+      }
     }
   };
 
@@ -62,7 +105,7 @@ const Newsletter = () => {
             className="mt-4 gap-4 flex flex-col md:flex-row items-center justify-between"
             onSubmit={handleSubmit}
           >
-            <div className="flex w-full items-center border-2 border-gray-300 rounded-md px-3 border-gray-00 focus:border-lemonGreen">
+            <div className="flex lg:w-[350px] w-full items-center border-2 border-gray-300 rounded-md px-3 border-gray-00 focus:border-lemonGreen">
               <LuMail className="text-gray-400 w-6 h-6 text-opacity-70 sm:h-auto" />
               <input
                 type={email}
@@ -73,12 +116,27 @@ const Newsletter = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="mt-3 w-full md:w-fit sm:mt-0 rounded-md sm:flex-shrink-0">
+            <div className="mt-3 w-full md:w-fit sm:mt-0 rounded-md sm:flex-shrink0">
               <button
                 type="submit"
-                className="w-full  bg-green flex md:justify-end items-center justify-center border border-transparent rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0"
+                className={
+                  (loading
+                    ? " w-[150px] h[22px] py-2 "
+                    : "bg-green text-white hover:bg-white hover:text-green",
+                  "text-base rounded-md focus:outline-none focus:shadow-outline font-semibold transition-all ")
+                }
               >
-                Subscribe now
+                {loading ? (
+                  <>
+                    <div className="bg-white border-2 border-green h-[42px] md:h-full rounded-md w-[150px] my-0 flex items-center justify-center">
+                      <Loading />
+                    </div>
+                  </>
+                ) : (
+                  <span className="w-full bg-green flex md:justify-end items-center justify-center rounded-md py-2 px-4 text-base font-medium text-white hover:bg-lemonGreen focus:ring-0">
+                    Subscribe now
+                  </span>
+                )}
               </button>
             </div>
           </form>
