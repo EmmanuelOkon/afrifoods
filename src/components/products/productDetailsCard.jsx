@@ -312,46 +312,54 @@ const ProductDetailsCard = () => {
                     <span className="border-2 border-lemonGreen w-full"></span>
                   </div>
                 </div>
-                <div className="flex overflow-scroll md:overflow-hidden md:grid grid-cols-1 lgrid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mx-32 ">
-                  {relatedProducts.map((item) => (
-                    <div key={item.id} className="mx-auto ">
-                      <Link
-                        to={`/product/${item.name
-                          .replace(/\s+/g, "-")
-                          .toLowerCase()}`}
-                        key={item.name}
-                        className="w-[250px]  lg:w-[300px] pb-2 lg:py-8 flex flex-col justify-end bg-[#F7F9FC] rounded-lg hover:bg-lemonGreen hover:bg-opacity-40 cursor-pointer "
-                      >
-                        <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
-                          <div className="w-[192px] flex justify-center ">
-                            <LazyLoadImage
-                              src={item.image}
-                              className="w-full h-full text-green "
-                              alt={item.name}
-                              effect="blur"
-                            />
+                {relatedProducts.length > 0 ? (
+                  <div className="flex overflow-scroll md:overflow-hidden md:grid grid-cols-1 lgrid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:mx-32 ">
+                    {relatedProducts.map((item) => (
+                      <div key={item.id} className="mx-auto ">
+                        <Link
+                          key={item.name}
+                          to={`/product/${item.name
+                            .replace(/\s+/g, "-")
+                            .toLowerCase()}`}
+                          className="w-[250px] lg:w-[300px] pb-2 lg:py-8 flex flex-col justify-end bg-[#F7F9FC] rounded-lg hover:bg-lemonGreen hover:bg-opacity-40 cursor-pointer "
+                        >
+                          <div className="flex justify-center hover:scale-110 transition-all delay-200 ease-in-out ">
+                            <div className="w-[192px] flex justify-center ">
+                              <LazyLoadImage
+                                src={item.image}
+                                className="w-full h-full text-green "
+                                alt={item.name}
+                                effect="blur"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div className="px-4 ">
-                          <span className="text-lemonGreen">
-                            {item.category}
-                          </span>
-                          <h3 className="pt-2 lg:pt4 text-greyBlack text-[18px] md:text-[20px] font-semibold tracking-tighter">
-                            {item.name}
-                          </h3>
-                          {/* <div className="flex gap-2 items-end pt-2">
-                            <span className="text-[#475367] text-[20px] font-semibold">
-                              {item.price}
+                          <div className="px-4 ">
+                            <span className="text-lemonGreen">
+                              {item.category}
                             </span>
-                            <span className="text-[#98A2B3] text-[14px] line-through">
-                              {item.discount}
-                            </span>
-                          </div> */}
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
+                            <h3 className="pt-2 lg:pt4 text-greyBlack text-[18px] md:text-[20px] font-semibold tracking-tighter">
+                              {item.name}
+                            </h3>
+                            {/* <div className="flex gap-2 items-end pt-2">
+                              <span className="text-[#475367] text-[20px] font-semibold">
+                                {item.price}
+                              </span>
+                              <span className="text-[#98A2B3] text-[14px] line-through">
+                                {item.discount}
+                              </span>
+                            </div> */}
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="py-0 lg:py-6 text-center mx-auto">
+                    <h1 className="text-greyBlack text-xl lg:text-2xl font-bold lg:leading-none">
+                      No related products.
+                    </h1>
+                  </div>
+                )}
               </div>
             </div>
           </div>

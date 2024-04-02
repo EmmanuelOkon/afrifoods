@@ -48,7 +48,7 @@ const HeadCategories = ({ categories, setCategories }) => {
       <div className="lg:max-w-7xl 2xl:max-w-[1560px] mx-auto px-2 ">
         <div className="flex overflow-x-auto md: lg:grid lgrid-cols-2 gap-3 space-x- sm:grid-cols-3 lg:grid-cols-4">
           {features.map((feature) => (
-            <div key={feature.name} className=" pb-2 lg:pb-8 text-center">
+            <div key={feature.name} className="pb-2 lg:pb-8 flex flex-col items-center">
               <div
                 onClick={() => setCategories(feature.name)}
                 className={`bg-white drop-shadowmd rounded-full h-[150px] w-[150px]  md:h-[282px] md:w-[282px] overflow-hidden cursor-pointer ${feature.name === categories
