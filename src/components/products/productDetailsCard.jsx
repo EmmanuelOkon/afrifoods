@@ -25,10 +25,6 @@ const ProductDetailsCard = () => {
     }, 5000);
   }, []);
 
-  const errorMessages = {
-    count: "Quantity must be between 1 and 10",
-  };
-
   const product = fruits.find(
     (product) => product.name.replace(/\s+/g, "-").toLowerCase() === productName
   );

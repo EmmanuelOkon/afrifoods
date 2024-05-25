@@ -23,7 +23,7 @@ const DeliveryForm = ({ product, selectedCount }) => {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState(0);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [, setErrorMessage] = useState("");
   const [emailCheck, setEmailCheck] = useState(false);
   const [numberCheck, setNumberCheck] = useState(false);
   

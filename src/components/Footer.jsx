@@ -277,11 +277,7 @@ const Footer = () => {
                       </div>
                     </>
                   ) : (
-                    <span
-                   
-                    >
-                      Subscribe
-                    </span>
+                    <span>Subscribe</span>
                   )}
                 </button>
               </div>
@@ -290,7 +286,7 @@ const Footer = () => {
         </div>
         <div className="mt-8 border-t border-grey500 pt-8 flex items-center justify-center">
           <p className="mt-8 text-base text-grey500 md:mt-0">
-            &copy; 2023 AfrifoodLtd. All rights reserved.
+            &copy; {new Date().getFullYear()} AfrifoodLtd. All rights reserved.
           </p>
         </div>
       </div>
