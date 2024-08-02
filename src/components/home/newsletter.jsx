@@ -54,16 +54,13 @@ const Newsletter = () => {
       return;
     } else {
       try {
-        const response = await fetch(
-          "https://apis.afrifoodsltd.com/newsletter",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-          }
-        );
+        const response = await fetch("https://dummy-endpoint.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
 
         if (response.ok) {
           success("Thank you for subscribing to our newsletter");

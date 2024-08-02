@@ -28,7 +28,7 @@ const ContactForm = () => {
     }
 
     try {
-      const response = await fetch("https://apis.afrifoodsltd.com/sendEmail", {
+      const response = await fetch("https://dummy-endpoint.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
